@@ -284,3 +284,32 @@ def test_advanced_clinical_input_roundtrip(client, payload, monkeypatch):
     assert saved['visit']['intercurrence_details'] == updated['intercurrence_details']
     assert saved['visit']['neuro_exam']['mini_mental']['domains']['language'] == 7
     assert saved['soap_blocks'] == blocks
+
+
+def test_nurse_name_other_condition_and_sex_roundtrip(client, payload, monkeypatch):
+    monkeypatch.setattr(get_settings(), 'ai_enabled', False)
+    data = payload | {'sex': 'Masculino', 'conditions': ['Outra'], 'other_condition': 'Doença de Parkinson',
+        'companions': {'has_nurse': True, 'nurse_name': 'Ana'}}
+    generated = client.post('/visits/generate-soap', json=data)
+    assert generated.status_code == 200
+    blocks = generated.json()
+    assert 'enfermeiro(a)/técnico(a) Ana' in blocks['subjective_text']
+    assert 'Em acompanhamento por Doença de Parkinson' in blocks['subjective_text']
+    write = dict(visit=data, soap_text=blocks['full_text_fallback'], soap_blocks=blocks)
+    assert client.post('/visits', json=write).status_code == 201
+    saved = client.get(f"/visits/{data['id']}").json()['visit']
+    assert saved['companions']['nurse_name'] == 'Ana'
+    assert saved['other_condition'] == 'Doença de Parkinson'
+    assert saved['sex'] == 'Masculino'
+    assert client.post('/visits/generate-soap', json=data | {'companions': {'nurse_name': 'Ana'}}).status_code == 422
+    assert client.post('/visits/generate-soap', json=data | {'conditions': ['Hipertenso']}).status_code == 422
+
+
+@pytest.mark.parametrize('legacy', ['Outro', 'Não informado', ''])
+def test_legacy_sex_remains_unknown_without_assigning_a_value(payload, legacy):
+    v = VDInput.model_validate(payload | {'sex': legacy})
+    assert v.sex is None
+    assert VDInput.model_validate(payload | {'sex': 'Masculino'}).sex == 'Masculino'
+    from pydantic import ValidationError
+    with pytest.raises(ValidationError):
+        VDInput.model_validate(payload | {'sex': 'inventado'})

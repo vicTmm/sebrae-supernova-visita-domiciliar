@@ -167,3 +167,7 @@ Antes da validação final, peça ao médico **3 exemplos reais anonimizados de 
 ### Validação das regras clínicas
 
 `backend/tests/fixtures/clinical_cases.json` contém casos compartilhados para verificar paridade entre o SOAP local e Python, incluindo limiares exatos, comorbidades, metas individuais, escolaridade e dados ausentes. Os testes também cobrem migração IndexedDB v3→v4, mapas de queixas, soma dos domínios e preservação de texto editado. O exemplo inclui PA 150/90 e MEEM 24/30 (4 anos de escolaridade) para demonstrar alertas e sugestões. Na Cloudflare, estas funções operam localmente enquanto a API pública não estiver configurada.
+
+### Detalhes contextuais do cadastro
+
+Enfermeiro(a)/técnico(a) agora abre nome opcional (`companions.nurse_name`), incluído na abertura do Subjetivo. A condição “Outra” abre descrição (`other_condition`, até 500 caracteres), incluída na história e enviada à IA. Ao desmarcar as opções, o formulário limpa os detalhes associados. Sexo oferece somente Feminino e Masculino, com “Selecione” como estado vazio; valores legados “Outro”/“Não informado” viram ausência de informação, sem atribuição automática. A migração IndexedDB v5 preserva SOAP revisado, rascunhos e pendências.

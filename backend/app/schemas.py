@@ -84,13 +84,14 @@ class Companions(StrictModel):
     has_student: bool = False
     student_name: str | None = Field(default=None, max_length=80)
     has_nurse: bool = False
+    nurse_name: str | None = Field(default=None, max_length=80)
     is_solo: bool = False
 
     @model_validator(mode="after")
     def consistent_team(self):
         if self.is_solo and (self.has_acs or self.has_student or self.has_nurse):
             raise ValueError("Apenas médico não pode ser combinado com acompanhantes.")
-        if (self.acs_name and not self.has_acs) or (self.student_name and not self.has_student):
+        if (self.acs_name and not self.has_acs) or (self.student_name and not self.has_student) or (self.nurse_name and not self.has_nurse):
             raise ValueError("Nome exige a seleção do acompanhante correspondente.")
         return self
 
@@ -176,8 +177,9 @@ class VDInput(StrictModel):
     visited_at: datetime
     patient_code: str = Field(min_length=1, max_length=30)
     age: int = Field(ge=0, le=130)
-    sex: str = Field(pattern="^(Feminino|Masculino|Outro|Não informado)$")
+    sex: Literal['Feminino', 'Masculino'] | None = None
     conditions: list[Condition] = Field(min_length=1, max_length=8)
+    other_condition: str = Field(default="", max_length=500)
     companions: Companions = Field(default_factory=Companions)
     complaints: list[Complaint] = Field(default_factory=list, max_length=8)
     adherence: str = Field(default="Não informado", pattern="^(Regular|Irregular|Não faz uso|Não informado)$")
@@ -200,6 +202,9 @@ class VDInput(StrictModel):
         # Payloads antigos do SQLite e de dispositivos ainda não atualizados.
         if isinstance(data, dict):
             data = dict(data)
+            # Preserva ausência de informação nos cadastros antigos sem atribuir sexo.
+            if data.get('sex') in ('Outro', 'Não informado', ''):
+                data['sex'] = None
             if ("intercurrence_details" not in data and data.get("complaints")
                     and Complaint.NONE not in data["complaints"] and data.get("subjective_notes")):
                 data["intercurrence_details"] = data["subjective_notes"]
@@ -222,6 +227,8 @@ class VDInput(StrictModel):
 
     @model_validator(mode="after")
     def consistency(self):
+        if self.other_condition and Condition.OTHER not in self.conditions:
+            raise ValueError("Descrição de outra condição exige a seleção de Outra.")
         if self.visited_at.tzinfo is None:
             raise ValueError("visited_at deve conter fuso horário.")
         if Complaint.NONE in self.complaints and len(self.complaints) > 1:

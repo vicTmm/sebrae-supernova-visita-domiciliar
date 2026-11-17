@@ -4,7 +4,7 @@ export const actions = ['Manutenção de receita', 'Ajuste medicamentoso', 'Soli
 export const examLabels = { cardiovascular: 'Aparelho cardiovascular (ACV)', respiratory: 'Aparelho respiratório (AR)', abdomen: 'Abdome', general: 'Estado geral / hidratação' }
 export type ExamFinding = { status: 'Não avaliado' | 'Sem alterações' | 'Alterado'; notes: string }
 export interface Vitals { systolic: number | null; diastolic: number | null; heart_rate: number | null; respiratory_rate: number | null; oxygen_saturation: number | null; temperature: number | null; glucose: number | null }
-export interface Companions { has_acs: boolean; acs_name: string | null; has_student: boolean; student_name: string | null; has_nurse: boolean; is_solo: boolean }
+export interface Companions { has_acs: boolean; acs_name: string | null; has_student: boolean; student_name: string | null; has_nurse: boolean; nurse_name?: string | null; is_solo: boolean }
 export const neuroFlags = [
   { value: 'Lúcido e orientado (LOTE)', label: 'LOTE' },
   { value: 'Pupilas isocóricas e fotorreagentes (PIFR)', label: 'PIFR' },
@@ -30,15 +30,15 @@ export function miniMentalTotal(d: CognitiveDomains): number | null {
 }
 export interface MiniMental { education_level?: 'none' | '1_4' | '5_8' | 'over_8' | null; domains?: CognitiveDomains | null; score: number | null; education_years: number | null; notes: string }
 export interface NeuroExam { mini_mental?: MiniMental | null; glasgow: Glasgow | null; rankin: number | null; directed_flags: NeuroFlag[]; neuro_notes: string | null }
-export const emptyCompanions = (): Companions => ({ has_acs: false, acs_name: null, has_student: false, student_name: null, has_nurse: false, is_solo: false })
+export const emptyCompanions = (): Companions => ({ has_acs: false, acs_name: null, has_student: false, student_name: null, has_nurse: false, nurse_name: null, is_solo: false })
 export const emptyNeuro = (): NeuroExam => ({ mini_mental: null, glasgow: null, rankin: null, directed_flags: [], neuro_notes: null })
 export function glasgowTotal(g: Pick<Glasgow, 'eye' | 'verbal' | 'motor'>): number | null {
   if (g.eye === null || g.verbal === null || g.motor === null) return null
   return g.eye + g.verbal + g.motor
 }
 export interface Visit {
-  id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | 'Outro' | 'Não informado';
-  conditions: (typeof conditions)[number][]; complaints: (typeof complaints)[number][];
+  id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | null;
+  conditions: (typeof conditions)[number][]; other_condition?: string; complaints: (typeof complaints)[number][];
   adherence: 'Regular' | 'Irregular' | 'Não faz uso' | 'Não informado'; subjective_notes: string; intercurrence_details: Partial<Record<(typeof complaints)[number], string>>; bp_target?: { systolic: number | null; diastolic: number | null } | null; vitals_context: string;
   companions: Companions; medications_in_use: string; recent_medications: string | null; neuro_exam: NeuroExam | null;
   vitals: Vitals; exam: Record<keyof typeof examLabels, ExamFinding>; assessment: string;
@@ -58,10 +58,10 @@ export function upgradeVisit(v: Visit & { medications?: string }): Visit {
   const selected = v.complaints.filter(c => c !== 'Sem intercorrências')
   const legacyDetails = raw === undefined && selected.length ? v.subjective_notes : typeof raw === 'string' ? raw : ''
   const details = typeof raw === 'object' && raw !== null ? raw as Visit['intercurrence_details'] : selected.length && legacyDetails ? { [selected[0]]: legacyDetails } : {}
-  return { ...rest, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: v.companions ?? emptyCompanions(), medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { ...v.neuro_exam, mini_mental: v.neuro_exam.mini_mental ?? null } : null }
+  return { ...rest, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { ...v.neuro_exam, mini_mental: v.neuro_exam.mini_mental ?? null } : null }
 }
 export function emptyVisit(): Visit {
-  return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: 'Não informado', conditions: [], complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }
+  return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: null, conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }
 }
 export function exampleVisit(): Visit {
   const v = emptyVisit()

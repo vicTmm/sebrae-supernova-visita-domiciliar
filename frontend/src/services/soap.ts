@@ -4,7 +4,8 @@ const clean = (s: string) => s.replace(/[*_`#~]/g, '').replace(/\s+/g, ' ').trim
 export function clinicalRuleError(v: Visit): string | null {
   const c = v.companions
   if (c.is_solo && (c.has_acs || c.has_student || c.has_nurse)) return 'Apenas Médico não pode ser combinado com acompanhantes.'
-  if ((c.acs_name?.trim() && !c.has_acs) || (c.student_name?.trim() && !c.has_student)) return 'Selecione o acompanhante correspondente ao nome informado.'
+  if ((c.acs_name?.trim() && !c.has_acs) || (c.student_name?.trim() && !c.has_student) || (c.nurse_name?.trim() && !c.has_nurse)) return 'Selecione o acompanhante correspondente ao nome informado.'
+  if (v.other_condition?.trim() && !v.conditions.includes('Outra')) return 'Selecione Outra para descrever a condição acompanhada.'
   const n = v.neuro_exam
   if (Object.keys(v.intercurrence_details).some(key => key === 'Sem intercorrências' || !v.complaints.includes(key as Visit['complaints'][number]))) return 'Cada detalhe exige a queixa correspondente selecionada.'
   const target = v.bp_target
@@ -26,7 +27,7 @@ export function clinicalRuleError(v: Visit): string | null {
 }
 export function subjectiveOpening(v: Visit): string {
   const c = v.companions
-  const team = [c.has_acs && (c.acs_name?.trim() ? `da ACS ${c.acs_name.trim()}` : 'de ACS (nome não informado)'), c.has_student && (c.student_name?.trim() ? `do estudante ${c.student_name.trim()}` : 'de estudante (nome não informado)'), c.has_nurse && 'de enfermeiro(a)/técnico(a)'].filter(Boolean) as string[]
+  const team = [c.has_acs && (c.acs_name?.trim() ? `da ACS ${c.acs_name.trim()}` : 'de ACS (nome não informado)'), c.has_student && (c.student_name?.trim() ? `do estudante ${c.student_name.trim()}` : 'de estudante (nome não informado)'), c.has_nurse && (c.nurse_name?.trim() ? `de enfermeiro(a)/técnico(a) ${c.nurse_name.trim()}` : 'de enfermeiro(a)/técnico(a)')].filter(Boolean) as string[]
   if (team.length) return `Realizada visita domiciliar acompanhado(a) ${team.length < 3 ? team.join(' e ') : `${team.slice(0, -1).join(', ')} e ${team.at(-1)}`}.`
   return c.is_solo ? 'Realizada visita domiciliar sem acompanhantes da equipe.' : 'Realizada visita domiciliar. Acompanhantes da equipe não informados.'
 }
@@ -67,7 +68,7 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   const complaintLabels = { Dor: 'dor', Dispneia: 'dispneia', Febre: 'febre', Tontura: 'tontura', Queda: 'queda', 'Ida à UPA/Emergência': 'ida à UPA/emergência', 'Internação hospitalar': 'internação hospitalar', 'Sem intercorrências': '' }
   const timeline = v.complaints.includes('Sem intercorrências') ? 'Desde a última visita domiciliar, não foram relatadas intercorrências' : v.complaints.length ? `Desde a última visita domiciliar, houve relato de ${joined(v.complaints.map(c => complaintLabels[c]))}` : 'Não foi informado como transcorreu o período desde a última visita domiciliar'
   const adherence = { Regular: 'Refere uso regular das medicações', Irregular: 'Refere uso irregular das medicações', 'Não faz uso': 'Refere não fazer uso de medicações', 'Não informado': '' }
-  const s = paragraph([subjectiveOpening(v), timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence]])
+  const s = paragraph([subjectiveOpening(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence]])
   const physical: string[] = []
   for (const [key, label] of [['general', 'Estado geral e hidratação'], ['cardiovascular', 'Ausculta cardíaca'], ['respiratory', 'Ausculta pulmonar']] as const) {
     const f = v.exam[key]

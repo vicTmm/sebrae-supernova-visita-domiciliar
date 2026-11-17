@@ -56,7 +56,7 @@ def subjective_opening(visit: VDInput) -> str:
     if c.has_student:
         team.append(f"do estudante {c.student_name}" if c.student_name else "de estudante (nome não informado)")
     if c.has_nurse:
-        team.append("de enfermeiro(a)/técnico(a)")
+        team.append(f"de enfermeiro(a)/técnico(a) {c.nurse_name}" if c.nurse_name else "de enfermeiro(a)/técnico(a)")
     if team:
         names = ' e '.join(team) if len(team) < 3 else ', '.join(team[:-1]) + ' e ' + team[-1]
         return plain(f"Realizada visita domiciliar acompanhado(a) {names}.")
@@ -74,7 +74,7 @@ def subjective_facts(visit: VDInput) -> list[str]:
         timeline = 'Desde a última visita domiciliar, houve relato de ' + joined([labels[c] for c in visit.complaints])
     else:
         timeline = 'Não foi informado como transcorreu o período desde a última visita domiciliar'
-    facts = [timeline, *[f"Quanto a {key.value.lower()}: {value}" for key, value in visit.intercurrence_details.items() if value], visit.subjective_notes]
+    facts = [f"Em acompanhamento por {visit.other_condition}" if visit.other_condition else "", timeline, *[f"Quanto a {key.value.lower()}: {value}" for key, value in visit.intercurrence_details.items() if value], visit.subjective_notes]
     if visit.recent_medications:
         facts.append(f"No período recente, utilizou {visit.recent_medications}")
     if visit.medications_in_use:
@@ -191,7 +191,7 @@ async def generate_soap(visit: VDInput) -> SOAPOutput:
                 n = response.output_parsed
                 if n:
                     s = plain(n.subjective_text)
-                    required = [*visit.intercurrence_details.values(), visit.subjective_notes, visit.medications_in_use, visit.recent_medications or '']
+                    required = [visit.other_condition, *visit.intercurrence_details.values(), visit.subjective_notes, visit.medications_in_use, visit.recent_medications or '']
                     if (s.startswith(subjective_opening(visit)) and all(plain(f).rstrip('. ') in s for f in required if f)
                             and (not visit.recent_medications or re.search(r'\butilizou\b', s, re.IGNORECASE))
                             and (not visit.medications_in_use or 'em uso contínuo' in s.lower())

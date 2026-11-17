@@ -62,3 +62,31 @@ it('migra IndexedDB v3 preservando rascunho, histórico, conflito e SOAP editado
   expect((await db.drafts.get('active'))!.soap).toBe('Rascunho revisado')
   await db.visits.clear(); await db.drafts.clear()
 })
+
+it('inclui nome de enfermagem e condição especificada na evolução offline', () => {
+  const v = exampleVisit()
+  v.companions = { has_nurse: true, nurse_name: 'Ana', has_acs: false, acs_name: null, has_student: false, student_name: null, is_solo: false }
+  v.conditions = ['Outra']; v.other_condition = 'Doença de Parkinson'
+  const output = localSoapOutput(v)
+  expect(output.subjective_text).toContain('enfermeiro(a)/técnico(a) Ana')
+  expect(output.subjective_text).toContain('Em acompanhamento por Doença de Parkinson')
+  v.companions.has_nurse = false
+  expect(clinicalRuleError(v)).toContain('acompanhante')
+  v.companions.nurse_name = null; v.conditions = ['Hipertenso']
+  expect(clinicalRuleError(v)).toContain('Outra')
+})
+
+it('migra IndexedDB v4 sem inventar sexo ou alterar a evolução revisada', async () => {
+  await db.delete()
+  const old = new Dexie(db.name)
+  old.version(4).stores({ visits: 'visit.id, visit.visited_at', drafts: 'key' })
+  const visit = { ...exampleVisit(), sex: 'Outro' }
+  await old.table('drafts').put({ key: 'active', visit, soap: 'Texto revisado', baseRevision: 0, source: 'legacy' })
+  old.close(); await db.open()
+  const draft = (await db.drafts.get('active'))!
+  expect(draft.visit.sex).toBeNull()
+  expect(draft.visit.companions.nurse_name).toBeNull()
+  expect(draft.visit.other_condition).toBe('')
+  expect(draft.soap).toBe('Texto revisado')
+  await db.drafts.clear()
+})
