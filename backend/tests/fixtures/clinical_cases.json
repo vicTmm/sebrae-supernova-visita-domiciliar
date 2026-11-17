@@ -1,0 +1,4672 @@
+[
+  {
+    "name": "missing",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "has_139_89",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 139,
+        "diastolic": 89,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "PAS": "139",
+        "PAD": "89"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 139 mmHg, PAD 89 mmHg. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "has_140_90",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 140,
+        "diastolic": 90,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_monitor",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 140/90 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual",
+        "suggestion": "Repetir a aferição e revisar a meta individual; considerar monitorização pressórica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.",
+      "vitals_formatted": {
+        "PAS": "140",
+        "PAD": "90"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.\nP: Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "has_149_94",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 149,
+        "diastolic": 94,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_monitor",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 149/94 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual",
+        "suggestion": "Repetir a aferição e revisar a meta individual; considerar monitorização pressórica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.",
+      "vitals_formatted": {
+        "PAS": "149",
+        "PAD": "94"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 149 mmHg, PAD 94 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.\nP: Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "has_150_90",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 150,
+        "diastolic": 90,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_uncontrolled",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 150/90 mmHg: elevação significativa no acompanhamento de HAS",
+        "suggestion": "Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS.",
+      "vitals_formatted": {
+        "PAS": "150",
+        "PAD": "90"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS.\nP: Conduta não registrada. Sugestões para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "has_140_95",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 140,
+        "diastolic": 95,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_uncontrolled",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 140/95 mmHg: elevação significativa no acompanhamento de HAS",
+        "suggestion": "Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: elevação significativa no acompanhamento de HAS.",
+      "vitals_formatted": {
+        "PAS": "140",
+        "PAD": "95"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 95 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: elevação significativa no acompanhamento de HAS.\nP: Conduta não registrada. Sugestões para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "has_180_120",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 180,
+        "diastolic": 120,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_severe",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 180/120 mmHg: elevação acentuada",
+        "suggestion": "Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.",
+      "vitals_formatted": {
+        "PAS": "180",
+        "PAD": "120"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 180 mmHg, PAD 120 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.\nP: Conduta não registrada. Sugestões para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "no_has_139_89",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 139,
+        "diastolic": 89,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "PAS": "139",
+        "PAD": "89"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 139 mmHg, PAD 89 mmHg. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "no_has_140_90",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 140,
+        "diastolic": 90,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_monitor",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 140/90 mmHg: PA acima da referência de rastreio, investigar/monitorar",
+        "suggestion": "Repetir a aferição e revisar a meta individual; considerar monitorização pressórica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
+      "vitals_formatted": {
+        "PAS": "140",
+        "PAD": "90"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP: Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "no_has_149_94",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 149,
+        "diastolic": 94,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_monitor",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 149/94 mmHg: PA acima da referência de rastreio, investigar/monitorar",
+        "suggestion": "Repetir a aferição e revisar a meta individual; considerar monitorização pressórica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
+      "vitals_formatted": {
+        "PAS": "149",
+        "PAD": "94"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 149 mmHg, PAD 94 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP: Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "no_has_150_90",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 150,
+        "diastolic": 90,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_monitor",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 150/90 mmHg: PA acima da referência de rastreio, investigar/monitorar",
+        "suggestion": "Repetir a aferição e revisar a meta individual; considerar monitorização pressórica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
+      "vitals_formatted": {
+        "PAS": "150",
+        "PAD": "90"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP: Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "no_has_140_95",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 140,
+        "diastolic": 95,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_monitor",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 140/95 mmHg: PA acima da referência de rastreio, investigar/monitorar",
+        "suggestion": "Repetir a aferição e revisar a meta individual; considerar monitorização pressórica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
+      "vitals_formatted": {
+        "PAS": "140",
+        "PAD": "95"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 95 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP: Conduta não registrada. Sugestões para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "no_has_180_120",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 180,
+        "diastolic": 120,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_severe",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 180/120 mmHg: elevação acentuada",
+        "suggestion": "Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.",
+      "vitals_formatted": {
+        "PAS": "180",
+        "PAD": "120"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 180 mmHg, PAD 120 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.\nP: Conduta não registrada. Sugestões para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Outra_95_70",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 95.0,
+        "temperature": null,
+        "glucose": 70
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "SatO2": "95%",
+        "HGT": "70"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Outra_94.9_69",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 94.9,
+        "temperature": null,
+        "glucose": 69
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 94.9%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      },
+      {
+        "code": "glucose_low",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 69 mg/dL: hipoglicemia",
+        "suggestion": "Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.",
+      "vitals_formatted": {
+        "SatO2": "94,9%",
+        "HGT": "69"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Outra_92_180",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 92.0,
+        "temperature": null,
+        "glucose": 180
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 92%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.",
+      "vitals_formatted": {
+        "SatO2": "92%",
+        "HGT": "180"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Outra_91.9_181",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 91.9,
+        "temperature": null,
+        "glucose": 181
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 91.9%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia.",
+      "vitals_formatted": {
+        "SatO2": "91,9%",
+        "HGT": "181"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Outra_88_200",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 88.0,
+        "temperature": null,
+        "glucose": 200
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 88%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia.",
+      "vitals_formatted": {
+        "SatO2": "88%",
+        "HGT": "200"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Outra_97_201",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Outra"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 97.0,
+        "temperature": null,
+        "glucose": 201
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "glucose_high",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado",
+        "suggestion": "Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.",
+      "vitals_formatted": {
+        "SatO2": "97%",
+        "HGT": "201"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.\nP: Conduta não registrada. Sugestões para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Diabético_95_70",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Diabético"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 95.0,
+        "temperature": null,
+        "glucose": 70
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "SatO2": "95%",
+        "HGT": "70"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Diabético_94.9_69",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Diabético"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 94.9,
+        "temperature": null,
+        "glucose": 69
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 94.9%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      },
+      {
+        "code": "glucose_low",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 69 mg/dL: hipoglicemia",
+        "suggestion": "Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.",
+      "vitals_formatted": {
+        "SatO2": "94,9%",
+        "HGT": "69"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Diabético_92_180",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Diabético"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 92.0,
+        "temperature": null,
+        "glucose": 180
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 92%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.",
+      "vitals_formatted": {
+        "SatO2": "92%",
+        "HGT": "180"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Diabético_91.9_181",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Diabético"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 91.9,
+        "temperature": null,
+        "glucose": 181
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 91.9%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      },
+      {
+        "code": "glucose_high",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 181 mg/dL: hiperglicemia no acompanhamento de diabetes",
+        "suggestion": "Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia. HGT 181 mg/dL: hiperglicemia no acompanhamento de diabetes.",
+      "vitals_formatted": {
+        "SatO2": "91,9%",
+        "HGT": "181"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia. HGT 181 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Diabético_88_200",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Diabético"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 88.0,
+        "temperature": null,
+        "glucose": 200
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 88%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      },
+      {
+        "code": "glucose_high",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 200 mg/dL: hiperglicemia no acompanhamento de diabetes",
+        "suggestion": "Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia. HGT 200 mg/dL: hiperglicemia no acompanhamento de diabetes.",
+      "vitals_formatted": {
+        "SatO2": "88%",
+        "HGT": "200"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia. HGT 200 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "Diabético_97_201",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Diabético"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 97.0,
+        "temperature": null,
+        "glucose": 201
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "glucose_high",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 201 mg/dL: hiperglicemia no acompanhamento de diabetes",
+        "suggestion": "Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: hiperglicemia no acompanhamento de diabetes.",
+      "vitals_formatted": {
+        "SatO2": "97%",
+        "HGT": "201"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP: Conduta não registrada. Sugestões para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "DPOC/pneumopata_95_70",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "DPOC/pneumopata"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 95.0,
+        "temperature": null,
+        "glucose": 70
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "SatO2": "95%",
+        "HGT": "70"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "DPOC/pneumopata_94.9_69",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "DPOC/pneumopata"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 94.9,
+        "temperature": null,
+        "glucose": 69
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "glucose_low",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 69 mg/dL: hipoglicemia",
+        "suggestion": "Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 69 mg/dL: hipoglicemia.",
+      "vitals_formatted": {
+        "SatO2": "94,9%",
+        "HGT": "69"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 69 mg/dL: hipoglicemia.\nP: Conduta não registrada. Sugestões para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "DPOC/pneumopata_92_180",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "DPOC/pneumopata"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 92.0,
+        "temperature": null,
+        "glucose": 180
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "SatO2": "92%",
+        "HGT": "180"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "DPOC/pneumopata_91.9_181",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "DPOC/pneumopata"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 91.9,
+        "temperature": null,
+        "glucose": 181
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 91.9%: saturação reduzida, possível hipoxemia no contexto de pneumopatia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.",
+      "vitals_formatted": {
+        "SatO2": "91,9%",
+        "HGT": "181"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "DPOC/pneumopata_88_200",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "DPOC/pneumopata"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 88.0,
+        "temperature": null,
+        "glucose": 200
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 88%: saturação reduzida, possível hipoxemia no contexto de pneumopatia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.",
+      "vitals_formatted": {
+        "SatO2": "88%",
+        "HGT": "200"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.\nP: Conduta não registrada. Sugestões para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "DPOC/pneumopata_97_201",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "DPOC/pneumopata"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": 97.0,
+        "temperature": null,
+        "glucose": 201
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "glucose_high",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado",
+        "suggestion": "Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.",
+      "vitals_formatted": {
+        "SatO2": "97%",
+        "HGT": "201"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.\nP: Conduta não registrada. Sugestões para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_none_0",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 0,
+          "domains": null,
+          "education_level": "none",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 0/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_none_19",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 19,
+          "domains": null,
+          "education_level": "none",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 19/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 19/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 19/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_none_20",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 20,
+          "domains": null,
+          "education_level": "none",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 20/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 20/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_none_30",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 30,
+          "domains": null,
+          "education_level": "none",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_1_4_0",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 0,
+          "domains": null,
+          "education_level": "1_4",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 0/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_1_4_24",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 24,
+          "domains": null,
+          "education_level": "1_4",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 24/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_1_4_25",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 25,
+          "domains": null,
+          "education_level": "1_4",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_1_4_30",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 30,
+          "domains": null,
+          "education_level": "1_4",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_5_8_0",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 0,
+          "domains": null,
+          "education_level": "5_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 0/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_5_8_25",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 25,
+          "domains": null,
+          "education_level": "5_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 25/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_5_8_26",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 26,
+          "domains": null,
+          "education_level": "5_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 26/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 26/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_5_8_30",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 30,
+          "domains": null,
+          "education_level": "5_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_over_8_0",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 0,
+          "domains": null,
+          "education_level": "over_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 0/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_over_8_27",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 27,
+          "domains": null,
+          "education_level": "over_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 27/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 27/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 27/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_over_8_28",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 28,
+          "domains": null,
+          "education_level": "over_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 28/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 28/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "cognition_over_8_30",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 30,
+          "domains": null,
+          "education_level": "over_8",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "unknown_school",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 24,
+          "domains": null,
+          "education_level": null,
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 24/30; Escolaridade não informada; interpretação por corte não disponível.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30; Escolaridade não informada; interpretação por corte não disponível.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "all_vitals",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 150,
+        "diastolic": 90,
+        "heart_rate": 101,
+        "respiratory_rate": 21,
+        "oxygen_saturation": 94.0,
+        "temperature": 37.8,
+        "glucose": 69
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_uncontrolled",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 150/90 mmHg: elevação significativa no acompanhamento de HAS",
+        "suggestion": "Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica"
+      },
+      {
+        "code": "oxygen_low",
+        "fields": [
+          "oxygen_saturation"
+        ],
+        "observation": "SatO2 94%: saturação reduzida, possível hipoxemia",
+        "suggestion": "Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica"
+      },
+      {
+        "code": "glucose_low",
+        "fields": [
+          "glucose"
+        ],
+        "observation": "HGT 69 mg/dL: hipoglicemia",
+        "suggestion": "Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes"
+      },
+      {
+        "code": "taquicardia",
+        "fields": [
+          "heart_rate"
+        ],
+        "observation": "FC 101 bpm: taquicardia",
+        "suggestion": "Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica"
+      },
+      {
+        "code": "taquipneia",
+        "fields": [
+          "respiratory_rate"
+        ],
+        "observation": "FR 21 irpm: taquipneia",
+        "suggestion": "Reavaliar FR, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica"
+      },
+      {
+        "code": "fever",
+        "fields": [
+          "temperature"
+        ],
+        "observation": "Tax 37.8 °C: febre",
+        "suggestion": "Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS. SatO2 94%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia. FC 101 bpm: taquicardia. FR 21 irpm: taquipneia. Tax 37.8 °C: febre.",
+      "vitals_formatted": {
+        "PAS": "150",
+        "PAD": "90",
+        "SatO2": "94%",
+        "FC": "101",
+        "FR": "21",
+        "Tax": "37,8 °C",
+        "HGT": "69"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica. Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes. Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica. Reavaliar FR, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica. Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg, SatO2 94%, FC 101 bpm, FR 21 irpm, Tax 37,8 °C, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS. SatO2 94%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia. FC 101 bpm: taquicardia. FR 21 irpm: taquipneia. Tax 37.8 °C: febre.\nP: Conduta não registrada. Sugestões para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica. Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica. Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes. Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica. Reavaliar FR, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica. Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "bradycardia",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": 49,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bradicardia",
+        "fields": [
+          "heart_rate"
+        ],
+        "observation": "FC 49 bpm: bradicardia",
+        "suggestion": "Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: FC 49 bpm: bradicardia.",
+      "vitals_formatted": {
+        "FC": "49"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: FC 49 bpm. Exame físico não registrado. Parâmetros para revisão clínica: FC 49 bpm: bradicardia.\nP: Conduta não registrada. Sugestões para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "exact_vital_boundaries",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": 50,
+        "respiratory_rate": 20,
+        "oxygen_saturation": null,
+        "temperature": 37.7,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {
+        "FC": "50",
+        "FR": "20",
+        "Tax": "37,7 °C"
+      },
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: FC 50 bpm, FR 20 irpm, Tax 37,7 °C. Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "target",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 135,
+        "diastolic": 85,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": {
+        "systolic": 130,
+        "diastolic": 80
+      },
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "bp_target",
+        "fields": [
+          "systolic",
+          "diastolic"
+        ],
+        "observation": "PA 135/85 mmHg: atinge ou supera a meta individual registrada de <130/80 mmHg",
+        "suggestion": "Revisar a PA em relação à meta individual definida pelo médico, tolerabilidade e contexto clínico"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 135/85 mmHg: atinge ou supera a meta individual registrada de <130/80 mmHg.",
+      "vitals_formatted": {
+        "PAS": "135",
+        "PAD": "85"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Revisar a PA em relação à meta individual definida pelo médico, tolerabilidade e contexto clínico.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 135 mmHg, PAD 85 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 135/85 mmHg: atinge ou supera a meta individual registrada de <130/80 mmHg.\nP: Conduta não registrada. Sugestões para revisão médica: Revisar a PA em relação à meta individual definida pelo médico, tolerabilidade e contexto clínico.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "paediatric",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 10,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 150,
+        "diastolic": 90,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "specific_profile",
+        "fields": [
+          "systolic",
+          "diastolic",
+          "heart_rate",
+          "respiratory_rate",
+          "oxygen_saturation",
+          "temperature",
+          "glucose"
+        ],
+        "observation": "Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas",
+        "suggestion": "Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.",
+      "vitals_formatted": {
+        "PAS": "150",
+        "PAD": "90"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.\nP: Conduta não registrada. Sugestões para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "pregnancy",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Gestante"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": 150,
+        "diastolic": 90,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "specific_profile",
+        "fields": [
+          "systolic",
+          "diastolic",
+          "heart_rate",
+          "respiratory_rate",
+          "oxygen_saturation",
+          "temperature",
+          "glucose"
+        ],
+        "observation": "Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas",
+        "suggestion": "Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.",
+      "vitals_formatted": {
+        "PAS": "150",
+        "PAD": "90"
+      },
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.\nP: Conduta não registrada. Sugestões para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "complaints",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "conditions": [
+        "Hipertenso"
+      ],
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "is_solo": false
+      },
+      "complaints": [
+        "Dor",
+        "Tontura"
+      ],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {
+        "Dor": "Lombalgia há dois dias.",
+        "Tontura": "Ao levantar."
+      },
+      "medications_in_use": "Losartana",
+      "recent_medications": "Ceftriaxona durante internação",
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": {
+          "score": 24,
+          "domains": {
+            "temporal": 4,
+            "spatial": 5,
+            "registration": 3,
+            "attention": 3,
+            "recall": 2,
+            "language": 7
+          },
+          "education_level": "1_4",
+          "education_years": null,
+          "notes": ""
+        },
+        "glasgow": null,
+        "rankin": 4,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [
+      {
+        "code": "cognition",
+        "fields": [],
+        "observation": "MEEM 24/30: abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada)",
+        "suggestion": "Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Desde a última visita domiciliar, houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.",
+      "objective_text": "Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada), Rankin modificado 4.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Desde a última visita domiciliar, houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada), Rankin modificado 4.\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  }
+]
