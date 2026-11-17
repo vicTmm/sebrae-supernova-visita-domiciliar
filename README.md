@@ -1,4 +1,4 @@
-# Em Casa · Visita domiciliar ESF
+# Visitário · Visita domiciliar ESF
 
 MVP mobile-first para registrar uma visita domiciliar, revisar a evolução SOAP e copiar texto simples para o VitaCare. React/TypeScript/Tailwind, IndexedDB (Dexie), PWA com Workbox, FastAPI/Pydantic v2 e SQLite/SQLAlchemy assíncrono. Não há integração direta com o VitaCare.
 

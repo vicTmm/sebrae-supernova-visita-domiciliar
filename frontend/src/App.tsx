@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
-import { ArrowLeft, ArrowRight, Check, ClipboardList, HousePlus, Plus, RefreshCw, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ClipboardList, Plus, RefreshCw, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
 import VisitForm from './components/VisitForm'
 import SoapResultCard from './components/SoapResultCard'
 import { vitalFields } from './components/VitalSigns'
@@ -118,30 +118,52 @@ export default function App() {
     try { await db.visits.put(keepLocal ? { ...row, revision: row.conflict.revision, conflict: undefined, localVersion: row.localVersion + 1, pending: true } : { ...row.conflict, pending: false, localVersion: row.localVersion + 1 }); await refresh(); if (keepLocal) void sync() }
     catch { setNotice('Não foi possível resolver o conflito. Tente novamente.') }
   }
+  function openTab(next: 'visit' | 'history') {
+    setTab(next)
+    window.scrollTo({ top: 0 })
+  }
+
   const pending = rows.filter(r => r.pending).length
   const today = new Date().toLocaleDateString('pt-BR')
   const todayRows = rows.filter(r => new Date(r.visit.visited_at).toLocaleDateString('pt-BR') === today)
   return <div className="app-shell">
-    <header className="topbar"><a href="/" className="brand" onClick={e => { e.preventDefault(); setTab('visit') }}><span className="brand-icon"><HousePlus/></span><span>em casa<small>CUIDADO QUE CHEGA PERTO</small></span></a><span className={`connection ${online ? '' : 'offline'}`}>{online ? <Wifi size={15}/> : <WifiOff size={15}/>}<span>{online ? 'Com conexão' : 'Modo offline'}</span></span></header>
-    <div className="workspace"><aside className="sidebar"><div className="workspace-label">ESPAÇO DE TRABALHO</div><button className={tab === 'visit' ? 'nav-item active' : 'nav-item'} onClick={() => setTab('visit')}><Plus size={19}/>Visita domiciliar</button><button className={tab === 'history' ? 'nav-item active' : 'nav-item'} onClick={() => setTab('history')}><ClipboardList size={19}/>Histórico<span className="count">{todayRows.length}</span></button><div className="sidebar-tip"><ShieldCheck/><strong>O cuidado continua, mesmo offline.</strong><p>O rascunho fica neste dispositivo. Visitas salvas sincronizam quando a API estiver acessível.</p><small>{offlineReady ? 'Aplicativo disponível offline' : 'Abra uma vez com internet para preparar o uso offline'}</small></div><div className="sidebar-footer">ESF · VISITAS DOMICILIARES<span>MVP / versão 0.1</span></div></aside>
-    <main><div className="page-heading"><div><div className="eyebrow">ATENÇÃO PRIMÁRIA À SAÚDE</div><h1>{tab === 'history' ? 'Histórico de visitas' : review ? 'Um registro, pronto para revisar.' : 'Mais presença. Menos digitação.'}</h1><p>{tab === 'history' ? 'Seus registros neste dispositivo e as visitas de hoje no servidor.' : review ? 'A última palavra é sempre de quem cuida.' : 'Registre a visita no seu ritmo. O SOAP a gente organiza.'}</p></div><span className="date-label">{new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short' }).format(new Date())}</span></div>
+    <header className="topbar">
+      <a href="/" className="brand" onClick={e => { e.preventDefault(); openTab('visit') }}>
+        <img className="brand-icon" src="/icon.svg" alt="" width="44" height="44"/>
+        <span>Visitário<small>Registro de visitas domiciliares</small></span>
+      </a>
+      <span className={`connection ${online ? '' : 'offline'}`}>{online ? <Wifi size={16}/> : <WifiOff size={16}/>}<span>{online ? 'Com conexão' : 'Modo offline'}</span></span>
+    </header>
+    <div className="workspace"><aside className="sidebar"><div className="workspace-label">ESPAÇO DE TRABALHO</div><button className={tab === 'visit' ? 'nav-item active' : 'nav-item'} onClick={() => openTab('visit')}><Plus size={19}/>Visita domiciliar</button><button className={tab === 'history' ? 'nav-item active' : 'nav-item'} onClick={() => openTab('history')}><ClipboardList size={19}/>Histórico<span className="count">{todayRows.length}</span></button><div className="sidebar-tip"><ShieldCheck/><strong>O cuidado continua, mesmo offline.</strong><p>O rascunho fica neste dispositivo. Visitas salvas sincronizam quando a API estiver acessível.</p><small>{offlineReady ? 'Aplicativo disponível offline' : 'Abra uma vez com internet para preparar o uso offline'}</small></div><div className="sidebar-footer">ESF · VISITAS DOMICILIARES<span>MVP / versão 0.1</span></div></aside>
+    <main><div className="page-heading"><div><h1>{tab === 'history' ? 'Histórico de visitas' : review ? 'Revisão da evolução SOAP' : 'Registro da visita'}</h1><p>{tab === 'history' ? (syncConfigured ? 'Registros salvos neste dispositivo e visitas de hoje vindas do servidor.' : 'Registros salvos neste dispositivo.') : review ? 'Confira a evolução antes de salvar ou copiar para o prontuário.' : 'Preencha os dados da visita para gerar a evolução SOAP.'}</p></div><span className="date-label">{new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short' }).format(new Date())}</span></div>
       <div className="status-strip"><span><span className="status-dot"/>{!syncConfigured ? 'Modo local · registros neste dispositivo' : pending ? `${pending} visita(s) aguardando sincronização` : 'Registros locais em dia'}</span><button type="button" onClick={() => void sync(true)} disabled={syncing}><RefreshCw size={14} className={syncing ? 'spin' : ''}/>{syncing ? 'Sincronizando' : 'Sincronizar'}</button></div>
       {needRefresh && <div className="notice">Nova versão disponível. Salve a visita antes de atualizar. <button onClick={() => void updateServiceWorker(true)}>Atualizar aplicativo</button></div>}
       {storageError && <div role="alert" className="error notice">{storageError}</div>}
       {notice && <div role="status" className="notice">{notice}<button aria-label="Fechar aviso" onClick={() => setNotice('')}>×</button></div>}
       {!ready ? <div className="panel">Abrindo armazenamento local…</div> : tab === 'history' ? <>
         <div className="history-heading"><h2>Hoje <span className="muted">/ {todayRows.length} visitas</span></h2><button className="secondary" onClick={() => newVisit()}><Plus size={16}/>Nova visita</button></div>
-        {!rows.length && <div className="panel empty"><ClipboardList size={34}/><h2>Seu próximo cuidado começa aqui.</h2><p>As visitas salvas aparecerão neste histórico.</p><button className="primary" onClick={() => newVisit()}>Registrar primeira visita</button></div>}
+        {!rows.length && <div className="panel empty"><ClipboardList size={34}/><h2>Nenhuma visita salva</h2><p>As visitas salvas aparecerão neste histórico.</p><button className="primary" onClick={() => newVisit()}>Registrar primeira visita</button></div>}
         {rows.map(row => <article className="panel history-card" key={row.visit.id}><div className="history-meta"><span className="patient-avatar">{row.visit.patient_code.slice(0, 2)}</span><div><h2>{row.visit.patient_code} <span className="muted">· {row.visit.age} anos</span></h2><p>{new Date(row.visit.visited_at).toLocaleString('pt-BR')} · {row.visit.conditions.join(', ')}</p></div><span className={`save-state ${row.pending ? 'waiting' : ''}`}>{row.conflict ? 'Conflito' : row.pending ? 'No dispositivo' : 'Sincronizada'}</span></div><p className="history-preview">{row.soap_text.slice(0, 180)}…</p><button className="text-button" onClick={() => { if ((visit.patient_code || soap) && visit.id !== row.visit.id && !confirm('Abrir esta visita substituirá o rascunho atual. Continuar?')) return; replace(row.visit, row.soap_text, row.revision, row.soap_blocks) }}>Abrir evolução <ArrowRight size={16}/></button>{row.conflict && <div className="conflict"><strong>Existe outra edição no servidor.</strong><pre>{row.conflict.soap_text}</pre><p>Seu texto local foi preservado. Escolha qual versão manter.</p><button className="secondary" onClick={() => void resolve(row, false)}>Usar versão do servidor</button><button className="secondary" onClick={() => void resolve(row, true)}>Manter minha versão e reenviar</button></div>}</article>)}
       </> : <>
-        <div className="form-topline"><div className="breadcrumb"><span className={!review ? 'current' : ''}>01 Registro</span><ArrowRight size={14}/><span className={review ? 'current' : ''}>02 Revisão SOAP</span></div><span className="draft-state"><Check size={14}/>{draftSaved ? 'Rascunho salvo' : 'Salvando rascunho…'}</span></div>
+        <div className="form-topline"><div className="breadcrumb" aria-label="Etapas da visita"><span className={!review ? 'current' : ''} aria-current={!review ? 'step' : undefined}>Registro</span><ArrowRight size={14} aria-hidden="true"/><span className={review ? 'current' : ''} aria-current={review ? 'step' : undefined}>Revisão SOAP</span></div><span className="draft-state">{draftSaved && <Check size={14} aria-hidden="true"/>}{draftSaved ? 'Rascunho salvo' : 'Salvando rascunho…'}</span></div>
         <form ref={form} onSubmit={e => { e.preventDefault(); generate() }}>
-          <div hidden={review}><div className="example-banner"><div><span className="demo-label">EXPERIMENTE</span><p>Conheça o fluxo com um caso fictício.</p></div><button type="button" onClick={() => newVisit(true)}>Preencher Exemplo de Caso Clínico <ArrowRight size={16}/></button></div><VisitForm value={visit} onChange={change}/><div className="form-bottom"><span><ShieldCheck size={16}/>Seus dados ficam salvos neste dispositivo.</span><button type="submit" className="primary">Gerar evolução SOAP <ArrowRight size={19}/></button></div></div>
+          <div hidden={review}>
+            <section className="example-banner">
+              <img src="/brand/visitario/visita-app.webp" width="120" height="80" alt=""/>
+              <div><h2>Caso clínico fictício</h2><p>Experimente o fluxo com um formulário preenchido.</p></div>
+              <button type="button" className="secondary" onClick={() => newVisit(true)}>Preencher exemplo <ArrowRight size={16} aria-hidden="true"/></button>
+            </section>
+            <VisitForm value={visit} onChange={change}/>
+            <div className="form-bottom"><span><ShieldCheck size={16}/>Seus dados ficam salvos neste dispositivo.</span><button type="submit" className="primary">Gerar evolução SOAP <ArrowRight size={19}/></button></div>
+          </div>
           {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
         </form>
       </>}
       <footer className="main-footer">Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>Ambiente de validação · use casos fictícios ou anonimizados.<br/>Versão 0.1.2 · <button type="button" className="text-button" onClick={() => void checkAppUpdate()}>Verificar atualização</button></footer>
     </main></div>
-    <nav className="mobile-nav" aria-label="Navegação principal"><button className={tab === 'visit' ? 'active' : ''} onClick={() => setTab('visit')}><HousePlus size={21}/>Visita</button><button className={tab === 'history' ? 'active' : ''} onClick={() => setTab('history')}><ClipboardList size={21}/>Histórico {pending > 0 && `(${pending})`}</button></nav>
+    <nav className="mobile-nav" aria-label="Navegação principal">
+      <button className={tab === 'visit' ? 'active' : ''} aria-current={tab === 'visit' ? 'page' : undefined} onClick={() => openTab('visit')}><Plus size={21}/>Visita</button>
+      <button className={tab === 'history' ? 'active' : ''} aria-current={tab === 'history' ? 'page' : undefined} onClick={() => openTab('history')}><ClipboardList size={21}/>Histórico {pending > 0 && `(${pending})`}</button>
+    </nav>
   </div>
 }

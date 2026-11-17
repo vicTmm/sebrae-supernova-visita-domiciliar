@@ -1,6 +1,6 @@
-# Direção de marca e design system — proposta 0.1
+# Visitário — design system 0.1
 
-Status: proposta para avaliação. Não representa nome ou identidade aprovados. A interface atual permanece intacta.
+O [manual do Visitário](VISITARIO.md) registra a identidade aplicada às telas de registro, revisão SOAP e histórico. Este documento preserva a proposta de posicionamento e os critérios de evolução do design system.
 
 ## Produto e posicionamento
 
@@ -12,7 +12,7 @@ O profissional precisa registrar sem perder informações e compreender o que es
 
 Na apresentação ao Supernova, mostrar problema, fluxo e evidências do piloto. Na apresentação B2G, acrescentar condições de implantação e operação, responsabilidades e custos. Não apresentar funcionalidades planejadas como entregues nem estimativas como resultados medidos.
 
-## Nome: decisão separada da interface
+## Exploração de nomes anterior à escolha de Visitário
 
 “Em Casa” é o nome provisório encontrado no projeto. É acolhedor e compreensível, mas sua diferenciação precisa ser investigada. Três territórios para exploração:
 
@@ -107,4 +107,4 @@ Fotos e exemplos devem mostrar o contexto de trabalho sem expor pacientes. Demon
 6. Auditar contraste, teclado, leitores de tela, telas pequenas e estados de sincronização; verificar que dados e fluxos existentes continuam preservados.
 7. Consolidar manual visual e materiais comerciais com os resultados do piloto.
 
-Concluído neste documento: proposta de posicionamento, territórios de nome, fundamentos visuais e contratos de componentes. Ainda pendentes: decisão de marca, pesquisa de disponibilidade, identidade gráfica final, protótipos, biblioteca implementada e validação com usuários.
+A disponibilidade da marca, o símbolo exclusivo e a validação com usuários seguem pendentes.
