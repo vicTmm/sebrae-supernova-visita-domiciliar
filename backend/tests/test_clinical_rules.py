@@ -78,7 +78,7 @@ def test_individual_target_and_suggestions_distinct_from_actions():
     v = visit(vitals={'systolic': 135, 'diastolic': 85}, bp_target={'systolic': 130, 'diastolic': 80})
     result = deterministic_soap(v)
     assert 'meta individual' in result.objective_text
-    assert result.plan_text.startswith('Conduta não registrada. Sugestões para revisão médica:')
+    assert result.plan_text.startswith('- Conduta não registrada.\n- Sugestão para revisão médica:')
     assert 'ajustado' not in result.plan_text
     assert v.actions == []
 

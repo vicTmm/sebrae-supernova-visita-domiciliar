@@ -1,3 +1,5 @@
+import type { Ivcf20 } from './ivcf20'
+
 export const conditions = ['Acamado', 'Hipertenso', 'Diabético', 'DPOC/pneumopata', 'Gestante', 'Puérpera', 'Saúde Mental', 'Outra'] as const
 export const complaints = ['Sem intercorrências', 'Dor', 'Dispneia', 'Febre', 'Tontura', 'Queda', 'Ida à UPA/Emergência', 'Internação hospitalar'] as const
 export const actions = ['Manutenção de receita', 'Ajuste medicamentoso', 'Solicitação de exames', 'Encaminhamento especialista', 'Agendamento de retorno VD', 'Orientações gerais'] as const
@@ -22,11 +24,19 @@ export const cognitiveDomains = [
   { key: 'language', label: 'Linguagem e praxia construtiva', max: 9 },
 ] as const
 export type CognitiveDomains = Record<(typeof cognitiveDomains)[number]['key'], number | null>
-export const emptyDomains = (): CognitiveDomains => ({ temporal: null, spatial: null, registration: null, attention: null, recall: null, language: null })
 export function miniMentalTotal(d: CognitiveDomains): number | null {
   return cognitiveDomains.every(f => d[f.key] !== null && Number.isInteger(d[f.key]) && d[f.key]! >= 0 && d[f.key]! <= f.max) ? Object.values(d).reduce<number>((sum, v) => sum + v!, 0) : null
 }
-export interface MiniMental { education_level?: 'none' | '1_4' | '5_8' | 'over_8' | null; domains?: CognitiveDomains | null; score: number | null; education_years: number | null; notes: string }
+export type MiniMentalItems = Record<keyof CognitiveDomains, boolean[]>
+export type AttentionMethod = 'serial_sevens' | 'mundo_reverse'
+export interface MiniMental { education_level?: 'none' | '1_4' | '5_8' | 'over_8' | null; domains?: CognitiveDomains | null; items?: MiniMentalItems | null; attention_method?: AttentionMethod | null; score: number | null; education_years: number | null; notes: string }
+export function miniMentalDomains(items: MiniMentalItems): CognitiveDomains {
+  return {
+    temporal: items.temporal.filter(Boolean).length, spatial: items.spatial.filter(Boolean).length,
+    registration: items.registration.filter(Boolean).length, attention: items.attention.filter(Boolean).length,
+    recall: items.recall.filter(Boolean).length, language: items.language.filter(Boolean).length,
+  }
+}
 export const geriatricFlags = ['Humor deprimido / desânimo frequente', 'Perda de interesse nas atividades', 'Queixa de esquecimento progressivo', 'Dependência para atividades básicas (AVDs)', 'Risco de queda / mobilidade reduzida'] as const
 export type GeriatricFlag = (typeof geriatricFlags)[number]
 export interface GeriatricScreening { flags: GeriatricFlag[]; notes: string }
@@ -34,7 +44,7 @@ export type ScreeningStatus = 'Em dia' | 'Atrasado / Solicitar' | 'Nunca realizo
 export interface PreventiveScreening { status: ScreeningStatus | null; year: number | null; notes: string }
 export interface WomensHealth { cervical: PreventiveScreening; mammography: PreventiveScreening }
 export const emptyWomensHealth = (): WomensHealth => ({ cervical: { status: null, year: null, notes: '' }, mammography: { status: null, year: null, notes: '' } })
-export interface NeuroExam { mini_mental?: MiniMental | null; geriatric_screening?: GeriatricScreening | null; rankin: number | null; directed_flags: NeuroFlag[]; neuro_notes: string | null }
+export interface NeuroExam { mini_mental?: MiniMental | null; ivcf20?: Ivcf20 | null; geriatric_screening?: GeriatricScreening | null; rankin: number | null; directed_flags: NeuroFlag[]; neuro_notes: string | null }
 export const emptyCompanions = (): Companions => ({ has_acs: false, acs_name: null, has_student: false, student_name: null, has_nurse: false, nurse_name: null, is_solo: false })
 export const emptyNeuro = (): NeuroExam => ({ mini_mental: null, geriatric_screening: null, rankin: null, directed_flags: [], neuro_notes: null })
 export interface Visit {
@@ -59,7 +69,7 @@ export function upgradeVisit(v: Visit & { medications?: string }): Visit {
   const selected = v.complaints.filter(c => c !== 'Sem intercorrências')
   const legacyDetails = raw === undefined && selected.length ? v.subjective_notes : typeof raw === 'string' ? raw : ''
   const details = typeof raw === 'object' && raw !== null ? raw as Visit['intercurrence_details'] : selected.length && legacyDetails ? { [selected[0]]: legacyDetails } : {}
-  return { ...rest, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null }
+  return { ...rest, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, ivcf20: v.neuro_exam.ivcf20 ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null }
 }
 export function emptyVisit(): Visit {
   return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: null, womens_health: null, conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }

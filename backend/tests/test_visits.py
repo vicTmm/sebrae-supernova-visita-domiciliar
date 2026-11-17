@@ -40,7 +40,9 @@ def client(tmp_path):
 
 def test_deterministic_soap(payload):
     text = deterministic_soap(VDInput(**payload)).full_text_fallback
-    assert [line[:2] for line in text.splitlines()] == ["S:", "O:", "P:"]
+    subjective, objective, plan_header, *topics = text.splitlines()
+    assert subjective.startswith("S:") and objective.startswith("O:") and plan_header == "P:"
+    assert topics and all(topic.startswith("- ") for topic in topics)
     assert "PAS 130 mmHg" in text and "HGT 145 mg/dL" in text
     assert "Exame físico não registrado." in text
     assert "A:" not in text
@@ -126,11 +128,12 @@ def test_vitacare_team_timeline_medications_and_neuro(clinical_payload, client, 
     assert result.status_code == 200
     text = result.json()["full_text_fallback"]
     assert text.startswith("S: Realizada visita domiciliar acompanhado(a) da ACS Maria e do estudante João.")
-    s, o, a, p = text.splitlines()
+    s, o, a, plan_header, *topics = text.splitlines()
+    assert plan_header == "P:" and all(topic.startswith("- ") for topic in topics)
     assert "houve relato de internação hospitalar" in s
     assert "está em uso contínuo de Losartana 50 mg e metformina" in s
     assert "utilizou Ceftriaxona durante internação por pneumonia" in s
-    assert "Ceftriaxona" not in a + p
+    assert "Ceftriaxona" not in a + " ".join(topics)
     assert "Rankin modificado 4, LOTE, PIFR" in o
     assert o.index("Ausculta pulmonar") < o.index("Exame neurológico:") < o.index("Exame abdominal")
     assert "Sem outros achados ao exame dirigido." in o
@@ -179,7 +182,8 @@ def test_plain_text_and_unknown_timeline(payload):
     text = deterministic_soap(VDInput(**(payload | {"complaints": [], "subjective_notes": "**Relato**\n# sem formatação"}))).full_text_fallback
     assert "Não foi informado como transcorreu o período" in text
     assert "Sem intercorrências" not in text
-    assert "**" not in text and "#" not in text and len(text.splitlines()) == 3
+    assert "**" not in text and "#" not in text
+    assert all(line.startswith("- ") for line in text.split("\nP:\n")[1].splitlines())
 
 
 def test_legacy_medications(payload, client, tmp_path):
@@ -200,7 +204,7 @@ def test_legacy_medications(payload, client, tmp_path):
     assert not result["conflicts"] and result["saved"][0]["revision"] == 1
 
 
-@pytest.mark.parametrize("defect", [None, "opening", "medications", "neuro", "order"])
+@pytest.mark.parametrize("defect", [None, "opening", "medications", "neuro", "order", "non_list_plan"])
 async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, defect):
     from types import SimpleNamespace
     import json
@@ -215,6 +219,8 @@ async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, de
         lines[0] = lines[0].replace("utilizou", "mantém uso contínuo de")
     if defect == "neuro":
         lines[1] = lines[1].replace("Rankin modificado 4", "Rankin modificado 3")
+    if defect == "non_list_plan":
+        lines[3] = lines[3].replace("- ", "", 1)
     if defect == "order":
         parts = lines[1].split(". ")
         neuro_index = next(i for i, p in enumerate(parts) if p.startswith("Exame neurológico:"))
@@ -250,27 +256,46 @@ async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, de
 
 
 def test_advanced_clinical_input_roundtrip(client, payload, monkeypatch):
+    from app.schemas import IvcfAnswers
+
     monkeypatch.setattr(get_settings(), "ai_enabled", False)
+    domains = {"temporal": 4, "spatial": 5, "registration": 3, "attention": 3, "recall": 2, "language": 7}
+    items = {key: [i < domains[key] for i in range(length)]
+             for key, length in zip(domains, (5, 5, 3, 5, 3, 9))}
+    positive = {"shopping", "finances", "housework", "bathing"}
+    answers = {key: key in positive for key in IvcfAnswers.model_fields}
     updated = payload | {
         "complaints": ["Dor", "Tontura"],
         "intercurrence_details": {"Dor": "Lombalgia há dois dias.", "Tontura": "Ao levantar."},
         "vitals": {"systolic": 150, "diastolic": 90},
         "neuro_exam": {"mini_mental": {"score": 24, "education_level": "1_4",
-            "domains": {"temporal": 4, "spatial": 5, "registration": 3, "attention": 3, "recall": 2, "language": 7}}, "rankin": 4}}
+            "domains": domains, "items": items, "attention_method": "serial_sevens"},
+            "ivcf20": {"age_band": "75_84", "answers": answers, "comorbidities": ["polypharmacy"], "score": 15},
+            "rankin": 4}}
     generated = client.post('/visits/generate-soap', json=updated)
     assert generated.status_code == 200
     blocks = generated.json()
     assert 'elevação significativa' in blocks['objective_text']
     assert 'MEEM) 24/30' in blocks['objective_text']
-    assert 'Sugestões para revisão médica' in blocks['plan_text']
+    assert 'IVCF-20: 15/40 — Idoso Frágil' in blocks['objective_text']
+    assert 'Sugestão para revisão médica' in blocks['plan_text']
     assert 'avaliação cognitiva ampliada' in blocks['plan_text']
+    assert blocks['plan_text'].count('revisão medicamentosa e acompanhamento multiprofissional') == 1
+    assert all(line.startswith('- ') for line in blocks['plan_text'].splitlines())
     write = dict(visit=updated, soap_text=blocks['full_text_fallback'], soap_blocks=blocks)
     synced = client.post('/visits/sync', json={'visits': [write]})
     assert synced.status_code == 200
     saved = synced.json()['saved'][0]
     assert saved['visit']['intercurrence_details'] == updated['intercurrence_details']
     assert saved['visit']['neuro_exam']['mini_mental']['domains']['language'] == 7
+    assert saved['visit']['neuro_exam']['mini_mental']['items'] == items
+    assert saved['visit']['neuro_exam']['ivcf20'] == updated['neuro_exam']['ivcf20']
     assert saved['soap_blocks'] == blocks
+
+    invalid = updated['neuro_exam'] | {'ivcf20': updated['neuro_exam']['ivcf20'] | {'score': 16}}
+    assert client.post('/visits/generate-soap', json=updated | {'neuro_exam': invalid}).status_code == 422
+    invalid = updated['neuro_exam'] | {'mini_mental': updated['neuro_exam']['mini_mental'] | {'items': items | {'recall': [True, True, True]}}}
+    assert client.post('/visits/generate-soap', json=updated | {'neuro_exam': invalid}).status_code == 422
 
 
 def test_nurse_name_other_condition_and_sex_roundtrip(client, payload, monkeypatch):

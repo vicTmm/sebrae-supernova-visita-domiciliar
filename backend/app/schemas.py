@@ -114,9 +114,20 @@ class CognitiveDomains(StrictModel):
     language: int = Field(ge=0, le=9, strict=True)
 
 
+class MiniMentalItems(StrictModel):
+    temporal: list[Annotated[bool, Field(strict=True)]] = Field(min_length=5, max_length=5)
+    spatial: list[Annotated[bool, Field(strict=True)]] = Field(min_length=5, max_length=5)
+    registration: list[Annotated[bool, Field(strict=True)]] = Field(min_length=3, max_length=3)
+    attention: list[Annotated[bool, Field(strict=True)]] = Field(min_length=5, max_length=5)
+    recall: list[Annotated[bool, Field(strict=True)]] = Field(min_length=3, max_length=3)
+    language: list[Annotated[bool, Field(strict=True)]] = Field(min_length=9, max_length=9)
+
+
 class MiniMental(StrictModel):
     score: int = Field(ge=0, le=30, strict=True)
     domains: CognitiveDomains | None = None
+    items: MiniMentalItems | None = None
+    attention_method: Literal["serial_sevens", "mundo_reverse"] | None = None
     education_level: Literal["none", "1_4", "5_8", "over_8"] | None = None
     education_years: int | None = Field(default=None, ge=0, le=40, strict=True)
     notes: str = Field(default="", max_length=1000)
@@ -125,6 +136,12 @@ class MiniMental(StrictModel):
     def correct_total(self):
         if self.domains and self.score != sum(self.domains.model_dump().values()):
             raise ValueError("Total do MEEM deve corresponder aos seis domínios.")
+        if self.items:
+            counted = {key: sum(marked) for key, marked in self.items.model_dump().items()}
+            if not self.attention_method or not self.domains or self.domains.model_dump() != counted:
+                raise ValueError("Os acertos e o método de atenção do MEEM devem corresponder aos domínios.")
+        elif self.attention_method:
+            raise ValueError("O método de atenção exige o MEEM preenchido item a item.")
         if self.education_level and self.education_years is not None:
             years = self.education_years
             expected = 'none' if years == 0 else '1_4' if years <= 4 else '5_8' if years <= 8 else 'over_8'
@@ -187,8 +204,72 @@ class GeriatricScreening(StrictModel):
         return self
 
 
+IvcfAgeBand = Literal["60_74", "75_84", "85_plus"]
+IvcfComorbidity = Literal["chronic_diseases", "polypharmacy", "hospitalization"]
+IvcfAnswer = Annotated[bool, Field(strict=True)]
+
+
+def ivcf_age_band(age: int) -> IvcfAgeBand | None:
+    if age < 60:
+        return None
+    return "60_74" if age < 75 else "75_84" if age < 85 else "85_plus"
+
+
+class IvcfAnswers(StrictModel):
+    poor_health: IvcfAnswer
+    shopping: IvcfAnswer
+    finances: IvcfAnswer
+    housework: IvcfAnswer
+    bathing: IvcfAnswer
+    memory_report: IvcfAnswer
+    memory_worse: IvcfAnswer
+    memory_limits: IvcfAnswer
+    low_mood: IvcfAnswer
+    loss_interest: IvcfAnswer
+    arm_reach: IvcfAnswer
+    small_objects: IvcfAnswer
+    physical_capacity: IvcfAnswer
+    walking: IvcfAnswer
+    falls: IvcfAnswer
+    incontinence: IvcfAnswer
+    vision: IvcfAnswer
+    hearing: IvcfAnswer
+
+    def points(self) -> int:
+        return (
+            int(self.poor_health) + (4 if self.shopping or self.finances or self.housework else 0)
+            + 6 * self.bathing + self.memory_report + self.memory_worse + 2 * self.memory_limits
+            + 2 * (self.low_mood + self.loss_interest) + self.arm_reach + self.small_objects
+            + 2 * (self.physical_capacity + self.walking + self.falls + self.incontinence + self.vision + self.hearing)
+        )
+
+
+class Ivcf20(StrictModel):
+    age_band: IvcfAgeBand
+    answers: IvcfAnswers
+    comorbidities: list[IvcfComorbidity] = Field(max_length=3)
+    score: int = Field(ge=0, le=40, strict=True)
+
+    @model_validator(mode="after")
+    def correct_total(self):
+        if len(self.comorbidities) != len(set(self.comorbidities)):
+            raise ValueError("Critérios de comorbidade do IVCF-20 duplicados.")
+        age_points = {"60_74": 0, "75_84": 1, "85_plus": 3}[self.age_band]
+        if self.score != age_points + self.answers.points() + (4 if self.comorbidities else 0):
+            raise ValueError("Total do IVCF-20 deve corresponder às respostas do questionário.")
+        return self
+
+    def stratum(self) -> str:
+        if self.score <= 6:
+            return "Idoso Robusto (baixo risco)"
+        if self.score <= 14:
+            return "Idoso em Risco de Fragilização (risco moderado)"
+        return "Idoso Frágil (alto risco)"
+
+
 class NeuroExam(StrictModel):
     mini_mental: MiniMental | None = None
+    ivcf20: Ivcf20 | None = None
     geriatric_screening: GeriatricScreening | None = None
     rankin: int | None = Field(default=None, ge=0, le=5, strict=True)
     directed_flags: list[NeuroFlag] = Field(default_factory=list, max_length=5)
@@ -259,6 +340,8 @@ class VDInput(StrictModel):
 
     @model_validator(mode="after")
     def consistency(self):
+        if self.neuro_exam and self.neuro_exam.ivcf20 and self.neuro_exam.ivcf20.age_band != ivcf_age_band(self.age):
+            raise ValueError("Confira se a faixa etária do IVCF-20 corresponde à idade da visita.")
         if self.womens_health is not None and self.sex != "Feminino":
             raise ValueError("Saúde da Mulher exige sexo Feminino selecionado.")
         if self.other_condition and Condition.OTHER not in self.conditions:

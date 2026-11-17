@@ -23,7 +23,7 @@ def test_screening_status_is_documented_without_invented_orders(key, label, stat
     assert ('Solicitar' in output.plan_text) == (status == 'Atrasado / Solicitar')
     assert 'resultado normal' not in output.full_text_fallback
     if status == 'Atrasado / Solicitar':
-        assert not output.plan_text.startswith('Conduta não registrada')
+        assert 'Conduta não registrada' not in output.plan_text
     for block in [output.subjective_text, output.objective_text, output.plan_text]:
         assert not re.match(r'^[SOAP]\s*:', block)
 
@@ -75,12 +75,12 @@ def test_geriatric_module_is_independent_of_cognitive_and_functional_tests():
 
 
 def test_output_strips_repeated_prefixes_and_retains_full_copy_headers():
-    output = make_output(visit(assessment='A: Observação escrita.'), '**S:** S: História.', 'O: Exame.', 'P: Plano.', 'ai')
+    output = make_output(visit(assessment='A: Observação escrita.'), '**S:** S: História.', 'O: Exame.', 'P: Plano: Reavaliar.', 'ai')
     assert output.subjective_text == 'História.'
     assert output.objective_text == 'Exame.'
-    assert output.plan_text == 'Plano.'
+    assert output.plan_text == '- Reavaliar.'
     assert output.assessment_text == 'Observação escrita.'
-    assert output.full_text_fallback.splitlines() == ['S: História.', 'O: Exame.', 'A: Observação escrita.', 'P: Plano.']
+    assert output.full_text_fallback.splitlines() == ['S: História.', 'O: Exame.', 'A: Observação escrita.', 'P:', '- Reavaliar.']
 
 
 @pytest.mark.parametrize('omit', [False, True])
@@ -98,7 +98,7 @@ async def test_ai_receives_screening_context_and_cannot_omit_history(monkeypatch
         async def parse(self, **kwargs):
             captured.update(json.loads(kwargs['input']))
             return SimpleNamespace(output_parsed=SOAPNarrative(subjective_text='S: ' + (fallback.subjective_text.replace('Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita.', '') if omit else fallback.subjective_text),
-                objective_text='O: ' + fallback.objective_text, plan_text='P: Plano revisado.', assessment_text=None))
+                objective_text='O: ' + fallback.objective_text, plan_text='- Conduta não registrada.', assessment_text=None))
     monkeypatch.setattr('app.services.soap_generator.AsyncOpenAI', Client)
     output = await generate_soap(v)
     assert output.source == ('deterministic' if omit else 'ai')

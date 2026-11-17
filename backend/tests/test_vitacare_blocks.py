@@ -39,7 +39,9 @@ def test_narrative_and_separate_vitals(visit_data):
     assert "95%" not in result.objective_text
     assert "Estertores em base direita" in result.objective_text
     assert "Mini-Mental (MEEM) 27/30 (escolaridade: 4 anos completos)" in result.objective_text
-    assert "Mantida a receita em uso" in result.plan_text and "Retorno VD em 30 dias" in result.plan_text
+    assert result.plan_text.splitlines()[:3] == [
+        "- Mantenho a receita em uso.", "- Programo retorno em visita domiciliar.", "- Retorno VD em 30 dias."
+    ]
     assert "Antibiótico" not in result.plan_text
     assert "normal" not in result.full_text_fallback.lower()
     assert "Sinais vitais: PAS 150 mmHg, PAD 90 mmHg" in result.full_text_fallback
@@ -60,7 +62,7 @@ def test_mini_mental_records_without_inferred_diagnosis(visit_data, score, years
     assert result.assessment_text is None
     assert "diagnóstico de demência" not in result.full_text_fallback.lower()
     if years is not None and score == 0:
-        assert "Sugestões para revisão médica" in result.plan_text
+        assert "Sugestão para revisão médica" in result.plan_text
 
 
 @pytest.mark.parametrize("mini", [{"score": -1}, {"score": 31}, {"score": 2.5}, {"score": True}, {"education_years": 4}, {"score": 27, "education_years": -1}])

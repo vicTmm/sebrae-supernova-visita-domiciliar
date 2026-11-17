@@ -3,8 +3,8 @@ import Dexie from 'dexie'
 import { expect, it } from 'vitest'
 import cases from '../../../backend/tests/fixtures/clinical_cases.json'
 import { evaluateClinical } from './clinicalRules'
-import { clinicalRuleError, localSoapOutput } from './soap'
-import { emptyDomains, exampleVisit, miniMentalTotal, upgradeVisit, type Visit } from '../types/visit'
+import { clinicalRuleError, localSoapOutput, restoreSoap } from './soap'
+import { exampleVisit, miniMentalTotal, upgradeVisit, type Visit } from '../types/visit'
 import { db } from './offlineDb'
 
 it('produz os mesmos alertas e SOAP offline que o backend para todos os casos de referência', () => {
@@ -16,8 +16,8 @@ it('produz os mesmos alertas e SOAP offline que o backend para todos os casos de
 })
 
 it('não confunde domínio cognitivo não avaliado com zero e valida o total', () => {
-  expect(miniMentalTotal(emptyDomains())).toBeNull()
   const domains = { temporal: 4, spatial: 5, registration: 3, attention: 3, recall: 2, language: 7 }
+  expect(miniMentalTotal({ ...domains, recall: null })).toBeNull()
   expect(miniMentalTotal(domains)).toBe(24)
   expect(miniMentalTotal({ ...domains, language: 10 })).toBeNull()
   const v = exampleVisit()
@@ -25,6 +25,18 @@ it('não confunde domínio cognitivo não avaliado com zero e valida o total', (
   expect(clinicalRuleError(v)).toContain('seis domínios')
   v.neuro_exam!.mini_mental = null
   expect(clinicalRuleError(v)).toBeNull()
+})
+
+it('preserva avaliações estruturadas e os tópicos ao reabrir o SOAP', () => {
+  const visit = upgradeVisit(cases.find(testCase => testCase.name === 'ivcf_maximum_and_meem')!.visit as Visit)
+  const result = localSoapOutput(visit)
+  expect(visit.neuro_exam!.ivcf20!.score).toBe(40)
+  expect(visit.neuro_exam!.mini_mental!.attention_method).toBe('mundo_reverse')
+  expect(result.objective_text).toContain('Idoso Frágil')
+  expect(result.plan_text.match(/acompanhamento multiprofissional/g)).toHaveLength(1)
+  expect(restoreSoap(visit, result.full_text_fallback).plan_text).toBe(result.plan_text)
+  visit.age = 84
+  expect(clinicalRuleError(visit)).toContain('faixa etária do IVCF-20')
 })
 
 it('recusa detalhes de queixas não selecionadas e meta de PA incompleta', () => {

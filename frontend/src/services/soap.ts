@@ -1,8 +1,12 @@
 import { preventiveHistory, preventivePlan } from './screenings'
 import { evaluateClinical, cognitiveInterpretation } from './clinicalRules'
-import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalTotal, type Visit, type SOAPOutput } from '../types/visit'
+import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalDomains, miniMentalTotal, type Visit, type SOAPOutput } from '../types/visit'
+import { completeIvcfAnswers, ivcfAgeBand, ivcfComorbidities, ivcfFollowUp, ivcfScore, ivcfStratum } from '../types/ivcf20'
 export const stripSoapPrefix = (s: string) => s.replace(/^\s*(?:[SOAP]\s*:\s*)+/i, '')
 const clean = (s: string) => s.replace(/[*_`#~]/g, '').replace(/\s+/g, ' ').trim()
+const planTopics = (s: string) => s.split(/\r?\n/).map(line => clean(line.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'))
+  .replace(/^(?:(?:P|Plano)\s*:\s*|[-–—•]+\s+|\d+[.)]\s+)+/i, ''))
+  .filter(Boolean).map(topic => /[.!?]$/.test(topic) ? topic : topic + '.')
 export function clinicalRuleError(v: Visit): string | null {
   const c = v.companions
   if (c.is_solo && (c.has_acs || c.has_student || c.has_nurse)) return 'Apenas Médico não pode ser combinado com acompanhantes.'
@@ -15,6 +19,13 @@ export function clinicalRuleError(v: Visit): string | null {
   const screening = v.neuro_exam?.geriatric_screening
   if (screening && (new Set(screening.flags).size !== screening.flags.length || screening.flags.some(f => !geriatricFlags.includes(f)))) return 'Confira os marcadores geriátricos selecionados.'
   const n = v.neuro_exam
+  const ivcf = n?.ivcf20
+  if (ivcf) {
+    if (ivcf.age_band !== ivcfAgeBand(v.age)) return 'Confira a faixa etária do IVCF-20. Corrija a idade ou revise a avaliação.'
+    if (!completeIvcfAnswers(ivcf.answers) || ivcf.comorbidities.some(reason => !ivcfComorbidities.some(item => item.key === reason))
+      || new Set(ivcf.comorbidities).size !== ivcf.comorbidities.length || ivcfScore(ivcf.age_band, ivcf.answers, ivcf.comorbidities) !== ivcf.score)
+      return 'Confira as respostas e a pontuação do IVCF-20.'
+  }
   if (Object.keys(v.intercurrence_details).some(key => key === 'Sem intercorrências' || !v.complaints.includes(key as Visit['complaints'][number]))) return 'Cada detalhe exige a queixa correspondente selecionada.'
   const target = v.bp_target
   if (target && (target.systolic === null || target.diastolic === null || !Number.isInteger(target.systolic) || !Number.isInteger(target.diastolic) || target.systolic < 80 || target.systolic > 180 || target.diastolic < 40 || target.diastolic > 110 || target.systolic <= target.diastolic)) return 'Preencha as duas metas de PA ou deixe ambas vazias.'
@@ -23,6 +34,14 @@ export function clinicalRuleError(v: Visit): string | null {
     if (m.score === null || !Number.isInteger(m.score) || m.score < 0 || m.score > 30) return 'Mini-Mental: informe a pontuação de 0 a 30 ou limpe o registro.'
     if (m.education_level && m.education_years !== null && m.education_level !== (m.education_years === 0 ? 'none' : m.education_years <= 4 ? '1_4' : m.education_years <= 8 ? '5_8' : 'over_8')) return 'Faixa de escolaridade diverge dos anos completos informados.'
     if (m.domains && (miniMentalTotal(m.domains) === null || miniMentalTotal(m.domains) !== m.score || cognitiveDomains.some(f => m.domains![f.key] === null))) return 'MEEM: preencha os seis domínios para calcular o total, ou marque Não avaliado.'
+    const items = m.items
+    if (items) {
+      const validMethod = m.attention_method === 'serial_sevens' || m.attention_method === 'mundo_reverse'
+      const validItems = cognitiveDomains.every(({ key, max }) => Array.isArray(items[key]) && items[key].length === max && items[key].every(marked => typeof marked === 'boolean'))
+      if (!validMethod || !validItems) return 'Confira os acertos e o método de atenção do MEEM.'
+      const counted = miniMentalDomains(items)
+      if (cognitiveDomains.some(({ key }) => m.domains?.[key] !== counted[key])) return 'Confira se os acertos correspondem à pontuação do MEEM.'
+    } else if (m.attention_method) return 'O método de atenção exige o MEEM preenchido item a item.'
     if (m.education_years !== null && (!Number.isInteger(m.education_years) || m.education_years < 0 || m.education_years > 40)) return 'Confira os anos completos de escolaridade.'
   }
   if (n?.rankin != null && (!Number.isInteger(n.rankin) || n.rankin < 0 || n.rankin > 5)) return 'Rankin deve ser um número inteiro de 0 a 5.'
@@ -59,7 +78,8 @@ export function formattedVitals(v: Visit): Record<string, string> {
 export function assembleFullText(result: Omit<SOAPOutput, 'full_text_fallback'>): string {
   const values = Object.entries(result.vitals_formatted).map(([key, val]) => `${key} ${val}${vitalUnits[key] ? ` ${vitalUnits[key]}` : ''}`).join(', ')
   const objective = [values ? `Sinais vitais: ${values}.` : '', result.vitals_context, result.objective_text].filter(Boolean).join(' ')
-  return [`S: ${result.subjective_text}`, `O: ${objective}`, ...(result.assessment_text?.trim() ? [`A: ${result.assessment_text}`] : []), `P: ${result.plan_text}`].join('\n')
+  const plan = result.plan_text.startsWith('- ') ? `P:\n${result.plan_text}` : `P: ${result.plan_text}`
+  return [`S: ${result.subjective_text}`, `O: ${objective}`, ...(result.assessment_text?.trim() ? [`A: ${result.assessment_text}`] : []), plan].join('\n')
 }
 export function withSoapEdits(result: SOAPOutput, edits: Partial<SOAPOutput>): SOAPOutput {
   const next = { ...result, ...edits }
@@ -89,20 +109,27 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   }
   const neuro = neurologicalText(v)
   if (neuro) physical.push(neuro)
+  const ivcf = v.neuro_exam?.ivcf20
+  if (ivcf) physical.push(`IVCF-20: ${ivcf.score}/40 — ${ivcfStratum(ivcf.score)}${ivcf.comorbidities.includes('polypharmacy') ? '; critério de polifarmácia assinalado' : ''}`)
   if (v.exam.abdomen.status === 'Alterado') physical.push(`Exame abdominal: ${v.exam.abdomen.notes}`)
   else if (v.exam.abdomen.status === 'Sem alterações') physical.push('Exame abdominal sem alterações ao exame')
-  const actionText = { 'Manutenção de receita': 'Mantida a receita em uso', 'Ajuste medicamentoso': 'Realizado ajuste medicamentoso', 'Solicitação de exames': 'Solicitados exames', 'Encaminhamento especialista': 'Definido encaminhamento para especialista', 'Agendamento de retorno VD': 'Programado retorno para visita domiciliar', 'Orientações gerais': 'Fornecidas orientações gerais' }
+  const actionText = { 'Manutenção de receita': 'Mantenho a receita em uso', 'Ajuste medicamentoso': 'Ajusto a medicação', 'Solicitação de exames': 'Solicito exames', 'Encaminhamento especialista': 'Encaminho para avaliação especializada', 'Agendamento de retorno VD': 'Programo retorno em visita domiciliar', 'Orientações gerais': 'Forneço orientações gerais' }
   const alerts = evaluateClinical(v)
   const observations = alerts.filter(a => a.code !== 'cognition').map(a => a.observation)
   const suggestions = [...new Set(alerts.map(a => a.suggestion))]
+  if (ivcf && (ivcf.score >= 15 || ivcf.comorbidities.includes('polypharmacy'))) suggestions.push(ivcfFollowUp)
   const objective = (physical.length ? paragraph(physical) : 'Exame físico não registrado.') + (observations.length ? ` Parâmetros para revisão clínica: ${paragraph(observations)}` : '')
-  const result = { subjective_text: s, objective_text: objective, vitals_formatted: formattedVitals(v), plan_text: v.actions.length || v.plan_notes.trim() ? paragraph([joined(v.actions.map((a, i) => i === 0 ? actionText[a] : actionText[a].toLowerCase())), v.plan_notes]) : preventivePlan(v).length ? '' : 'Conduta não registrada.', assessment_text: clean(v.assessment) || null, vitals_context: clean(v.vitals_context), source: 'deterministic' }
-  for (const action of preventivePlan(v)) if (!result.plan_text.includes(action)) result.plan_text = paragraph([result.plan_text, action])
+  const topics = planTopics([...v.actions.map(action => actionText[action]), v.plan_notes].join('\n'))
+  for (const action of preventivePlan(v)) if (!topics.some(topic => topic.includes(action))) topics.push(...planTopics(action))
+  if (!topics.length) topics.push('Conduta não registrada.')
+  for (const suggestion of suggestions) {
+    const topic = `Sugestão para revisão médica: ${suggestion}.`
+    if (!topics.includes(topic)) topics.push(topic)
+  }
+  const result = { subjective_text: s, objective_text: objective, vitals_formatted: formattedVitals(v), plan_text: topics.map(topic => `- ${topic}`).join('\n'), assessment_text: clean(v.assessment) || null, vitals_context: clean(v.vitals_context), source: 'deterministic' }
   result.subjective_text = stripSoapPrefix(result.subjective_text)
   result.objective_text = stripSoapPrefix(result.objective_text)
-  result.plan_text = stripSoapPrefix(result.plan_text)
   result.assessment_text = result.assessment_text ? stripSoapPrefix(result.assessment_text) || null : null
-  if (suggestions.length) result.plan_text += ` Sugestões para revisão médica: ${paragraph(suggestions)}`
   return { ...result, full_text_fallback: assembleFullText(result) }
 }
 export const localSoap = (v: Visit): string => localSoapOutput(v).full_text_fallback

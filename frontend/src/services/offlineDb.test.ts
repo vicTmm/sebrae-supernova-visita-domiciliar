@@ -10,7 +10,9 @@ describe('offline-first', () => {
   it('gera SOAP sem rede e sem presumir exame normal', () => {
     const visit = exampleVisit(); visit.exam.respiratory = { status: 'Não avaliado', notes: '' }
     const text = localSoap(visit)
-    expect(text.split('\n').map(s => s.slice(0, 2))).toEqual(['S:', 'O:', 'P:'])
+    const lines = text.split('\n')
+    expect(lines.slice(0, 3).map(s => s.slice(0, 2))).toEqual(['S:', 'O:', 'P:'])
+    expect(lines.slice(3).every(line => line.startsWith('- '))).toBe(true)
     expect(text).toContain('PAS 150 mmHg'); expect(text).not.toContain('Ausculta pulmonar sem alterações')
   })
   it('persiste a fila e preserva edição durante sincronização', async () => {

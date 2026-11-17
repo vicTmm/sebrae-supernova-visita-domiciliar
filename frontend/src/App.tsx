@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import { ArrowLeft, ArrowRight, Check, ClipboardList, Plus, RefreshCw, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
 import VisitForm from './components/VisitForm'
+import ReleaseNotes from './components/ReleaseNotes'
 import SoapResultCard from './components/SoapResultCard'
 import { vitalFields } from './components/VitalSigns'
 import { emptyVisit, exampleVisit, type Draft, type LocalVisit, type Visit, type SOAPOutput } from './types/visit'
@@ -27,15 +28,6 @@ export default function App() {
       if (navigator.onLine) void registration?.update().catch(() => {})
     },
   })
-  async function checkAppUpdate() {
-    if (!navigator.onLine) { setNotice('Conecte-se à internet para verificar atualizações.'); return }
-    try {
-      const registration = swRegistration.current ?? await navigator.serviceWorker?.getRegistration()
-      if (!registration) { setNotice('A atualização estará disponível após preparar o aplicativo para uso offline.'); return }
-      await registration.update()
-      setNotice('Verificação concluída. Se houver nova versão, toque em Atualizar aplicativo no aviso acima.')
-    } catch { setNotice('Não foi possível verificar a atualização agora. Seus dados continuam neste dispositivo.') }
-  }
   useEffect(() => {
     const check = () => { if (navigator.onLine) void swRegistration.current?.update().catch(() => {}) }
     window.addEventListener('focus', check); window.addEventListener('online', check)
@@ -159,7 +151,15 @@ export default function App() {
           {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
         </form>
       </>}
-      <footer className="main-footer">Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>Ambiente de validação · use casos fictícios ou anonimizados.<br/>Versão 0.1.2 · <button type="button" className="text-button" onClick={() => void checkAppUpdate()}>Verificar atualização</button></footer>
+      <footer className="main-footer">
+        Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>
+        Ambiente de validação · use casos fictícios ou anonimizados.
+        <ReleaseNotes
+          updateAvailable={needRefresh}
+          getRegistration={() => swRegistration.current ?? navigator.serviceWorker?.getRegistration()}
+          onUpdate={() => void updateServiceWorker(true)}
+        />
+      </footer>
     </main></div>
     <nav className="mobile-nav" aria-label="Navegação principal">
       <button className={tab === 'visit' ? 'active' : ''} aria-current={tab === 'visit' ? 'page' : undefined} onClick={() => openTab('visit')}><Plus size={21}/>Visita</button>
