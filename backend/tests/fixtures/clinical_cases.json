@@ -7,15 +7,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -78,15 +81,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -152,15 +158,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -236,15 +245,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -320,15 +332,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -404,15 +419,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -488,15 +506,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -572,15 +593,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -646,15 +670,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -730,15 +757,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -814,15 +844,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -898,15 +931,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -982,15 +1018,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1066,15 +1105,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1140,15 +1182,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1231,15 +1276,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1314,15 +1362,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1397,15 +1448,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1480,15 +1534,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Outra"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1563,15 +1620,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Diabético"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1637,15 +1697,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Diabético"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1728,15 +1791,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Diabético"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1811,15 +1877,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Diabético"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1902,15 +1971,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Diabético"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -1993,15 +2065,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Diabético"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2076,15 +2151,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "DPOC/pneumopata"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2150,15 +2228,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "DPOC/pneumopata"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2233,15 +2314,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "DPOC/pneumopata"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2307,15 +2391,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "DPOC/pneumopata"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2390,15 +2477,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "DPOC/pneumopata"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2473,15 +2563,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "DPOC/pneumopata"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2556,15 +2649,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2610,7 +2706,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -2646,15 +2742,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2700,7 +2799,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -2736,15 +2835,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2790,7 +2892,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -2819,15 +2921,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2873,7 +2978,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -2902,15 +3007,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -2956,7 +3064,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -2992,15 +3100,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3046,7 +3157,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3082,15 +3193,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3136,7 +3250,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3165,15 +3279,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3219,7 +3336,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3248,15 +3365,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3302,7 +3422,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3338,15 +3458,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3392,7 +3515,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3428,15 +3551,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3482,7 +3608,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3511,15 +3637,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3565,7 +3694,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3594,15 +3723,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3648,7 +3780,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3684,15 +3816,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3738,7 +3873,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3774,15 +3909,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3828,7 +3966,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3857,15 +3995,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3911,7 +4052,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -3940,15 +4081,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -3994,7 +4138,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": null,
         "directed_flags": [],
         "neuro_notes": null
@@ -4023,15 +4167,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -4152,15 +4299,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -4234,15 +4384,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -4309,15 +4462,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -4396,15 +4552,18 @@
       "patient_code": "TEST",
       "age": 10,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -4485,15 +4644,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Gestante"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [],
@@ -4574,15 +4736,18 @@
       "patient_code": "TEST",
       "age": 78,
       "sex": "Feminino",
+      "womens_health": null,
       "conditions": [
         "Hipertenso"
       ],
+      "other_condition": "",
       "companions": {
         "has_acs": false,
         "acs_name": null,
         "has_student": false,
         "student_name": null,
         "has_nurse": false,
+        "nurse_name": null,
         "is_solo": false
       },
       "complaints": [
@@ -4641,7 +4806,7 @@
           "education_years": null,
           "notes": ""
         },
-        "glasgow": null,
+        "geriatric_screening": null,
         "rankin": 4,
         "directed_flags": [],
         "neuro_notes": null
@@ -4666,6 +4831,945 @@
       "assessment_text": null,
       "vitals_context": "",
       "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Desde a última visita domiciliar, houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada), Rankin modificado 4.\nP: Conduta não registrada. Sugestões para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_cervical_Em dia",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": "Em dia",
+          "year": 2020,
+          "notes": "Histórico informado pela paciente."
+        },
+        "mammography": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata exame citopatológico do colo do útero (Papanicolau) em dia (último exame em 2020). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata exame citopatológico do colo do útero (Papanicolau) em dia (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_cervical_Atrasado / Solicitar",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": "Atrasado / Solicitar",
+          "year": 2020,
+          "notes": "Histórico informado pela paciente."
+        },
+        "mammography": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_cervical_Nunca realizou",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": "Nunca realizou",
+          "year": null,
+          "notes": "Histórico informado pela paciente."
+        },
+        "mammography": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado exame citopatológico do colo do útero (Papanicolau). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado exame citopatológico do colo do útero (Papanicolau). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_cervical_Não se aplica",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": "Não se aplica",
+          "year": 2020,
+          "notes": "Histórico informado pela paciente."
+        },
+        "mammography": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por exame citopatológico do colo do útero (Papanicolau) foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por exame citopatológico do colo do útero (Papanicolau) foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_mammography_Em dia",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        },
+        "mammography": {
+          "status": "Em dia",
+          "year": 2020,
+          "notes": "Histórico informado pela paciente."
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata mamografia em dia (último exame em 2020). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata mamografia em dia (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_mammography_Atrasado / Solicitar",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        },
+        "mammography": {
+          "status": "Atrasado / Solicitar",
+          "year": 2020,
+          "notes": "Histórico informado pela paciente."
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Solicitar mamografia para atualização do rastreio.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Solicitar mamografia para atualização do rastreio.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_mammography_Nunca realizou",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        },
+        "mammography": {
+          "status": "Nunca realizou",
+          "year": null,
+          "notes": "Histórico informado pela paciente."
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado mamografia. Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado mamografia. Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_mammography_Não se aplica",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        },
+        "mammography": {
+          "status": "Não se aplica",
+          "year": 2020,
+          "notes": "Histórico informado pela paciente."
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por mamografia foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por mamografia foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_both_orders",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": "Atrasado / Solicitar",
+          "year": null,
+          "notes": ""
+        },
+        "mammography": {
+          "status": "Atrasado / Solicitar",
+          "year": null,
+          "notes": ""
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio. Solicitar mamografia para atualização do rastreio.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita.\nO: Exame físico não registrado.\nP: Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio. Solicitar mamografia para atualização do rastreio.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "women_blank",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": {
+        "cervical": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        },
+        "mammography": {
+          "status": null,
+          "year": null,
+          "notes": ""
+        }
+      },
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
+      "source": "deterministic"
+    }
+  },
+  {
+    "name": "geriatric_only",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": null,
+      "conditions": [
+        "Hipertenso"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": {
+        "mini_mental": null,
+        "geriatric_screening": {
+          "flags": [
+            "Humor deprimido / desânimo frequente",
+            "Perda de interesse nas atividades",
+            "Queixa de esquecimento progressivo",
+            "Dependência para atividades básicas (AVDs)",
+            "Risco de queda / mobilidade reduzida"
+          ],
+          "notes": "Relato da cuidadora."
+        },
+        "rankin": null,
+        "directed_flags": [],
+        "neuro_notes": null
+      },
+      "assessment": "",
+      "actions": [],
+      "plan_notes": ""
+    },
+    "analysis": [],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. No rastreio geriátrico, foram assinalados humor deprimido / desânimo frequente, perda de interesse nas atividades, queixa de esquecimento progressivo, dependência para atividades básicas (avds) e risco de queda / mobilidade reduzida. Relato da cuidadora.",
+      "objective_text": "Exame físico não registrado.",
+      "vitals_formatted": {},
+      "plan_text": "Conduta não registrada.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. No rastreio geriátrico, foram assinalados humor deprimido / desânimo frequente, perda de interesse nas atividades, queixa de esquecimento progressivo, dependência para atividades básicas (avds) e risco de queda / mobilidade reduzida. Relato da cuidadora.\nO: Exame físico não registrado.\nP: Conduta não registrada.",
       "source": "deterministic"
     }
   }

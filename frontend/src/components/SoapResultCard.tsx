@@ -1,7 +1,7 @@
 import { Check, Copy, FileCheck2, Save, Sparkles } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { SOAPOutput } from '../types/visit'
-import { vitalUnits, withSoapEdits } from '../services/soap'
+import { vitalUnits, withSoapEdits, normalizeSoapBlocks } from '../services/soap'
 
 function CopyButton({ text, label, subtle = false }: { text: string; label: string; subtle?: boolean }) {
   const [copied, setCopied] = useState(false), [error, setError] = useState('')
@@ -18,7 +18,8 @@ function CopyButton({ text, label, subtle = false }: { text: string; label: stri
   return <div className="copy-control"><button type="button" aria-label={copied ? `${label} — Copiado!` : label} className={subtle ? 'text-button' : 'primary copy-block'} disabled={!text.trim()} onClick={() => void copy()}>{copied ? <Check size={17}/> : <Copy size={17}/>}<span>{copied ? 'Copiado!' : label}</span></button><span role="status" className="sr-only">{copied ? `${label}: copiado` : ''}</span>{error && <p role="alert" className="error small-note">{error}</p>}</div>
 }
 
-export default function SoapResultCard({ result, onChange, onAI, busy, onSave, serverAvailable }: { result: SOAPOutput; onChange: (s: SOAPOutput) => void; onAI: () => void; busy: boolean; onSave: () => void; serverAvailable: boolean }) {
+export default function SoapResultCard({ result: rawResult, onChange, onAI, busy, onSave, serverAvailable }: { result: SOAPOutput; onChange: (s: SOAPOutput) => void; onAI: () => void; busy: boolean; onSave: () => void; serverAvailable: boolean }) {
+  const result = normalizeSoapBlocks(rawResult)
   function edit(key: 'subjective_text' | 'objective_text' | 'plan_text' | 'assessment_text', text: string) { onChange(withSoapEdits(result, { [key]: key === 'assessment_text' ? text || null : text })) }
   const measured = Object.entries(result.vitals_formatted)
   const assessmentWasFilled = useRef(result.assessment_text !== null)

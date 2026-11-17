@@ -140,7 +140,7 @@ export default function App() {
           {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
         </form>
       </>}
-      <footer className="main-footer">Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>Ambiente de validação · use casos fictícios ou anonimizados.<br/>Versão 0.1.1 · <button type="button" className="text-button" onClick={() => void checkAppUpdate()}>Verificar atualização</button></footer>
+      <footer className="main-footer">Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>Ambiente de validação · use casos fictícios ou anonimizados.<br/>Versão 0.1.2 · <button type="button" className="text-button" onClick={() => void checkAppUpdate()}>Verificar atualização</button></footer>
     </main></div>
     <nav className="mobile-nav" aria-label="Navegação principal"><button className={tab === 'visit' ? 'active' : ''} onClick={() => setTab('visit')}><HousePlus size={21}/>Visita</button><button className={tab === 'history' ? 'active' : ''} onClick={() => setTab('history')}><ClipboardList size={21}/>Histórico {pending > 0 && `(${pending})`}</button></nav>
   </div>

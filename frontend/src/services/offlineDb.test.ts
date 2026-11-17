@@ -2,7 +2,7 @@ import 'fake-indexeddb/auto'
 import Dexie from 'dexie'
 import { afterEach, describe, expect, it } from 'vitest'
 import { db, saveLocal, applySync, mergeRemote } from './offlineDb'
-import { emptyVisit, exampleVisit, glasgowTotal } from '../types/visit'
+import { emptyVisit, exampleVisit } from '../types/visit'
 import { clinicalRuleError, localSoap } from './soap'
 
 afterEach(async () => { await db.visits.clear(); await db.drafts.clear() })
@@ -42,21 +42,12 @@ describe('offline-first', () => {
     expect(text.indexOf('Ausculta pulmonar')).toBeLessThan(text.indexOf('Exame neurológico'))
     expect(text.indexOf('Exame neurológico')).toBeLessThan(text.indexOf('Exame abdominal'))
   })
-  it('preserva Rankin zero e não presume Glasgow ou equipe ausente', () => {
-    const v = emptyVisit(); v.neuro_exam = { glasgow: null, rankin: 0, directed_flags: [], neuro_notes: null }
+  it('preserva Rankin zero e não presume testes ou equipe ausente', () => {
+    const v = emptyVisit(); v.neuro_exam = { rankin: 0, directed_flags: [], neuro_notes: null }
     expect(localSoap(v)).toContain('Rankin modificado 0')
-    expect(localSoap(v)).not.toContain('Glasgow')
     expect(localSoap(v)).toContain('Acompanhantes da equipe não informados')
     v.companions.is_solo = true
     expect(localSoap(v)).toContain('Realizada visita domiciliar sem acompanhantes da equipe.')
-  })
-  it('calcula Glasgow e impede gerar SOAP com escala incompleta', () => {
-    expect(glasgowTotal({ eye: 4, verbal: 5, motor: 6 })).toBe(15)
-    expect(glasgowTotal({ eye: 2, verbal: 3, motor: 4 })).toBe(9)
-    expect(glasgowTotal({ eye: 4, verbal: null, motor: 6 })).toBeNull()
-    const v = exampleVisit(); v.neuro_exam!.glasgow = { eye: 4, verbal: null, motor: 6, total: null }
-    expect(clinicalRuleError(v)).toContain('Glasgow')
-    expect(() => localSoap(v)).toThrow('Glasgow')
   })
   it('migra banco v1 com rascunho, pendência e conflito sem alterar SOAP', async () => {
     await db.delete()

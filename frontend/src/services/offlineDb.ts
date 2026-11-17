@@ -36,6 +36,13 @@ class VisitDatabase extends Dexie {
       })
       await tx.table('drafts').toCollection().modify((row: Draft) => { row.visit = upgradeVisit(row.visit) })
     })
+    this.version(6).stores({ visits: 'visit.id, visit.visited_at', drafts: 'key' }).upgrade(async tx => {
+      await tx.table('visits').toCollection().modify((row: LocalVisit) => {
+        row.visit = upgradeVisit(row.visit)
+        if (row.conflict) row.conflict.visit = upgradeVisit(row.conflict.visit)
+      })
+      await tx.table('drafts').toCollection().modify((row: Draft) => { row.visit = upgradeVisit(row.visit) })
+    })
   }
 }
 export const db = new VisitDatabase()

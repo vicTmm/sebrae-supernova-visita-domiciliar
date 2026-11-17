@@ -5,14 +5,14 @@ from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 from ..database import get_session
 from ..models import Visit
-from ..schemas import VDInput, SOAPOutput, VisitWrite, VisitOutput, SyncRequest, SyncOutput
+from ..schemas import stored_visit, VDInput, SOAPOutput, VisitWrite, VisitOutput, SyncRequest, SyncOutput
 from ..services.soap_generator import generate_soap
 
 router = APIRouter(prefix="/visits", tags=["visits"])
 
 
 def output(row: Visit) -> VisitOutput:
-    return VisitOutput(visit=VDInput.model_validate(row.payload), soap_text=row.soap_text, soap_blocks=row.soap_blocks, revision=row.revision)
+    return VisitOutput(visit=stored_visit(row.payload), soap_text=row.soap_text, soap_blocks=row.soap_blocks, revision=row.revision)
 
 
 async def save(session: AsyncSession, data: VisitWrite):
@@ -20,7 +20,7 @@ async def save(session: AsyncSession, data: VisitWrite):
     payload = data.visit.model_dump(mode="json")
     blocks = data.soap_blocks.model_dump(mode="json") if data.soap_blocks else None
     if row:
-        if (VDInput.model_validate(row.payload).model_dump(mode="json") == payload
+        if (stored_visit(row.payload).model_dump(mode="json") == payload
                 and row.soap_text == data.soap_text and row.soap_blocks == blocks):
             return output(row), False  # Reenvio após perda da resposta: idempotente.
         if row.revision != data.base_revision:

@@ -1,7 +1,8 @@
 from datetime import datetime
 from enum import Enum
 from uuid import UUID
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator, field_validator
+import re
 from typing import Annotated, Literal
 
 
@@ -96,19 +97,6 @@ class Companions(StrictModel):
         return self
 
 
-class Glasgow(StrictModel):
-    eye: int = Field(ge=1, le=4, strict=True)
-    verbal: int = Field(ge=1, le=5, strict=True)
-    motor: int = Field(ge=1, le=6, strict=True)
-    total: int = Field(ge=3, le=15, strict=True)
-
-    @model_validator(mode="after")
-    def correct_total(self):
-        if self.total != self.eye + self.verbal + self.motor:
-            raise ValueError("Total de Glasgow deve ser a soma das respostas ocular, verbal e motora.")
-        return self
-
-
 class NeuroFlag(str, Enum):
     ORIENTED = "Lúcido e orientado (LOTE)"
     PUPILS = "Pupilas isocóricas e fotorreagentes (PIFR)"
@@ -156,9 +144,52 @@ class BloodPressureTarget(StrictModel):
         return self
 
 
+class ScreeningStatus(str, Enum):
+    CURRENT = "Em dia"
+    OVERDUE = "Atrasado / Solicitar"
+    NEVER = "Nunca realizou"
+    NOT_APPLICABLE = "Não se aplica"
+
+
+class PreventiveScreening(StrictModel):
+    status: ScreeningStatus | None = None
+    year: int | None = Field(default=None, ge=1900, le=2100, strict=True)
+    notes: str = Field(default="", max_length=500)
+
+    @model_validator(mode="after")
+    def consistent_history(self):
+        if self.year is not None and (self.year > datetime.now().year or self.status == ScreeningStatus.NEVER):
+            raise ValueError("Confira o ano do último exame e o histórico de realização.")
+        return self
+
+
+class WomensHealth(StrictModel):
+    cervical: PreventiveScreening = Field(default_factory=PreventiveScreening)
+    mammography: PreventiveScreening = Field(default_factory=PreventiveScreening)
+
+
+class GeriatricFlag(str, Enum):
+    MOOD = "Humor deprimido / desânimo frequente"
+    INTEREST = "Perda de interesse nas atividades"
+    MEMORY = "Queixa de esquecimento progressivo"
+    DAILY_ACTIVITIES = "Dependência para atividades básicas (AVDs)"
+    FALLS = "Risco de queda / mobilidade reduzida"
+
+
+class GeriatricScreening(StrictModel):
+    flags: list[GeriatricFlag] = Field(default_factory=list, max_length=5)
+    notes: str = Field(default="", max_length=1000)
+
+    @model_validator(mode="after")
+    def unique_flags(self):
+        if len(self.flags) != len(set(self.flags)):
+            raise ValueError("Marcadores geriátricos duplicados.")
+        return self
+
+
 class NeuroExam(StrictModel):
     mini_mental: MiniMental | None = None
-    glasgow: Glasgow | None = None
+    geriatric_screening: GeriatricScreening | None = None
     rankin: int | None = Field(default=None, ge=0, le=5, strict=True)
     directed_flags: list[NeuroFlag] = Field(default_factory=list, max_length=5)
     neuro_notes: str | None = Field(default=None, max_length=1000)
@@ -178,6 +209,7 @@ class VDInput(StrictModel):
     patient_code: str = Field(min_length=1, max_length=30)
     age: int = Field(ge=0, le=130)
     sex: Literal['Feminino', 'Masculino'] | None = None
+    womens_health: WomensHealth | None = None
     conditions: list[Condition] = Field(min_length=1, max_length=8)
     other_condition: str = Field(default="", max_length=500)
     companions: Companions = Field(default_factory=Companions)
@@ -227,6 +259,8 @@ class VDInput(StrictModel):
 
     @model_validator(mode="after")
     def consistency(self):
+        if self.womens_health is not None and self.sex != "Feminino":
+            raise ValueError("Saúde da Mulher exige sexo Feminino selecionado.")
         if self.other_condition and Condition.OTHER not in self.conditions:
             raise ValueError("Descrição de outra condição exige a seleção de Outra.")
         if self.visited_at.tzinfo is None:
@@ -252,6 +286,13 @@ class SOAPOutput(StrictModel):
     vitals_context: str = Field(default="", max_length=1000)
     full_text_fallback: str = Field(max_length=50000)
     source: str = "deterministic"
+
+    @field_validator('subjective_text', 'objective_text', 'plan_text', 'assessment_text', mode='before')
+    @classmethod
+    def clean_block_prefix(cls, value):
+        if isinstance(value, str):
+            return re.sub(r'^\s*(?:[SOAP]\s*:\s*)+', '', value, flags=re.IGNORECASE)
+        return value
 
 
 class SOAPNarrative(StrictModel):
@@ -288,3 +329,15 @@ class SyncRequest(StrictModel):
 class SyncOutput(StrictModel):
     saved: list[VisitOutput]
     conflicts: list[VisitOutput]
+
+
+def stored_visit(payload: dict) -> VDInput:
+    """Lê versões antigas sem reintroduzir testes estruturados descontinuados.
+
+    O texto revisado do prontuário não é alterado. Só campos neurológicos ainda
+    presentes no schema atual são usados ao editar novamente uma visita antiga.
+    """
+    data = dict(payload)
+    if isinstance(data.get('neuro_exam'), dict):
+        data['neuro_exam'] = {key: value for key, value in data['neuro_exam'].items() if key in NeuroExam.model_fields}
+    return VDInput.model_validate(data)

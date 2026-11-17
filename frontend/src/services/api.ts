@@ -1,4 +1,5 @@
 import type { Visit, ServerVisit, SOAPOutput } from '../types/visit'
+import { normalizeSoapBlocks } from './soap'
 import { db, applySync, mergeRemote } from './offlineDb'
 const base = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
 async function request<T>(path: string, body?: unknown): Promise<T> {
@@ -9,7 +10,7 @@ async function request<T>(path: string, body?: unknown): Promise<T> {
 export async function generateSoap(visit: Visit): Promise<SOAPOutput> {
   const result = await request<SOAPOutput>('/visits/generate-soap', visit)
   if (!result || typeof result.subjective_text !== 'string' || typeof result.objective_text !== 'string' || typeof result.plan_text !== 'string' || typeof result.full_text_fallback !== 'string') throw new Error('O servidor precisa ser atualizado para a saída por blocos do VitaCare.')
-  return result
+  return normalizeSoapBlocks(result)
 }
 let running: Promise<void> | undefined
 export function syncVisits(): Promise<void> {

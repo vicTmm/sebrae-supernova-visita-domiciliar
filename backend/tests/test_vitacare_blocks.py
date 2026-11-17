@@ -39,7 +39,6 @@ def test_narrative_and_separate_vitals(visit_data):
     assert "95%" not in result.objective_text
     assert "Estertores em base direita" in result.objective_text
     assert "Mini-Mental (MEEM) 27/30 (escolaridade: 4 anos completos)" in result.objective_text
-    assert "Glasgow" not in result.objective_text
     assert "Mantida a receita em uso" in result.plan_text and "Retorno VD em 30 dias" in result.plan_text
     assert "Antibiótico" not in result.plan_text
     assert "normal" not in result.full_text_fallback.lower()

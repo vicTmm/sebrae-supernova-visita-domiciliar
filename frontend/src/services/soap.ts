@@ -1,11 +1,19 @@
+import { preventiveHistory, preventivePlan } from './screenings'
 import { evaluateClinical, cognitiveInterpretation } from './clinicalRules'
-import { neuroFlags, glasgowTotal, cognitiveDomains, miniMentalTotal, type Visit, type SOAPOutput } from '../types/visit'
+import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalTotal, type Visit, type SOAPOutput } from '../types/visit'
+export const stripSoapPrefix = (s: string) => s.replace(/^\s*(?:[SOAP]\s*:\s*)+/i, '')
 const clean = (s: string) => s.replace(/[*_`#~]/g, '').replace(/\s+/g, ' ').trim()
 export function clinicalRuleError(v: Visit): string | null {
   const c = v.companions
   if (c.is_solo && (c.has_acs || c.has_student || c.has_nurse)) return 'Apenas Médico não pode ser combinado com acompanhantes.'
   if ((c.acs_name?.trim() && !c.has_acs) || (c.student_name?.trim() && !c.has_student) || (c.nurse_name?.trim() && !c.has_nurse)) return 'Selecione o acompanhante correspondente ao nome informado.'
   if (v.other_condition?.trim() && !v.conditions.includes('Outra')) return 'Selecione Outra para descrever a condição acompanhada.'
+  if (v.womens_health && v.sex !== 'Feminino') return 'Saúde da Mulher exige sexo Feminino selecionado.'
+  if (v.womens_health) for (const exam of Object.values(v.womens_health)) {
+    if (exam.year !== null && (!Number.isInteger(exam.year) || exam.year < 1900 || exam.year > new Date().getFullYear() || exam.status === 'Nunca realizou')) return 'Confira o ano do último exame e o histórico de realização.'
+  }
+  const screening = v.neuro_exam?.geriatric_screening
+  if (screening && (new Set(screening.flags).size !== screening.flags.length || screening.flags.some(f => !geriatricFlags.includes(f)))) return 'Confira os marcadores geriátricos selecionados.'
   const n = v.neuro_exam
   if (Object.keys(v.intercurrence_details).some(key => key === 'Sem intercorrências' || !v.complaints.includes(key as Visit['complaints'][number]))) return 'Cada detalhe exige a queixa correspondente selecionada.'
   const target = v.bp_target
@@ -16,10 +24,6 @@ export function clinicalRuleError(v: Visit): string | null {
     if (m.education_level && m.education_years !== null && m.education_level !== (m.education_years === 0 ? 'none' : m.education_years <= 4 ? '1_4' : m.education_years <= 8 ? '5_8' : 'over_8')) return 'Faixa de escolaridade diverge dos anos completos informados.'
     if (m.domains && (miniMentalTotal(m.domains) === null || miniMentalTotal(m.domains) !== m.score || cognitiveDomains.some(f => m.domains![f.key] === null))) return 'MEEM: preencha os seis domínios para calcular o total, ou marque Não avaliado.'
     if (m.education_years !== null && (!Number.isInteger(m.education_years) || m.education_years < 0 || m.education_years > 40)) return 'Confira os anos completos de escolaridade.'
-  }
-  if (n?.glasgow) {
-    const g = n.glasgow
-    if (g.eye === null || g.verbal === null || g.motor === null || !Number.isInteger(g.eye) || !Number.isInteger(g.verbal) || !Number.isInteger(g.motor) || g.eye < 1 || g.eye > 4 || g.verbal < 1 || g.verbal > 5 || g.motor < 1 || g.motor > 6 || g.total !== glasgowTotal(g)) return 'Glasgow: preencha os três componentes corretamente ou remova o registro legado de Glasgow.'
   }
   if (n?.rankin != null && (!Number.isInteger(n.rankin) || n.rankin < 0 || n.rankin > 5)) return 'Rankin deve ser um número inteiro de 0 a 5.'
   if (n?.directed_flags.includes(neuroFlags[2].value) && n.directed_flags.includes(neuroFlags[3].value)) return 'Força preservada e déficit motor focal não podem ser selecionados juntos.'
@@ -40,7 +44,6 @@ export function neurologicalText(v: Visit): string {
     parts.push(`Mini-Mental (MEEM) ${m.score}/30${m.education_level ? ` (escolaridade: ${{ none: 'analfabeto / 0 anos', '1_4': '1–4 anos', '5_8': '5–8 anos', over_8: 'mais de 8 anos' }[m.education_level]})` : m.education_years !== null ? ` (escolaridade: ${m.education_years} anos completos)` : ''}; ${cognitiveInterpretation(m)}`)
     if (m.notes.trim()) parts.push(m.notes.trim())
   }
-  if (n.glasgow?.total != null) { const g = n.glasgow; parts.push(`Glasgow ${g.total}/15 (O${g.eye} V${g.verbal} M${g.motor})`) }
   if (n.rankin !== null) parts.push(`Rankin modificado ${n.rankin}`)
   parts.push(...n.directed_flags.map(f => f === neuroFlags[0].value ? 'LOTE' : f === neuroFlags[1].value ? 'PIFR' : f))
   if (n.neuro_notes?.trim()) parts.push(n.neuro_notes.trim())
@@ -60,7 +63,14 @@ export function assembleFullText(result: Omit<SOAPOutput, 'full_text_fallback'>)
 }
 export function withSoapEdits(result: SOAPOutput, edits: Partial<SOAPOutput>): SOAPOutput {
   const next = { ...result, ...edits }
+  next.subjective_text = stripSoapPrefix(next.subjective_text)
+  next.objective_text = stripSoapPrefix(next.objective_text)
+  next.plan_text = stripSoapPrefix(next.plan_text)
+  next.assessment_text = next.assessment_text ? stripSoapPrefix(next.assessment_text) || null : null
   return { ...next, full_text_fallback: assembleFullText(next) }
+}
+export function normalizeSoapBlocks(result: SOAPOutput): SOAPOutput {
+  return [result.subjective_text, result.objective_text, result.plan_text, result.assessment_text ?? ''].some(s => stripSoapPrefix(s) !== s) ? withSoapEdits(result, {}) : result
 }
 export function localSoapOutput(v: Visit): SOAPOutput {
   const error = clinicalRuleError(v)
@@ -68,7 +78,9 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   const complaintLabels = { Dor: 'dor', Dispneia: 'dispneia', Febre: 'febre', Tontura: 'tontura', Queda: 'queda', 'Ida à UPA/Emergência': 'ida à UPA/emergência', 'Internação hospitalar': 'internação hospitalar', 'Sem intercorrências': '' }
   const timeline = v.complaints.includes('Sem intercorrências') ? 'Desde a última visita domiciliar, não foram relatadas intercorrências' : v.complaints.length ? `Desde a última visita domiciliar, houve relato de ${joined(v.complaints.map(c => complaintLabels[c]))}` : 'Não foi informado como transcorreu o período desde a última visita domiciliar'
   const adherence = { Regular: 'Refere uso regular das medicações', Irregular: 'Refere uso irregular das medicações', 'Não faz uso': 'Refere não fazer uso de medicações', 'Não informado': '' }
-  const s = paragraph([subjectiveOpening(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence]])
+  const screening = v.neuro_exam?.geriatric_screening
+  const screeningFacts = screening ? [screening.flags.length ? `No rastreio geriátrico, foram assinalados ${joined(screening.flags.map(f => f.toLowerCase()))}` : '', screening.notes] : []
+  const s = paragraph([subjectiveOpening(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence], ...preventiveHistory(v), ...screeningFacts])
   const physical: string[] = []
   for (const [key, label] of [['general', 'Estado geral e hidratação'], ['cardiovascular', 'Ausculta cardíaca'], ['respiratory', 'Ausculta pulmonar']] as const) {
     const f = v.exam[key]
@@ -84,14 +96,19 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   const observations = alerts.filter(a => a.code !== 'cognition').map(a => a.observation)
   const suggestions = [...new Set(alerts.map(a => a.suggestion))]
   const objective = (physical.length ? paragraph(physical) : 'Exame físico não registrado.') + (observations.length ? ` Parâmetros para revisão clínica: ${paragraph(observations)}` : '')
-  const result = { subjective_text: s, objective_text: objective, vitals_formatted: formattedVitals(v), plan_text: v.actions.length || v.plan_notes.trim() ? paragraph([joined(v.actions.map((a, i) => i === 0 ? actionText[a] : actionText[a].toLowerCase())), v.plan_notes]) : 'Conduta não registrada.', assessment_text: clean(v.assessment) || null, vitals_context: clean(v.vitals_context), source: 'deterministic' }
+  const result = { subjective_text: s, objective_text: objective, vitals_formatted: formattedVitals(v), plan_text: v.actions.length || v.plan_notes.trim() ? paragraph([joined(v.actions.map((a, i) => i === 0 ? actionText[a] : actionText[a].toLowerCase())), v.plan_notes]) : preventivePlan(v).length ? '' : 'Conduta não registrada.', assessment_text: clean(v.assessment) || null, vitals_context: clean(v.vitals_context), source: 'deterministic' }
+  for (const action of preventivePlan(v)) if (!result.plan_text.includes(action)) result.plan_text = paragraph([result.plan_text, action])
+  result.subjective_text = stripSoapPrefix(result.subjective_text)
+  result.objective_text = stripSoapPrefix(result.objective_text)
+  result.plan_text = stripSoapPrefix(result.plan_text)
+  result.assessment_text = result.assessment_text ? stripSoapPrefix(result.assessment_text) || null : null
   if (suggestions.length) result.plan_text += ` Sugestões para revisão médica: ${paragraph(suggestions)}`
   return { ...result, full_text_fallback: assembleFullText(result) }
 }
 export const localSoap = (v: Visit): string => localSoapOutput(v).full_text_fallback
 
 export function restoreSoap(v: Visit, text: string, blocks?: SOAPOutput | null): SOAPOutput {
-  if (blocks && blocks.full_text_fallback === text) return blocks
+  if (blocks && blocks.full_text_fallback === text) return normalizeSoapBlocks(blocks)
   const sections: Record<string, string> = {}
   const matches = [...text.matchAll(/^(S|O|A|P):[ \t]*/gm)]
   matches.forEach((m, i) => { sections[m[1]] = text.slice(m.index! + m[0].length, matches[i + 1]?.index ?? text.length).trim() })
@@ -121,5 +138,5 @@ export function restoreSoap(v: Visit, text: string, blocks?: SOAPOutput | null):
     }
   }
   if (v.vitals_context && objective.startsWith(v.vitals_context)) objective = objective.slice(v.vitals_context.length).trim()
-  return { subjective_text: sections.S ?? text, objective_text: objective, vitals_formatted: confirmedVitals, plan_text: sections.P ?? '', assessment_text: sections.A || null, vitals_context: v.vitals_context, full_text_fallback: text, source: 'legacy' }
+  return normalizeSoapBlocks({ subjective_text: sections.S ?? text, objective_text: objective, vitals_formatted: confirmedVitals, plan_text: sections.P ?? '', assessment_text: sections.A || null, vitals_context: v.vitals_context, full_text_fallback: text, source: 'legacy' })
 }

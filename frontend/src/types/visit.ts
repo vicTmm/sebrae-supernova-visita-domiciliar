@@ -13,8 +13,6 @@ export const neuroFlags = [
   { value: 'Disartria/Afasia', label: 'Alteração de fala' },
 ] as const
 export type NeuroFlag = (typeof neuroFlags)[number]['value']
-// null em um componente representa rascunho incompleto; não pode ser enviado à API.
-export interface Glasgow { eye: number | null; verbal: number | null; motor: number | null; total: number | null }
 export const cognitiveDomains = [
   { key: 'temporal', label: 'Orientação temporal', max: 5 },
   { key: 'spatial', label: 'Orientação espacial', max: 5 },
@@ -29,15 +27,18 @@ export function miniMentalTotal(d: CognitiveDomains): number | null {
   return cognitiveDomains.every(f => d[f.key] !== null && Number.isInteger(d[f.key]) && d[f.key]! >= 0 && d[f.key]! <= f.max) ? Object.values(d).reduce<number>((sum, v) => sum + v!, 0) : null
 }
 export interface MiniMental { education_level?: 'none' | '1_4' | '5_8' | 'over_8' | null; domains?: CognitiveDomains | null; score: number | null; education_years: number | null; notes: string }
-export interface NeuroExam { mini_mental?: MiniMental | null; glasgow: Glasgow | null; rankin: number | null; directed_flags: NeuroFlag[]; neuro_notes: string | null }
+export const geriatricFlags = ['Humor deprimido / desânimo frequente', 'Perda de interesse nas atividades', 'Queixa de esquecimento progressivo', 'Dependência para atividades básicas (AVDs)', 'Risco de queda / mobilidade reduzida'] as const
+export type GeriatricFlag = (typeof geriatricFlags)[number]
+export interface GeriatricScreening { flags: GeriatricFlag[]; notes: string }
+export type ScreeningStatus = 'Em dia' | 'Atrasado / Solicitar' | 'Nunca realizou' | 'Não se aplica'
+export interface PreventiveScreening { status: ScreeningStatus | null; year: number | null; notes: string }
+export interface WomensHealth { cervical: PreventiveScreening; mammography: PreventiveScreening }
+export const emptyWomensHealth = (): WomensHealth => ({ cervical: { status: null, year: null, notes: '' }, mammography: { status: null, year: null, notes: '' } })
+export interface NeuroExam { mini_mental?: MiniMental | null; geriatric_screening?: GeriatricScreening | null; rankin: number | null; directed_flags: NeuroFlag[]; neuro_notes: string | null }
 export const emptyCompanions = (): Companions => ({ has_acs: false, acs_name: null, has_student: false, student_name: null, has_nurse: false, nurse_name: null, is_solo: false })
-export const emptyNeuro = (): NeuroExam => ({ mini_mental: null, glasgow: null, rankin: null, directed_flags: [], neuro_notes: null })
-export function glasgowTotal(g: Pick<Glasgow, 'eye' | 'verbal' | 'motor'>): number | null {
-  if (g.eye === null || g.verbal === null || g.motor === null) return null
-  return g.eye + g.verbal + g.motor
-}
+export const emptyNeuro = (): NeuroExam => ({ mini_mental: null, geriatric_screening: null, rankin: null, directed_flags: [], neuro_notes: null })
 export interface Visit {
-  id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | null;
+  id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | null; womens_health?: WomensHealth | null;
   conditions: (typeof conditions)[number][]; other_condition?: string; complaints: (typeof complaints)[number][];
   adherence: 'Regular' | 'Irregular' | 'Não faz uso' | 'Não informado'; subjective_notes: string; intercurrence_details: Partial<Record<(typeof complaints)[number], string>>; bp_target?: { systolic: number | null; diastolic: number | null } | null; vitals_context: string;
   companions: Companions; medications_in_use: string; recent_medications: string | null; neuro_exam: NeuroExam | null;
@@ -58,10 +59,10 @@ export function upgradeVisit(v: Visit & { medications?: string }): Visit {
   const selected = v.complaints.filter(c => c !== 'Sem intercorrências')
   const legacyDetails = raw === undefined && selected.length ? v.subjective_notes : typeof raw === 'string' ? raw : ''
   const details = typeof raw === 'object' && raw !== null ? raw as Visit['intercurrence_details'] : selected.length && legacyDetails ? { [selected[0]]: legacyDetails } : {}
-  return { ...rest, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { ...v.neuro_exam, mini_mental: v.neuro_exam.mini_mental ?? null } : null }
+  return { ...rest, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null }
 }
 export function emptyVisit(): Visit {
-  return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: null, conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }
+  return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: null, womens_health: null, conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }
 }
 export function exampleVisit(): Visit {
   const v = emptyVisit()
@@ -73,7 +74,7 @@ export function exampleVisit(): Visit {
     subjective_notes: 'Cuidadora relata boa aceitação alimentar e ausência de novas queixas hoje.',
     medications_in_use: 'Losartana e metformina, conforme receita apresentada.',
     recent_medications: 'Ceftriaxona durante a internação por pneumonia; tratamento encerrado conforme relato da cuidadora.',
-    neuro_exam: { mini_mental: { score: 24, domains: { temporal: 4, spatial: 5, registration: 3, attention: 3, recall: 2, language: 7 }, education_years: 4, notes: '' }, glasgow: null, rankin: 4, directed_flags: [neuroFlags[0].value, neuroFlags[1].value], neuro_notes: null },
+    neuro_exam: { mini_mental: { score: 24, domains: { temporal: 4, spatial: 5, registration: 3, attention: 3, recall: 2, language: 7 }, education_years: 4, notes: '' }, geriatric_screening: { flags: ['Dependência para atividades básicas (AVDs)', 'Risco de queda / mobilidade reduzida'], notes: 'Cuidadora auxilia nas atividades básicas.' }, rankin: 4, directed_flags: [neuroFlags[0].value, neuroFlags[1].value], neuro_notes: null },
     vitals: { systolic: 150, diastolic: 90, heart_rate: 76, respiratory_rate: 18, oxygen_saturation: 97, temperature: 36.5, glucose: 145 },
     exam: { cardiovascular: { status: 'Sem alterações', notes: '' }, respiratory: { status: 'Sem alterações', notes: '' }, abdomen: { status: 'Sem alterações', notes: '' }, general: { status: 'Alterado', notes: 'Restrita ao leito; hidratada ao exame.' } },
     assessment: '', actions: ['Manutenção de receita', 'Orientações gerais', 'Agendamento de retorno VD'],

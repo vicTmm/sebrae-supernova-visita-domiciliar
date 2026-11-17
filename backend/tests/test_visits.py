@@ -114,7 +114,7 @@ def clinical_payload(payload):
         "subjective_notes": "Houve internação por pneumonia desde a última VD.",
         "medications_in_use": "Losartana 50 mg e metformina conforme receita apresentada",
         "recent_medications": "Ceftriaxona durante internação por pneumonia",
-        "neuro_exam": {"glasgow": {"eye": 4, "verbal": 5, "motor": 6, "total": 15}, "rankin": 4,
+        "neuro_exam": {"mini_mental": {"score": 27, "education_years": 4}, "rankin": 4,
                        "directed_flags": ["Lúcido e orientado (LOTE)", "Pupilas isocóricas e fotorreagentes (PIFR)"],
                        "neuro_notes": "Sem outros achados ao exame dirigido."},
     }
@@ -131,11 +131,11 @@ def test_vitacare_team_timeline_medications_and_neuro(clinical_payload, client, 
     assert "está em uso contínuo de Losartana 50 mg e metformina" in s
     assert "utilizou Ceftriaxona durante internação por pneumonia" in s
     assert "Ceftriaxona" not in a + p
-    assert "Exame neurológico: Glasgow 15/15 (O4 V5 M6), Rankin modificado 4, LOTE, PIFR" in o
+    assert "Rankin modificado 4, LOTE, PIFR" in o
     assert o.index("Ausculta pulmonar") < o.index("Exame neurológico:") < o.index("Exame abdominal")
     assert "Sem outros achados ao exame dirigido." in o
     saved = client.post("/visits/sync", json={"visits": [{"visit": clinical_payload, "soap_text": text}]}).json()["saved"][0]
-    assert saved["visit"]["neuro_exam"]["glasgow"]["total"] == 15
+    assert saved["visit"]["neuro_exam"]["mini_mental"]["score"] == 27
     assert saved["visit"]["companions"]["acs_name"] == "Maria"
     assert saved["visit"]["recent_medications"] == clinical_payload["recent_medications"]
 
@@ -150,33 +150,20 @@ def test_team_opening(payload, companions, expected):
     text = deterministic_soap(VDInput(**(payload | {"companions": companions}))).full_text_fallback
     assert text.startswith(f"S: {expected}")
     assert "não foram relatadas intercorrências" in text
-    assert "Glasgow" not in text and "Rankin" not in text and "LOTE" not in text
+    assert "Rankin" not in text and "LOTE" not in text
 
 
 def test_rankin_zero_and_empty_neuro(payload):
     text = deterministic_soap(VDInput(**(payload | {"neuro_exam": {"rankin": 0}}))).full_text_fallback
-    assert "Rankin modificado 0" in text and "Glasgow" not in text
+    assert "Rankin modificado 0" in text
     text = deterministic_soap(VDInput(**(payload | {"neuro_exam": {}}))).full_text_fallback
     assert "Exame neurológico" not in text
-
-
-@pytest.mark.parametrize("eye,verbal,motor,total", [(1, 1, 1, 3), (2, 3, 4, 9), (4, 5, 6, 15)])
-def test_glasgow_components(payload, eye, verbal, motor, total):
-    visit = VDInput(**(payload | {"neuro_exam": {"glasgow": dict(eye=eye, verbal=verbal, motor=motor, total=total)}}))
-    assert f"Glasgow {total}/15 (O{eye} V{verbal} M{motor})" in deterministic_soap(visit).full_text_fallback
 
 
 @pytest.mark.parametrize("change", [
     {"companions": {"is_solo": True, "has_acs": True}},
     {"companions": {"acs_name": "Maria"}},
     {"companions": {"has_acs": True, "acs_name": "M" * 81}},
-    {"neuro_exam": {"glasgow": {"eye": 4, "verbal": 5, "motor": 6, "total": 14}}},
-    {"neuro_exam": {"glasgow": {"eye": 0, "verbal": 5, "motor": 6, "total": 11}}},
-    {"neuro_exam": {"glasgow": {"eye": 4, "verbal": 6, "motor": 6, "total": 16}}},
-    {"neuro_exam": {"glasgow": {"eye": 4, "verbal": 5, "motor": 7, "total": 16}}},
-    {"neuro_exam": {"glasgow": {"eye": 4, "verbal": 5}}},
-    {"neuro_exam": {"glasgow": {"eye": None, "verbal": 5, "motor": 6, "total": None}}},
-    {"neuro_exam": {"glasgow": {"eye": True, "verbal": 5, "motor": 6, "total": 12}}},
     {"neuro_exam": {"rankin": -1}}, {"neuro_exam": {"rankin": 6}},
     {"neuro_exam": {"rankin": 2.5}},
     {"neuro_exam": {"directed_flags": ["LOTE inventado"]}},
@@ -227,7 +214,7 @@ async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, de
     if defect == "medications":
         lines[0] = lines[0].replace("utilizou", "mantém uso contínuo de")
     if defect == "neuro":
-        lines[1] = lines[1].replace("Glasgow 15/15", "Glasgow 14/15")
+        lines[1] = lines[1].replace("Rankin modificado 4", "Rankin modificado 3")
     if defect == "order":
         parts = lines[1].split(". ")
         neuro_index = next(i for i, p in enumerate(parts) if p.startswith("Exame neurológico:"))
@@ -257,7 +244,7 @@ async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, de
     data = json.loads(captured["input"])
     assert "patient_code" not in data
     assert "subjective_opening" in data and "objective_required" in data
-    assert data["neuro_exam"]["glasgow"]["total"] == 15
+    assert data["neuro_exam"]["mini_mental"]["score"] == 27
     assert data["age"] == visit.age
     assert "clinical_analysis" in data
 
@@ -303,6 +290,26 @@ def test_nurse_name_other_condition_and_sex_roundtrip(client, payload, monkeypat
     assert saved['sex'] == 'Masculino'
     assert client.post('/visits/generate-soap', json=data | {'companions': {'nurse_name': 'Ana'}}).status_code == 422
     assert client.post('/visits/generate-soap', json=data | {'conditions': ['Hipertenso']}).status_code == 422
+
+
+def test_womens_health_and_geriatric_screening_roundtrip(client, payload, monkeypatch):
+    monkeypatch.setattr(get_settings(), 'ai_enabled', False)
+    data = payload | {'womens_health': {'cervical': {'status': 'Em dia', 'year': 2024}, 'mammography': {'status': 'Atrasado / Solicitar'}},
+        'neuro_exam': {'geriatric_screening': {'flags': ['Perda de interesse nas atividades'], 'notes': 'Relato recente.'}}}
+    response = client.post('/visits/generate-soap', json=data)
+    assert response.status_code == 200
+    blocks = response.json()
+    assert 'Solicitar mamografia' in blocks['plan_text']
+    assert not blocks['subjective_text'].startswith('S:')
+    assert not blocks['objective_text'].startswith('O:')
+    assert not blocks['plan_text'].startswith('P:')
+    write = dict(visit=data, soap_text=blocks['full_text_fallback'], soap_blocks=blocks)
+    response = client.post('/visits/sync', json={'visits': [write]})
+    assert response.status_code == 200
+    saved = response.json()['saved'][0]
+    assert saved['visit']['womens_health']['cervical']['year'] == 2024
+    assert saved['visit']['neuro_exam']['geriatric_screening']['notes'] == 'Relato recente.'
+    assert client.get(f"/visits/{data['id']}").json()['soap_blocks'] == blocks
 
 
 @pytest.mark.parametrize('legacy', ['Outro', 'Não informado', ''])
