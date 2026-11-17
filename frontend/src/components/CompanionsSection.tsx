@@ -17,5 +17,6 @@ export default function CompanionsSection({ value: c, onChange }: { value: Compa
     <div className="exam-list">{c.has_acs && <label>Nome da ACS (opcional)<input maxLength={80} value={c.acs_name ?? ''} placeholder="Ex.: Maria" onChange={e => onChange({ ...c, acs_name: e.target.value || null })} /></label>}
     {c.has_student && <label>Nome do estudante (opcional)<input maxLength={80} value={c.student_name ?? ''} placeholder="Ex.: João" onChange={e => onChange({ ...c, student_name: e.target.value || null })} /></label>}
     {c.has_nurse && <label>Nome do enfermeiro(a) / técnico(a) (opcional)<input maxLength={80} value={c.nurse_name ?? ''} placeholder="Ex.: Ana" onChange={e => onChange({ ...c, nurse_name: e.target.value || null })}/></label>}</div>
+    {c.is_solo && <p className="small-note">Visita sem acompanhantes da equipe. O nome do médico responsável ainda não é registrado nesta versão.</p>}
   </section>
 }

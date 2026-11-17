@@ -20,7 +20,27 @@ export default function App() {
   const [rows, setRows] = useState<LocalVisit[]>([]), [ready, setReady] = useState(false)
   const [online, setOnline] = useState(navigator.onLine), [syncing, setSyncing] = useState(false), [aiBusy, setAiBusy] = useState(false)
   const [notice, setNotice] = useState(''), [storageError, setStorageError] = useState(''), [draftSaved, setDraftSaved] = useState(false)
-  const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW()
+  const swRegistration = useRef<ServiceWorkerRegistration | undefined>(undefined)
+  const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
+    onRegisteredSW(_url, registration) {
+      swRegistration.current = registration
+      if (navigator.onLine) void registration?.update().catch(() => {})
+    },
+  })
+  async function checkAppUpdate() {
+    if (!navigator.onLine) { setNotice('Conecte-se à internet para verificar atualizações.'); return }
+    try {
+      const registration = swRegistration.current ?? await navigator.serviceWorker?.getRegistration()
+      if (!registration) { setNotice('A atualização estará disponível após preparar o aplicativo para uso offline.'); return }
+      await registration.update()
+      setNotice('Verificação concluída. Se houver nova versão, toque em Atualizar aplicativo no aviso acima.')
+    } catch { setNotice('Não foi possível verificar a atualização agora. Seus dados continuam neste dispositivo.') }
+  }
+  useEffect(() => {
+    const check = () => { if (navigator.onLine) void swRegistration.current?.update().catch(() => {}) }
+    window.addEventListener('focus', check); window.addEventListener('online', check)
+    return () => { window.removeEventListener('focus', check); window.removeEventListener('online', check) }
+  }, [])
   const form = useRef<HTMLFormElement>(null)
   const editVersion = useRef(0)
   const currentEditor = useRef({ visit, soap })
@@ -120,7 +140,7 @@ export default function App() {
           {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
         </form>
       </>}
-      <footer className="main-footer">Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>Ambiente de validação · use casos fictícios ou anonimizados.</footer>
+      <footer className="main-footer">Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>Ambiente de validação · use casos fictícios ou anonimizados.<br/>Versão 0.1.1 · <button type="button" className="text-button" onClick={() => void checkAppUpdate()}>Verificar atualização</button></footer>
     </main></div>
     <nav className="mobile-nav" aria-label="Navegação principal"><button className={tab === 'visit' ? 'active' : ''} onClick={() => setTab('visit')}><HousePlus size={21}/>Visita</button><button className={tab === 'history' ? 'active' : ''} onClick={() => setTab('history')}><ClipboardList size={21}/>Histórico {pending > 0 && `(${pending})`}</button></nav>
   </div>
