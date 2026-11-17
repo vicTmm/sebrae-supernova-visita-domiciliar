@@ -113,7 +113,16 @@ Endpoints principais em `/docs`: `POST /visits/generate-soap`, `POST /visits/syn
 
 Worker: **`sebrae-supernova-visita-domiciliar`**. O frontend PWA é servido por Workers Static Assets. O backend FastAPI/SQLite permanece separado. Sem `API_ORIGIN`, esta publicação funciona em **modo local**: gera SOAP, permite revisão/cópia e salva no IndexedDB; a sincronização e a IA externa aguardam uma API pública. `/health` informa `api_configured: false`, e `/visits` retorna 503 em vez de HTML ou confirmação falsa de sincronização.
 
-Frontend publicado para validação: https://sebrae-supernova-visita-domiciliar.victmm.workers.dev. A conta de destino está fixada em `cloudflare.config.ts` e pode ser sobrescrita por `CLOUDFLARE_ACCOUNT_ID` de forma explícita. A primeira publicação desta configuração usa a versão `653faaf0-d90a-4c62-95f3-341ff6bbe4ee`.
+Frontend publicado para validação em [visitario.victmm.workers.dev](https://visitario.victmm.workers.dev/). O Worker desse endereço encaminha as requisições ao Worker do app por um vínculo de serviço. Cada deploy automático do app atualiza os dois endereços. O [endereço original](https://sebrae-supernova-visita-domiciliar.victmm.workers.dev/) continua disponível para acessar rascunhos e visitas salvos pelo navegador naquela origem.
+
+Para republicar somente o Worker do endereço curto, instale as dependências em `frontend` e execute os comandos abaixo a partir de `frontend/visitario-address`.
+
+```powershell
+node ../node_modules/vite/bin/vite.js build
+node ../node_modules/cf/bin/cf deploy --prebuilt --mode production
+```
+
+A conta de destino do Worker do app está fixada em `frontend/cloudflare.config.ts` e pode ser sobrescrita por `CLOUDFLARE_ACCOUNT_ID` de forma explícita. A primeira publicação dessa configuração usa a versão `653faaf0-d90a-4c62-95f3-341ff6bbe4ee`.
 
 Configuração em `frontend/cloudflare.config.ts` com CLI `cf` e Cloudflare Vite plugin. O build Cloudflare usa `--mode cloudflare`; o desenvolvimento local tradicional continua usando `npm.cmd run dev` e o proxy do Vite para a API no computador. Vite foi atualizado para a linha 7 para compatibilidade com o plugin Cloudflare. Para a CLI `cf` instalada, prefira Node.js 24.22+ (linha 24 LTS).
 
