@@ -1,13 +1,20 @@
 import { preventiveHistory, preventivePlan } from './screenings'
-import { evaluateClinical, cognitiveInterpretation } from './clinicalRules'
-import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalDomains, miniMentalTotal, type Visit, type SOAPOutput } from '../types/visit'
+import { evaluateClinical, cognitiveInterpretation, type ClinicalAlert } from './clinicalRules'
+import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalDomains, miniMentalTotal, conditionsForSex, type Visit, type Vitals, type SOAPOutput } from '../types/visit'
 import { completeIvcfAnswers, ivcfAgeBand, ivcfComorbidities, ivcfFollowUp, ivcfScore, ivcfStratum } from '../types/ivcf20'
+import { formatLabNumber, labFields, validateLabResults, type LabResults } from '../types/labResults'
 export const stripSoapPrefix = (s: string) => s.replace(/^\s*(?:[SOAP]\s*:\s*)+/i, '')
 const clean = (s: string) => s.replace(/[*_`#~]/g, '').replace(/\s+/g, ' ').trim()
 const planTopics = (s: string) => s.split(/\r?\n/).map(line => clean(line.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'))
   .replace(/^(?:(?:P|Plano)\s*:\s*|[-–—•]+\s+|\d+[.)]\s+)+/i, ''))
   .filter(Boolean).map(topic => /[.!?]$/.test(topic) ? topic : topic + '.')
 export function clinicalRuleError(v: Visit): string | null {
+  if (v.sex === 'Masculino') {
+    const available = conditionsForSex(v.sex)
+    if (v.conditions.some(condition => !available.includes(condition))) return 'Confira o sexo e as condições obstétricas selecionadas.'
+  }
+  const labError = v.lab_results && validateLabResults(v.lab_results)
+  if (labError) return labError
   const c = v.companions
   if (c.is_solo && (c.has_acs || c.has_student || c.has_nurse)) return 'Apenas Médico não pode ser combinado com acompanhantes.'
   if ((c.acs_name?.trim() && !c.has_acs) || (c.student_name?.trim() && !c.has_student) || (c.nurse_name?.trim() && !c.has_nurse)) return 'Selecione o acompanhante correspondente ao nome informado.'
@@ -70,10 +77,28 @@ export function neurologicalText(v: Visit): string {
 }
 const paragraph = (parts: string[]) => parts.filter(s => clean(s)).map(s => clean(s).replace(/[.\s]+$/, '')).join('. ') + '.'
 const joined = (parts: string[]) => parts.length < 2 ? parts.join('') : `${parts.slice(0, -1).join(', ')} e ${parts.at(-1)}`
+function laboratoryText(results: LabResults | null | undefined): string {
+  if (!results) return ''
+  const values: string[] = []
+  for (const field of labFields) {
+    const value = results[field.key]
+    if (!field.short || value == null) continue
+    if ('unit' in field && typeof value === 'number') {
+      const separator = field.unit === '%' ? '' : ' '
+      values.push(`${field.short} ${formatLabNumber(value)}${separator}${field.unit}`)
+    } else if (typeof value === 'string') {
+      const text = clean(value.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'))
+      if (text) values.push(`${field.short}: ${text}`)
+    }
+  }
+  if (!values.length) return ''
+  const date = results.exam_date ? ` (${results.exam_date.split('-').reverse().join('/')})` : ''
+  return `Exames laboratoriais externos${date}: ${values.join(' | ')}`
+}
 export const vitalUnits: Record<string, string> = { PAS: 'mmHg', PAD: 'mmHg', SatO2: '', FC: 'bpm', FR: 'irpm', Tax: '', HGT: 'mg/dL' }
+const vitalOutputFields = [['systolic', 'PAS', ''], ['diastolic', 'PAD', ''], ['oxygen_saturation', 'SatO2', '%'], ['heart_rate', 'FC', ''], ['respiratory_rate', 'FR', ''], ['temperature', 'Tax', ' °C'], ['glucose', 'HGT', '']] as const
 export function formattedVitals(v: Visit): Record<string, string> {
-  const fields = [['systolic', 'PAS', ''], ['diastolic', 'PAD', ''], ['oxygen_saturation', 'SatO2', '%'], ['heart_rate', 'FC', ''], ['respiratory_rate', 'FR', ''], ['temperature', 'Tax', ' °C'], ['glucose', 'HGT', '']] as const
-  return Object.fromEntries(fields.filter(([key]) => v.vitals[key] !== null).map(([key, label, unit]) => [label, String(v.vitals[key]).replace('.', ',') + unit]))
+  return Object.fromEntries(vitalOutputFields.filter(([key]) => v.vitals[key] !== null).map(([key, label, unit]) => [label, String(v.vitals[key]).replace('.', ',') + unit]))
 }
 export function assembleFullText(result: Omit<SOAPOutput, 'full_text_fallback'>): string {
   const values = Object.entries(result.vitals_formatted).map(([key, val]) => `${key} ${val}${vitalUnits[key] ? ` ${vitalUnits[key]}` : ''}`).join(', ')
@@ -91,6 +116,73 @@ export function withSoapEdits(result: SOAPOutput, edits: Partial<SOAPOutput>): S
 }
 export function normalizeSoapBlocks(result: SOAPOutput): SOAPOutput {
   return [result.subjective_text, result.objective_text, result.plan_text, result.assessment_text ?? ''].some(s => stripSoapPrefix(s) !== s) ? withSoapEdits(result, {}) : result
+}
+
+const observationText = (alerts: ClinicalAlert[]) => {
+  const observations = alerts.filter(alert => alert.code !== 'cognition').map(alert => alert.observation)
+  return observations.length ? `Parâmetros para revisão clínica: ${paragraph(observations)}` : ''
+}
+const suggestionTopic = (suggestion: string) => `Sugestão para revisão médica: ${suggestion}.`
+
+export function updateSoapVitals(visit: Visit, result: SOAPOutput, vitals: Vitals): { visit: Visit; result: SOAPOutput; needsReview: boolean } {
+  const changed = vitalOutputFields.filter(([key]) => visit.vitals[key] !== vitals[key])
+  if (!changed.length) return { visit, result, needsReview: false }
+
+  const nextVisit = { ...visit, vitals }
+  const previousValues = formattedVitals(visit)
+  const nextValues = formattedVitals(nextVisit)
+  const values = { ...result.vitals_formatted }
+  let needsReview = changed.some(([, label]) => previousValues[label] !== values[label])
+  for (const [, label] of changed) {
+    if (label in nextValues) values[label] = nextValues[label]
+    else delete values[label]
+  }
+  const vitalsFormatted = Object.fromEntries(vitalOutputFields.flatMap(([, label]) => label in values ? [[label, values[label]]] : []))
+  for (const [label, value] of Object.entries(values)) if (!Object.hasOwn(vitalsFormatted, label)) vitalsFormatted[label] = value
+
+  const before = evaluateClinical(visit)
+  const after = evaluateClinical(nextVisit)
+  const oldObservations = observationText(before)
+  const newObservations = observationText(after)
+  let objective = result.objective_text
+  if (oldObservations !== newObservations) {
+    const start = oldObservations ? objective.indexOf(oldObservations) : -1
+    if (start >= 0) {
+      const prefixEnd = !newObservations && objective[start - 1] === ' ' ? start - 1 : start
+      objective = objective.slice(0, prefixEnd) + newObservations + objective.slice(start + oldObservations.length)
+    } else {
+      const removed = before.filter(alert => alert.code !== 'cognition' && !after.some(next => next.observation === alert.observation))
+      for (const alert of removed) {
+        const standalone = observationText([alert])
+        if (objective.includes(standalone)) {
+          const index = objective.indexOf(standalone)
+          const prefixEnd = objective[index - 1] === ' ' ? index - 1 : index
+          objective = objective.slice(0, prefixEnd) + objective.slice(index + standalone.length)
+        } else needsReview = true
+      }
+      const added = after.filter(alert => !before.some(previous => previous.observation === alert.observation) && !objective.includes(alert.observation))
+      objective = [objective, ...added.map(alert => observationText([alert]))].filter(Boolean).join(' ')
+    }
+  }
+
+  const oldSuggestions = new Set(before.map(alert => alert.suggestion))
+  const newSuggestions = new Set(after.map(alert => alert.suggestion))
+  const removedTopics = [...oldSuggestions].filter(text => !newSuggestions.has(text)).map(text => '- ' + suggestionTopic(text))
+  const addedTopics = [...newSuggestions].filter(text => !oldSuggestions.has(text)).map(text => '- ' + suggestionTopic(text))
+  let plan = result.plan_text
+  if (removedTopics.length || addedTopics.length) {
+    const lines = plan.split(/\r?\n/)
+    if (removedTopics.some(topic => !lines.some(line => line.trim() === topic))) needsReview = true
+    plan = lines.filter(line => !removedTopics.includes(line.trim())).join('\n')
+    const missingTopics = addedTopics.filter(topic => !lines.some(line => line.trim() === topic))
+    if (missingTopics.length) plan = [plan, ...missingTopics].filter(Boolean).join('\n')
+  }
+
+  return {
+    visit: nextVisit,
+    result: withSoapEdits(result, { vitals_formatted: vitalsFormatted, objective_text: objective, plan_text: plan }),
+    needsReview,
+  }
 }
 export function localSoapOutput(v: Visit): SOAPOutput {
   const error = clinicalRuleError(v)
@@ -115,15 +207,19 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   else if (v.exam.abdomen.status === 'Sem alterações') physical.push('Exame abdominal sem alterações ao exame')
   const actionText = { 'Manutenção de receita': 'Mantenho a receita em uso', 'Ajuste medicamentoso': 'Ajusto a medicação', 'Solicitação de exames': 'Solicito exames', 'Encaminhamento especialista': 'Encaminho para avaliação especializada', 'Agendamento de retorno VD': 'Programo retorno em visita domiciliar', 'Orientações gerais': 'Forneço orientações gerais' }
   const alerts = evaluateClinical(v)
-  const observations = alerts.filter(a => a.code !== 'cognition').map(a => a.observation)
   const suggestions = [...new Set(alerts.map(a => a.suggestion))]
   if (ivcf && (ivcf.score >= 15 || ivcf.comorbidities.includes('polypharmacy'))) suggestions.push(ivcfFollowUp)
-  const objective = (physical.length ? paragraph(physical) : 'Exame físico não registrado.') + (observations.length ? ` Parâmetros para revisão clínica: ${paragraph(observations)}` : '')
+  const labs = laboratoryText(v.lab_results)
+  const objective = [
+    physical.length ? paragraph(physical) : 'Exame físico não registrado.',
+    labs ? paragraph([labs]) : '',
+    observationText(alerts),
+  ].filter(Boolean).join(' ')
   const topics = planTopics([...v.actions.map(action => actionText[action]), v.plan_notes].join('\n'))
   for (const action of preventivePlan(v)) if (!topics.some(topic => topic.includes(action))) topics.push(...planTopics(action))
   if (!topics.length) topics.push('Conduta não registrada.')
   for (const suggestion of suggestions) {
-    const topic = `Sugestão para revisão médica: ${suggestion}.`
+    const topic = suggestionTopic(suggestion)
     if (!topics.includes(topic)) topics.push(topic)
   }
   const result = { subjective_text: s, objective_text: objective, vitals_formatted: formattedVitals(v), plan_text: topics.map(topic => `- ${topic}`).join('\n'), assessment_text: clean(v.assessment) || null, vitals_context: clean(v.vitals_context), source: 'deterministic' }

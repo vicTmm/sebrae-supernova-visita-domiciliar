@@ -6534,5 +6534,157 @@
       "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 40/40 — Idoso Frágil (alto risco); critério de polifarmácia assinalado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "source": "deterministic"
     }
+  },
+  {
+    "name": "external_labs_all_groups",
+    "visit": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "visited_at": "2026-11-17T12:00:00Z",
+      "patient_code": "TEST",
+      "age": 78,
+      "sex": "Feminino",
+      "womens_health": null,
+      "conditions": [
+        "Diabético"
+      ],
+      "other_condition": "",
+      "companions": {
+        "has_acs": false,
+        "acs_name": null,
+        "has_student": false,
+        "student_name": null,
+        "has_nurse": false,
+        "nurse_name": null,
+        "is_solo": false
+      },
+      "complaints": [],
+      "adherence": "Não informado",
+      "subjective_notes": "",
+      "intercurrence_details": {},
+      "medications_in_use": "",
+      "recent_medications": null,
+      "vitals": {
+        "systolic": null,
+        "diastolic": null,
+        "heart_rate": null,
+        "respiratory_rate": null,
+        "oxygen_saturation": null,
+        "temperature": null,
+        "glucose": null
+      },
+      "vitals_context": "",
+      "bp_target": null,
+      "exam": {
+        "cardiovascular": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "respiratory": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "abdomen": {
+          "status": "Não avaliado",
+          "notes": ""
+        },
+        "general": {
+          "status": "Não avaliado",
+          "notes": ""
+        }
+      },
+      "neuro_exam": null,
+      "assessment": "",
+      "actions": [],
+      "plan_notes": "",
+      "lab_results": {
+        "exam_date": "2026-11-10",
+        "creatinina": 1.4,
+        "ureia": 48,
+        "sodio": 140,
+        "potassio": 4.3,
+        "ldl": 142,
+        "hdl": 38,
+        "colesterol_total": 205,
+        "triglicerideos": 125,
+        "glicemia_jejum": 115,
+        "hba1c": 7,
+        "tsh": 0.3,
+        "t4_livre": 1.3,
+        "hb": 11.9,
+        "ht": 36,
+        "leucocitos": 5100,
+        "plaquetas": 180000,
+        "hemograma_resumo": "Conforme laudo",
+        "tgo_ast": 27,
+        "tgp_alt": 31,
+        "ggt": 40,
+        "fosfatase_alcalina": 85,
+        "bilirrubinas": "BT 1,0 mg/dL",
+        "proteinas_totais_fracoes": "Albumina 3,9 g/dL",
+        "psa": 4.25,
+        "eas_urina": "  ",
+        "outros_exames": "Ferritina 90 ng/mL"
+      }
+    },
+    "analysis": [
+      {
+        "code": "lab_ldl",
+        "fields": [
+          "ldl"
+        ],
+        "observation": "LDL 142 mg/dL: atinge ou supera 100 mg/dL na triagem do diabetes",
+        "suggestion": "Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina"
+      },
+      {
+        "code": "lab_hba1c",
+        "fields": [
+          "hba1c"
+        ],
+        "observation": "HbA1c 7%: atinge ou supera 7% na triagem do diabetes",
+        "suggestion": "Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica"
+      },
+      {
+        "code": "lab_creatinine",
+        "fields": [
+          "creatinina"
+        ],
+        "observation": "Cr 1,4 mg/dL: acima de 1,3 mg/dL na triagem",
+        "suggestion": "Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico"
+      },
+      {
+        "code": "lab_tsh",
+        "fields": [
+          "tsh"
+        ],
+        "observation": "TSH 0,3 mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L",
+        "suggestion": "Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico"
+      },
+      {
+        "code": "lab_psa",
+        "fields": [
+          "psa"
+        ],
+        "observation": "PSA 4,25 ng/mL: acima de 4 ng/mL na triagem",
+        "suggestion": "Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional"
+      },
+      {
+        "code": "lab_hb",
+        "fields": [
+          "hb"
+        ],
+        "observation": "Hb 11,9 g/dL: abaixo de 12 g/dL na triagem",
+        "suggestion": "Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa"
+      }
+    ],
+    "soap": {
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "objective_text": "Exame físico não registrado. Exames laboratoriais externos (10/11/2026): Cr 1,4 mg/dL | Ur 48 mg/dL | Na 140 mEq/L | K 4,3 mEq/L | CT 205 mg/dL | LDL 142 mg/dL | HDL 38 mg/dL | TG 125 mg/dL | Glicemia de jejum 115 mg/dL | HbA1c 7% | TSH 0,3 mUI/L | T4L 1,3 ng/dL | Hb 11,9 g/dL | Ht 36% | Leucócitos 5100 /mm³ | Plaquetas 180000 /mm³ | Hemograma: Conforme laudo | TGO/AST 27 U/L | TGP/ALT 31 U/L | GGT 40 U/L | FA 85 U/L | Bilirrubinas: BT 1,0 mg/dL | Proteínas totais e frações: Albumina 3,9 g/dL | PSA 4,25 ng/mL | Outros exames: Ferritina 90 ng/mL. Parâmetros para revisão clínica: LDL 142 mg/dL: atinge ou supera 100 mg/dL na triagem do diabetes. HbA1c 7%: atinge ou supera 7% na triagem do diabetes. Cr 1,4 mg/dL: acima de 1,3 mg/dL na triagem. TSH 0,3 mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L. PSA 4,25 ng/mL: acima de 4 ng/mL na triagem. Hb 11,9 g/dL: abaixo de 12 g/dL na triagem.",
+      "vitals_formatted": {},
+      "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina.\n- Sugestão para revisão médica: Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica.\n- Sugestão para revisão médica: Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico.\n- Sugestão para revisão médica: Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico.\n- Sugestão para revisão médica: Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional.\n- Sugestão para revisão médica: Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa.",
+      "assessment_text": null,
+      "vitals_context": "",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame físico não registrado. Exames laboratoriais externos (10/11/2026): Cr 1,4 mg/dL | Ur 48 mg/dL | Na 140 mEq/L | K 4,3 mEq/L | CT 205 mg/dL | LDL 142 mg/dL | HDL 38 mg/dL | TG 125 mg/dL | Glicemia de jejum 115 mg/dL | HbA1c 7% | TSH 0,3 mUI/L | T4L 1,3 ng/dL | Hb 11,9 g/dL | Ht 36% | Leucócitos 5100 /mm³ | Plaquetas 180000 /mm³ | Hemograma: Conforme laudo | TGO/AST 27 U/L | TGP/ALT 31 U/L | GGT 40 U/L | FA 85 U/L | Bilirrubinas: BT 1,0 mg/dL | Proteínas totais e frações: Albumina 3,9 g/dL | PSA 4,25 ng/mL | Outros exames: Ferritina 90 ng/mL. Parâmetros para revisão clínica: LDL 142 mg/dL: atinge ou supera 100 mg/dL na triagem do diabetes. HbA1c 7%: atinge ou supera 7% na triagem do diabetes. Cr 1,4 mg/dL: acima de 1,3 mg/dL na triagem. TSH 0,3 mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L. PSA 4,25 ng/mL: acima de 4 ng/mL na triagem. Hb 11,9 g/dL: abaixo de 12 g/dL na triagem.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina.\n- Sugestão para revisão médica: Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica.\n- Sugestão para revisão médica: Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico.\n- Sugestão para revisão médica: Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico.\n- Sugestão para revisão médica: Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional.\n- Sugestão para revisão médica: Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa.",
+      "source": "deterministic"
+    }
   }
 ]

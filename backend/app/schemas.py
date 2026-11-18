@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from enum import Enum
 from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field, model_validator, field_validator
@@ -284,6 +284,52 @@ class NeuroExam(StrictModel):
         return self
 
 
+LabNumber = Annotated[float, Field(ge=0, le=1_000_000_000, strict=True, allow_inf_nan=False)]
+LabPercentage = Annotated[float, Field(ge=0, le=100, strict=True, allow_inf_nan=False)]
+LabCount = Annotated[int, Field(ge=0, le=1_000_000_000, strict=True)]
+LabText = Annotated[str, Field(max_length=320)]
+
+
+class LabResults(StrictModel):
+    exam_date: date | None = None
+    hb: LabNumber | None = None
+    ht: LabPercentage | None = None
+    leucocitos: LabCount | None = None
+    plaquetas: LabCount | None = None
+    hemograma_resumo: LabText | None = None
+    creatinina: LabNumber | None = None
+    ureia: LabNumber | None = None
+    sodio: LabNumber | None = None
+    potassio: LabNumber | None = None
+    colesterol_total: LabNumber | None = None
+    ldl: LabNumber | None = None
+    hdl: LabNumber | None = None
+    triglicerideos: LabNumber | None = None
+    ldl_target: Annotated[float, Field(gt=0, le=1_000_000_000, strict=True, allow_inf_nan=False)] | None = None
+    glicemia_jejum: LabNumber | None = None
+    hba1c: LabPercentage | None = None
+    tsh: LabNumber | None = None
+    t4_livre: LabNumber | None = None
+    tgo_ast: LabNumber | None = None
+    tgp_alt: LabNumber | None = None
+    ggt: LabNumber | None = None
+    fosfatase_alcalina: LabNumber | None = None
+    bilirrubinas: LabText | None = None
+    proteinas_totais_fracoes: LabText | None = None
+    psa: LabNumber | None = None
+    eas_urina: LabText | None = None
+    outros_exames: LabText | None = None
+
+    @field_validator('exam_date', mode='before')
+    @classmethod
+    def calendar_date(cls, value):
+        if value is None or type(value) is date:
+            return value
+        if isinstance(value, str) and re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}', value):
+            return date.fromisoformat(value)
+        raise ValueError('Informe a data do exame no formato AAAA-MM-DD.')
+
+
 class VDInput(StrictModel):
     id: UUID
     visited_at: datetime
@@ -302,6 +348,7 @@ class VDInput(StrictModel):
     recent_medications: str | None = Field(default=None, max_length=1000)
     vitals: Vitals = Field(default_factory=Vitals)
     vitals_context: str = Field(default="", max_length=1000)
+    lab_results: LabResults | None = None
     bp_target: BloodPressureTarget | None = None
     exam: PhysicalExam = Field(default_factory=PhysicalExam)
     neuro_exam: NeuroExam | None = None
@@ -360,9 +407,12 @@ class VDInput(StrictModel):
         return self
 
 
+OBJECTIVE_TEXT_LIMIT = 10_000
+
+
 class SOAPOutput(StrictModel):
     subjective_text: str = Field(max_length=24000)
-    objective_text: str = Field(max_length=6000)
+    objective_text: str = Field(max_length=OBJECTIVE_TEXT_LIMIT)
     vitals_formatted: dict[str, str]
     plan_text: str = Field(max_length=6000)
     assessment_text: str | None = Field(default=None, max_length=6000)
@@ -380,7 +430,7 @@ class SOAPOutput(StrictModel):
 
 class SOAPNarrative(StrictModel):
     subjective_text: str = Field(min_length=1, max_length=24000)
-    objective_text: str = Field(min_length=1, max_length=6000)
+    objective_text: str = Field(min_length=1, max_length=OBJECTIVE_TEXT_LIMIT)
     plan_text: str = Field(min_length=1, max_length=6000)
     assessment_text: str | None = Field(default=None, max_length=6000)
 

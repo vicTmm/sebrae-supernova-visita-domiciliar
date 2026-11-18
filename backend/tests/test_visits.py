@@ -69,6 +69,40 @@ def test_generate_and_crud(client, payload, monkeypatch):
     assert client.get("/health").json() == {"status": "ok"}
 
 
+def test_external_labs_generate_and_roundtrip(client, payload, monkeypatch):
+    monkeypatch.setattr(get_settings(), "ai_enabled", False)
+    labs = {"exam_date": "2026-11-10", "creatinina": 1.4, "ureia": 48, "ldl": 70,
+            "ldl_target": 70, "hdl": 38, "hba1c": 7.0, "tsh": 4.6, "psa": 2.1, "eas_urina": "Sem hematúria"}
+    visit = payload | {"lab_results": labs}
+    generated = client.post("/visits/generate-soap", json=visit)
+    assert generated.status_code == 200
+    blocks = generated.json()
+    expected = ("Exames laboratoriais externos (10/11/2026): Cr 1,4 mg/dL | Ur 48 mg/dL | LDL 70 mg/dL | "
+                "HDL 38 mg/dL | HbA1c 7% | TSH 4,6 mUI/L | PSA 2,1 ng/mL | EAS: Sem hematúria.")
+    assert expected in blocks["objective_text"]
+    assert "Plaquetas" not in blocks["objective_text"] and not {"ldl", "creatinina"} & blocks["vitals_formatted"].keys()
+    for topic in ("considerar indicação ou ajuste de estatina", "Revisar a meta individual de HbA1c",
+                  "Comparar a creatinina", "interpretar o TSH"):
+        assert any(line.startswith("- Sugestão para revisão médica:") and topic in line
+                   for line in blocks["plan_text"].splitlines())
+
+    saved = client.post("/visits/sync", json={"visits": [{
+        "visit": visit, "soap_text": blocks["full_text_fallback"], "soap_blocks": blocks,
+    }]})
+    assert saved.status_code == 200
+    reopened = client.get(f"/visits/{payload['id']}").json()
+    assert all(reopened["visit"]["lab_results"][key] == value for key, value in labs.items())
+    assert reopened["soap_blocks"] == blocks
+
+
+@pytest.mark.parametrize("labs", [
+    {"exam_date": "2026-02-30"}, {"exam_date": "2026-11-10T09:00:00"}, {"creatinina": "1.4"},
+    {"ldl": -1}, {"ht": 101}, {"plaquetas": 1.5}, {"ldl_target": 0}, {"outros_exames": "x" * 321},
+])
+def test_external_labs_reject_invalid_input(client, payload, labs):
+    assert client.post("/visits/generate-soap", json=payload | {"lab_results": labs}).status_code == 422
+
+
 def test_sync_idempotent_and_conflict(client, payload):
     data = {"visit": payload, "soap_text": "S: relato\nO: exame\nA: avaliação\nP: plano"}
     for _ in range(2):
@@ -210,7 +244,7 @@ async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, de
     import json
     monkeypatch.setattr(get_settings(), "ai_enabled", True)
     monkeypatch.setattr(get_settings(), "openai_api_key", "test")
-    visit = VDInput(**clinical_payload)
+    visit = VDInput(**(clinical_payload | {"lab_results": {"ldl": 142}}))
     fallback = deterministic_soap(visit)
     lines = [fallback.subjective_text, fallback.objective_text, fallback.assessment_text, fallback.plan_text]
     if defect == "opening":
@@ -253,6 +287,9 @@ async def test_ai_obeys_vitacare_or_falls_back(clinical_payload, monkeypatch, de
     assert data["neuro_exam"]["mini_mental"]["score"] == 27
     assert data["age"] == visit.age
     assert "clinical_analysis" in data
+    assert "lab_results" not in data
+    assert "Exames laboratoriais externos: LDL 142 mg/dL" in data["objective_required"]
+    assert result.plan_text.count("considerar indicação ou ajuste de estatina") == 1
 
 
 def test_advanced_clinical_input_roundtrip(client, payload, monkeypatch):

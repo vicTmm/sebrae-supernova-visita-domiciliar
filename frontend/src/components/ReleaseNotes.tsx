@@ -2,13 +2,12 @@ import { useRef, useState } from 'react'
 import { X } from 'lucide-react'
 
 const release = {
-  version: '0.1.3',
+  version: '0.1.4',
   changes: [
-    { title: 'Plano em tópicos', description: 'A evolução SOAP mantém o Subjetivo narrativo e apresenta as condutas e sugestões do Plano em tópicos.' },
-    { title: 'MEEM e IVCF-20', description: 'As duas avaliações podem ser aplicadas na visita. O app calcula os escores e os inclui no Objetivo do SOAP.' },
-    { title: 'Nova identidade', description: 'Visitário é o novo nome do app. O visual mudou no registro, na revisão SOAP e no histórico.' },
-    { title: 'Endereço mais curto', description: 'Use visitario.victmm.workers.dev. Visitas e rascunhos salvos pelo navegador continuam no endereço em que foram criados.' },
-    { title: 'Notas da versão', description: 'Consulte as mudanças e busque atualizações pelo rodapé.' },
+    { title: 'Sinais vitais editáveis na revisão', description: 'Corrija as medidas no Objetivo do SOAP e aplique as alterações na mesma tela.' },
+    { title: 'Exames laboratoriais externos', description: 'Registre no Objetivo os resultados trazidos na visita, com a data do exame quando disponível.' },
+    { title: 'Revisão dos resultados no SOAP', description: 'O Objetivo reúne os valores preenchidos. O Plano inclui sugestões de revisão para os resultados sinalizados.' },
+    { title: 'Navegação e condições', description: 'A barra lateral ganhou atalhos para o formulário. As opções de condições acompanhadas seguem o sexo selecionado.' },
   ],
 }
 

@@ -1,7 +1,8 @@
 import 'fake-indexeddb/auto'
 import { afterEach, expect, it } from 'vitest'
 import { exampleVisit, emptyVisit, upgradeVisit } from '../types/visit'
-import { localSoapOutput, restoreSoap, withSoapEdits } from './soap'
+import { localSoapOutput, restoreSoap, updateSoapVitals, withSoapEdits } from './soap'
+import { validateVitals } from '../types/vitals'
 import { db, saveLocal, applySync } from './offlineDb'
 
 afterEach(async () => { await db.visits.clear(); await db.drafts.clear() })
@@ -26,6 +27,46 @@ it('o texto completo reflete as edições de cada campo sem perder medidas', () 
   expect(output.full_text_fallback).toContain('Exame revisado.')
   expect(output.full_text_fallback).toContain('P: Retorno combinado.')
   expect(withSoapEdits(output, { assessment_text: null }).full_text_fallback).not.toContain('\nA:')
+})
+
+it('corrige medidas na revisão e atualiza os alertas sem perder texto revisado ou alertas de outros exames', async () => {
+  const visit = exampleVisit()
+  visit.lab_results = { ldl: 145 }
+  const generated = localSoapOutput(visit)
+  const reviewed = withSoapEdits(generated, {
+    subjective_text: 'História revisada.',
+    objective_text: 'Observação do médico. ' + generated.objective_text,
+    plan_text: generated.plan_text + '\n- Conduta revisada pelo médico.',
+    assessment_text: 'Avaliação revisada.',
+  })
+  const next = updateSoapVitals(visit, reviewed, { ...visit.vitals, systolic: 125, diastolic: 78, temperature: null })
+  expect(next.needsReview).toBe(false)
+  expect(next.result.subjective_text).toBe('História revisada.')
+  expect(next.result.assessment_text).toBe('Avaliação revisada.')
+  expect(next.result.objective_text).toContain('Observação do médico.')
+  expect(next.result.objective_text).toContain('LDL 145 mg/dL')
+  expect(next.result.objective_text).not.toContain('150/90')
+  expect(next.result.plan_text).toContain('Conduta revisada pelo médico.')
+  expect(next.result.plan_text).toContain('risco cardiovascular')
+  expect(next.result.plan_text).not.toContain('curva pressórica')
+  expect(next.result.full_text_fallback).toContain('PAS 125 mmHg, PAD 78 mmHg')
+  expect(next.result.full_text_fallback).not.toContain('Tax 36,5')
+  await saveLocal(next.visit, next.result.full_text_fallback, 0, next.result)
+  expect(await db.visits.get(visit.id)).toMatchObject({ visit: { vitals: { systolic: 125 } }, soap_blocks: next.result })
+})
+
+it('sinaliza revisão de menções manuais e permite corrigir novamente os alertas acrescentados', () => {
+  const visit = exampleVisit()
+  const result = withSoapEdits(localSoapOutput(visit), { objective_text: 'PA de 150/90 no relato.', plan_text: 'Conduta manual.' })
+  const first = updateSoapVitals(visit, result, { ...visit.vitals, systolic: 190 })
+  expect(first.needsReview).toBe(true)
+  expect(first.result.objective_text).toContain(result.objective_text)
+  expect(first.result.objective_text).toContain('PA 190/90')
+  expect(first.result.plan_text).toContain('Conduta manual.')
+  const second = updateSoapVitals(first.visit, first.result, { ...visit.vitals, systolic: 125, diastolic: 78 })
+  expect(second.result.objective_text).toBe(result.objective_text)
+  expect(second.result.plan_text).toBe('Conduta manual.')
+  expect(validateVitals({ ...visit.vitals, diastolic: null })).toContain('dois valores')
 })
 
 it('mantém os blocos editados no histórico, rascunho e retorno da sincronização', async () => {

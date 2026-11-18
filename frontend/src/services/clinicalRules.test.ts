@@ -4,7 +4,7 @@ import { expect, it } from 'vitest'
 import cases from '../../../backend/tests/fixtures/clinical_cases.json'
 import { evaluateClinical } from './clinicalRules'
 import { clinicalRuleError, localSoapOutput, restoreSoap } from './soap'
-import { exampleVisit, miniMentalTotal, upgradeVisit, type Visit } from '../types/visit'
+import { changeVisitSex, conditionsForSex, exampleVisit, miniMentalTotal, upgradeVisit, type Visit } from '../types/visit'
 import { db } from './offlineDb'
 
 it('produz os mesmos alertas e SOAP offline que o backend para todos os casos de referência', () => {
@@ -37,6 +37,37 @@ it('preserva avaliações estruturadas e os tópicos ao reabrir o SOAP', () => {
   expect(restoreSoap(visit, result.full_text_fallback).plan_text).toBe(result.plan_text)
   visit.age = 84
   expect(clinicalRuleError(visit)).toContain('faixa etária do IVCF-20')
+})
+
+it('separa exames externos dos sinais vitais e aplica apenas os alertas do perfil', () => {
+  const visit = exampleVisit()
+  visit.lab_results = { exam_date: '2026-11-10', creatinina: 1.3, ldl: 99, hba1c: 6.9, tsh: 0.4, psa: 4, hb: 12, plaquetas: 0 }
+  expect(evaluateClinical(visit).filter(alert => alert.code.startsWith('lab_'))).toEqual([])
+  expect(localSoapOutput(visit).objective_text).toContain('Plaquetas 0 /mm³')
+  visit.lab_results.ldl_target = 70
+  expect(evaluateClinical(visit).some(alert => alert.code === 'lab_ldl')).toBe(true)
+  visit.conditions.push('Gestante')
+  expect(evaluateClinical(visit).some(alert => alert.code.startsWith('lab_'))).toBe(false)
+  visit.lab_results = { exam_date: '2026-11-10', ldl_target: 70, eas_urina: ' ' }
+  expect(localSoapOutput(visit).objective_text).not.toContain('Exames laboratoriais')
+  visit.lab_results.plaquetas = 1.5
+  expect(clinicalRuleError(visit)).toContain('Plaquetas')
+})
+
+it('filtra condições exclusivas por sexo e remove seleções incompatíveis ao trocar', () => {
+  expect(conditionsForSex('Feminino')).toEqual(expect.arrayContaining(['Gestante', 'Puérpera', 'Hipertenso']))
+  expect(conditionsForSex('Masculino')).toEqual(conditionsForSex(null))
+  expect(conditionsForSex('Masculino')).not.toContain('Gestante')
+  expect(conditionsForSex('Masculino')).not.toContain('Puérpera')
+
+  const visit = exampleVisit()
+  visit.conditions = ['Gestante', 'Hipertenso', 'Outra']
+  visit.other_condition = 'Condição registrada'
+  const changed = changeVisitSex(visit, 'Masculino')
+  expect(changed.conditions).toEqual(['Hipertenso', 'Outra'])
+  expect(changed.other_condition).toBe(visit.other_condition)
+  expect(changeVisitSex(changed, 'Feminino').conditions).toEqual(changed.conditions)
+  expect(clinicalRuleError({ ...visit, sex: 'Masculino' })).toContain('condições obstétricas')
 })
 
 it('recusa detalhes de queixas não selecionadas e meta de PA incompleta', () => {

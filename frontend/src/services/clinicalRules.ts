@@ -1,5 +1,6 @@
 import type { Visit, Vitals, MiniMental } from '../types/visit'
-export interface ClinicalAlert { code: string; fields: (keyof Vitals)[]; observation: string; suggestion: string }
+import { formatLabNumber, type LabNumericKey } from '../types/labResults'
+export interface ClinicalAlert { code: string; fields: (keyof Vitals | LabNumericKey)[]; observation: string; suggestion: string }
 export const cognitiveCutoff = (years: number) => years === 0 ? 20 : years <= 4 ? 25 : years <= 8 ? 26 : 28
 export const mentalCutoff = (m: MiniMental): number | null => m.education_level ? ({ none: 20, '1_4': 25, '5_8': 26, over_8: 28 })[m.education_level] : m.education_years === null ? null : cognitiveCutoff(m.education_years)
 export function cognitiveInterpretation(m: MiniMental): string {
@@ -10,7 +11,7 @@ export function cognitiveInterpretation(m: MiniMental): string {
 }
 export function evaluateClinical(visit: Visit): ClinicalAlert[] {
   const v = visit.vitals, alerts: ClinicalAlert[] = []
-  const add = (code: string, fields: (keyof Vitals)[], observation: string, suggestion: string) => alerts.push({ code, fields, observation, suggestion })
+  const add = (code: string, fields: ClinicalAlert['fields'], observation: string, suggestion: string) => alerts.push({ code, fields, observation, suggestion })
   const adult = visit.age >= 18 && !visit.conditions.includes('Gestante') && !visit.conditions.includes('Puérpera')
   if (!adult) {
     if (Object.values(v).some(value => value !== null)) add('specific_profile', Object.keys(v) as (keyof Vitals)[], 'Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas', 'Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica')
@@ -40,6 +41,32 @@ export function evaluateClinical(visit: Visit): ClinicalAlert[] {
       }
     }
     if (v.temperature !== null && v.temperature >= 37.8) add('fever', ['temperature'], `Tax ${v.temperature} °C: febre`, 'Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica')
+  }
+  const labs = visit.lab_results
+  if (adult && labs) {
+    const diabetic = visit.conditions.includes('Diabético')
+    const target = labs.ldl_target
+    if (labs.ldl != null && (target != null ? labs.ldl >= target : diabetic ? labs.ldl >= 100 : labs.ldl > 130)) {
+      const threshold = target != null ? `atinge ou supera a meta registrada de <${formatLabNumber(target)} mg/dL`
+        : diabetic ? 'atinge ou supera 100 mg/dL na triagem do diabetes' : 'acima de 130 mg/dL na triagem'
+      add('lab_ldl', ['ldl'], `LDL ${formatLabNumber(labs.ldl)} mg/dL: ${threshold}`,
+        'Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina')
+    }
+    if (diabetic && labs.hba1c != null && labs.hba1c >= 7)
+      add('lab_hba1c', ['hba1c'], `HbA1c ${formatLabNumber(labs.hba1c)}%: atinge ou supera 7% na triagem do diabetes`,
+        'Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica')
+    if (labs.creatinina != null && labs.creatinina > 1.3)
+      add('lab_creatinine', ['creatinina'], `Cr ${formatLabNumber(labs.creatinina)} mg/dL: acima de 1,3 mg/dL na triagem`,
+        'Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico')
+    if (labs.tsh != null && (labs.tsh < 0.4 || labs.tsh > 4.5))
+      add('lab_tsh', ['tsh'], `TSH ${formatLabNumber(labs.tsh)} mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L`,
+        'Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico')
+    if (labs.psa != null && labs.psa > 4)
+      add('lab_psa', ['psa'], `PSA ${formatLabNumber(labs.psa)} ng/mL: acima de 4 ng/mL na triagem`,
+        'Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional')
+    if (labs.hb != null && labs.hb < 12)
+      add('lab_hb', ['hb'], `Hb ${formatLabNumber(labs.hb)} g/dL: abaixo de 12 g/dL na triagem`,
+        'Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa')
   }
   const m = visit.neuro_exam?.mini_mental
   if (m?.score != null && mentalCutoff(m) !== null && m.score < mentalCutoff(m)!) add('cognition', [], `MEEM ${m.score}/30: ${cognitiveInterpretation(m)}`, 'Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência')

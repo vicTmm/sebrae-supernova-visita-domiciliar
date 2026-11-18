@@ -5,6 +5,7 @@ Ausência de alerta não significa normalidade. Adultos; pediatria/gestação ex
 avaliação específica. MEEM: abaixo do corte (<), sem diagnóstico de demência.
 """
 from dataclasses import asdict, dataclass
+from decimal import Decimal
 from ..schemas import VDInput, MiniMental
 
 
@@ -14,6 +15,13 @@ class ClinicalAlert:
     fields: list[str]
     observation: str
     suggestion: str
+
+
+def format_lab_number(value: float) -> str:
+    if value == 0:
+        return '0'
+    text = format(Decimal(str(value)), 'f')
+    return (text.rstrip('0').rstrip('.') if '.' in text else text).replace('.', ',')
 
 
 def cognitive_cutoff(m: MiniMental) -> int | None:
@@ -71,6 +79,32 @@ def evaluate_clinical(visit: VDInput) -> list[ClinicalAlert]:
                 add(label, [key], f'{name} {value} {unit}: {label}', f'Reavaliar {name}, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica')
         if v.temperature is not None and v.temperature >= 37.8:
             add('fever', ['temperature'], f'Tax {v.temperature:g} °C: febre', 'Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica')
+    labs = visit.lab_results
+    if adult and labs:
+        diabetic = 'Diabético' in visit.conditions
+        target = labs.ldl_target
+        if labs.ldl is not None and (
+            labs.ldl >= target if target is not None else labs.ldl >= 100 if diabetic else labs.ldl > 130
+        ):
+            threshold = f'atinge ou supera a meta registrada de <{format_lab_number(target)} mg/dL' if target is not None else (
+                'atinge ou supera 100 mg/dL na triagem do diabetes' if diabetic else 'acima de 130 mg/dL na triagem')
+            add('lab_ldl', ['ldl'], f'LDL {format_lab_number(labs.ldl)} mg/dL: {threshold}',
+                'Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina')
+        if diabetic and labs.hba1c is not None and labs.hba1c >= 7:
+            add('lab_hba1c', ['hba1c'], f'HbA1c {format_lab_number(labs.hba1c)}%: atinge ou supera 7% na triagem do diabetes',
+                'Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica')
+        if labs.creatinina is not None and labs.creatinina > 1.3:
+            add('lab_creatinine', ['creatinina'], f'Cr {format_lab_number(labs.creatinina)} mg/dL: acima de 1,3 mg/dL na triagem',
+                'Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico')
+        if labs.tsh is not None and not 0.4 <= labs.tsh <= 4.5:
+            add('lab_tsh', ['tsh'], f'TSH {format_lab_number(labs.tsh)} mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L',
+                'Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico')
+        if labs.psa is not None and labs.psa > 4:
+            add('lab_psa', ['psa'], f'PSA {format_lab_number(labs.psa)} ng/mL: acima de 4 ng/mL na triagem',
+                'Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional')
+        if labs.hb is not None and labs.hb < 12:
+            add('lab_hb', ['hb'], f'Hb {format_lab_number(labs.hb)} g/dL: abaixo de 12 g/dL na triagem',
+                'Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa')
     m = visit.neuro_exam.mini_mental if visit.neuro_exam else None
     if m and cognitive_cutoff(m) is not None:
         cutoff = cognitive_cutoff(m)

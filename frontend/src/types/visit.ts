@@ -1,6 +1,26 @@
 import type { Ivcf20 } from './ivcf20'
+import type { LabResults } from './labResults'
+export type { LabResults } from './labResults'
 
 export const conditions = ['Acamado', 'Hipertenso', 'Diabético', 'DPOC/pneumopata', 'Gestante', 'Puérpera', 'Saúde Mental', 'Outra'] as const
+const conditionSex: Partial<Record<Visit['conditions'][number], NonNullable<Visit['sex']>>> = {
+  Gestante: 'Feminino',
+  Puérpera: 'Feminino',
+}
+
+export function conditionsForSex(sex: Visit['sex']) {
+  return conditions.filter(condition => !conditionSex[condition] || conditionSex[condition] === sex)
+}
+
+export function changeVisitSex(visit: Visit, sex: Visit['sex']): Visit {
+  const available = conditionsForSex(sex)
+  return {
+    ...visit,
+    sex,
+    conditions: visit.conditions.filter(condition => available.includes(condition)),
+    womens_health: sex === 'Feminino' ? visit.womens_health ?? null : null,
+  }
+}
 export const complaints = ['Sem intercorrências', 'Dor', 'Dispneia', 'Febre', 'Tontura', 'Queda', 'Ida à UPA/Emergência', 'Internação hospitalar'] as const
 export const actions = ['Manutenção de receita', 'Ajuste medicamentoso', 'Solicitação de exames', 'Encaminhamento especialista', 'Agendamento de retorno VD', 'Orientações gerais'] as const
 export const examLabels = { cardiovascular: 'Aparelho cardiovascular (ACV)', respiratory: 'Aparelho respiratório (AR)', abdomen: 'Abdome', general: 'Estado geral / hidratação' }
@@ -48,6 +68,7 @@ export interface NeuroExam { mini_mental?: MiniMental | null; ivcf20?: Ivcf20 | 
 export const emptyCompanions = (): Companions => ({ has_acs: false, acs_name: null, has_student: false, student_name: null, has_nurse: false, nurse_name: null, is_solo: false })
 export const emptyNeuro = (): NeuroExam => ({ mini_mental: null, geriatric_screening: null, rankin: null, directed_flags: [], neuro_notes: null })
 export interface Visit {
+  lab_results?: LabResults | null
   id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | null; womens_health?: WomensHealth | null;
   conditions: (typeof conditions)[number][]; other_condition?: string; complaints: (typeof complaints)[number][];
   adherence: 'Regular' | 'Irregular' | 'Não faz uso' | 'Não informado'; subjective_notes: string; intercurrence_details: Partial<Record<(typeof complaints)[number], string>>; bp_target?: { systolic: number | null; diastolic: number | null } | null; vitals_context: string;

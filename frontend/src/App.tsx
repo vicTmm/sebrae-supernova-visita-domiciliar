@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import { ArrowLeft, ArrowRight, Check, ClipboardList, Plus, RefreshCw, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
 import VisitForm from './components/VisitForm'
+import VisitSidebar from './components/VisitSidebar'
 import ReleaseNotes from './components/ReleaseNotes'
 import SoapResultCard from './components/SoapResultCard'
-import { vitalFields } from './components/VitalSigns'
-import { emptyVisit, exampleVisit, type Draft, type LocalVisit, type Visit, type SOAPOutput } from './types/visit'
+import { validateVitals } from './types/vitals'
+import { emptyVisit, exampleVisit, type Draft, type LocalVisit, type Visit, type Vitals, type SOAPOutput } from './types/visit'
 import { db, saveLocal } from './services/offlineDb'
 import { generateSoap, syncVisits } from './services/api'
-import { clinicalRuleError, localSoapOutput, restoreSoap } from './services/soap'
+import { clinicalRuleError, localSoapOutput, restoreSoap, updateSoapVitals } from './services/soap'
 
 const syncConfigured = import.meta.env.VITE_SYNC_CONFIGURED !== 'false'
 
@@ -82,13 +83,22 @@ export default function App() {
     if (!visit.conditions.length) { setNotice('Selecione ao menos uma condição acompanhada.'); return false }
     const ruleError = clinicalRuleError(visit)
     if (ruleError) { setNotice(ruleError); window.scrollTo({ top: 0, behavior: 'smooth' }); return false }
-    const { systolic: s, diastolic: d } = visit.vitals
-    if ((s === null) !== (d === null) || (s !== null && d !== null && s <= d)) { setNotice('Informe os dois valores da PA; sistólica deve superar a diastólica.'); return false }
-    for (const f of vitalFields) { const n = visit.vitals[f.key]; if (n !== null && (!Number.isFinite(n) || n < f.min || n > f.max || (!f.step && !Number.isInteger(n)))) { setNotice(`Confira o valor de ${f.label}.`); return false } }
+    const vitalsError = validateVitals(visit.vitals)
+    if (vitalsError) { setNotice(vitalsError); return false }
     if (Object.values(visit.exam).some(f => f.status === 'Alterado' && !f.notes.trim())) { setNotice('Descreva as alterações selecionadas no exame.'); return false }
     return true
   }
   function generate() { if (!validate()) return; setOutput(localSoapOutput(visit)); setReview(true); setNotice(''); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+  function applyVitals(vitals: Vitals) {
+    if (!result) return false
+    const next = updateSoapVitals(visit, result, vitals)
+    if (next.visit !== visit) {
+      editVersion.current++
+      setVisit(next.visit)
+      setOutput(next.result)
+    }
+    return next.needsReview
+  }
   async function ai() {
     if (!syncConfigured) { setNotice('Esta versão funciona em modo local. Revise a evolução já gerada para copiar ao VitaCare.'); return }
     if (soap && !confirm('O texto revisado será substituído pelo resultado do servidor. Continuar?')) return
@@ -126,7 +136,10 @@ export default function App() {
       </a>
       <span className={`connection ${online ? '' : 'offline'}`}>{online ? <Wifi size={16}/> : <WifiOff size={16}/>}<span>{online ? 'Com conexão' : 'Modo offline'}</span></span>
     </header>
-    <div className="workspace"><aside className="sidebar"><div className="workspace-label">ESPAÇO DE TRABALHO</div><button className={tab === 'visit' ? 'nav-item active' : 'nav-item'} onClick={() => openTab('visit')}><Plus size={19}/>Visita domiciliar</button><button className={tab === 'history' ? 'nav-item active' : 'nav-item'} onClick={() => openTab('history')}><ClipboardList size={19}/>Histórico<span className="count">{todayRows.length}</span></button><div className="sidebar-tip"><ShieldCheck/><strong>O cuidado continua, mesmo offline.</strong><p>O rascunho fica neste dispositivo. Visitas salvas sincronizam quando a API estiver acessível.</p><small>{offlineReady ? 'Aplicativo disponível offline' : 'Abra uma vez com internet para preparar o uso offline'}</small></div><div className="sidebar-footer">ESF · VISITAS DOMICILIARES<span>MVP / versão 0.1</span></div></aside>
+    <div className="workspace">
+      <VisitSidebar tab={tab} todayCount={todayRows.length} showSections={ready && tab === 'visit' && !review}
+        offlineReady={offlineReady || Boolean(navigator.serviceWorker?.controller)}
+        storageReady={ready} storageError={Boolean(storageError)} onSelect={openTab}/>
     <main><div className="page-heading"><div><h1>{tab === 'history' ? 'Histórico de visitas' : review ? 'Revisão da evolução SOAP' : 'Registro da visita'}</h1><p>{tab === 'history' ? (syncConfigured ? 'Registros salvos neste dispositivo e visitas de hoje vindas do servidor.' : 'Registros salvos neste dispositivo.') : review ? 'Confira a evolução antes de salvar ou copiar para o prontuário.' : 'Preencha os dados da visita para gerar a evolução SOAP.'}</p></div><span className="date-label">{new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short' }).format(new Date())}</span></div>
       <div className="status-strip"><span><span className="status-dot"/>{!syncConfigured ? 'Modo local · registros neste dispositivo' : pending ? `${pending} visita(s) aguardando sincronização` : 'Registros locais em dia'}</span><button type="button" onClick={() => void sync(true)} disabled={syncing}><RefreshCw size={14} className={syncing ? 'spin' : ''}/>{syncing ? 'Sincronizando' : 'Sincronizar'}</button></div>
       {needRefresh && <div className="notice">Nova versão disponível. Salve a visita antes de atualizar. <button onClick={() => void updateServiceWorker(true)}>Atualizar aplicativo</button></div>}
@@ -145,10 +158,10 @@ export default function App() {
               <div><h2>Caso clínico fictício</h2><p>Experimente o fluxo com um formulário preenchido.</p></div>
               <button type="button" className="secondary" onClick={() => newVisit(true)}>Preencher exemplo <ArrowRight size={16} aria-hidden="true"/></button>
             </section>
-            <VisitForm value={visit} onChange={change}/>
+            <VisitForm key={visit.id} value={visit} onChange={change}/>
             <div className="form-bottom"><span><ShieldCheck size={16}/>Seus dados ficam salvos neste dispositivo.</span><button type="submit" className="primary">Gerar evolução SOAP <ArrowRight size={19}/></button></div>
           </div>
-          {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
+          {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard key={visit.id} visit={visit} result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onVitalsChange={applyVitals} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
         </form>
       </>}
       <footer className="main-footer">

@@ -3,8 +3,8 @@ import logging
 import re
 from openai import AsyncOpenAI
 from ..config import get_settings
-from .clinical_rules import evaluate_clinical, clinical_analysis, cognitive_interpretation
-from ..schemas import VDInput, SOAPOutput, SOAPNarrative, Complaint, NeuroFlag, Action, ScreeningStatus
+from .clinical_rules import evaluate_clinical, clinical_analysis, cognitive_interpretation, format_lab_number
+from ..schemas import VDInput, SOAPOutput, SOAPNarrative, Complaint, NeuroFlag, Action, ScreeningStatus, LabResults
 
 logger = logging.getLogger(__name__)
 SYSTEM_PROMPT = """Você organiza registros de visita domiciliar ESF para os campos do VitaCare.
@@ -26,7 +26,7 @@ no Subjetivo, integrando ao relato. Não crie rastreios não preenchidos.
 As solicitações de preventive_plan_required serão acrescentadas pelo sistema;
 não as transforme em exames já realizados ou resultados disponíveis.
 O: retorne objective_required literalmente; é o exame físico validado, incluindo
-MEEM/escolaridade, IVCF-20 e testes neurológicos preenchidos. Sinais vitais vão em campos
+MEEM/escolaridade, IVCF-20, testes neurológicos e resultados laboratoriais externos preenchidos. Sinais vitais vão em campos
 numéricos separados e são montados pelo sistema, nunca pelo modelo. Não deduza
 LOTE, PIFR ou resultados de escalas. Não converta marcadores geriátricos em
 pontuação GDS/IVCF-20 ou diagnóstico de depressão.
@@ -44,6 +44,9 @@ literalmente. No P, escreva apenas as ações e notas informadas; as sugestões 
 acrescentadas pelo sistema em tópicos identificados como sugestões para revisão médica. Não altere
 limiares, prescreva doses, declare controle ou converta sugestão em ação realizada.
 Idade, comorbidades, meta individual e vitals_context contextualizam as medidas.
+Resultados laboratoriais são transcrições de laudos externos. Preserve a data,
+unidades e valores no Objetivo. Os alertas laboratoriais não autorizam iniciar ou
+ajustar medicação. O sistema acrescenta esses tópicos de revisão ao Plano.
 """
 
 
@@ -219,6 +222,45 @@ def make_output(visit: VDInput, subjective: str, objective: str, plan: str, sour
         full_text_fallback=full_text(s, o, vitals, p, assessment, context))
 
 
+LAB_FIELDS = (
+    ('creatinina', 'Cr', 'mg/dL'), ('ureia', 'Ur', 'mg/dL'),
+    ('sodio', 'Na', 'mEq/L'), ('potassio', 'K', 'mEq/L'),
+    ('colesterol_total', 'CT', 'mg/dL'), ('ldl', 'LDL', 'mg/dL'),
+    ('hdl', 'HDL', 'mg/dL'), ('triglicerideos', 'TG', 'mg/dL'),
+    ('glicemia_jejum', 'Glicemia de jejum', 'mg/dL'), ('hba1c', 'HbA1c', '%'),
+    ('tsh', 'TSH', 'mUI/L'), ('t4_livre', 'T4L', 'ng/dL'),
+    ('hb', 'Hb', 'g/dL'), ('ht', 'Ht', '%'),
+    ('leucocitos', 'Leucócitos', '/mm³'), ('plaquetas', 'Plaquetas', '/mm³'),
+    ('hemograma_resumo', 'Hemograma', ''),
+    ('tgo_ast', 'TGO/AST', 'U/L'), ('tgp_alt', 'TGP/ALT', 'U/L'),
+    ('ggt', 'GGT', 'U/L'), ('fosfatase_alcalina', 'FA', 'U/L'),
+    ('bilirrubinas', 'Bilirrubinas', ''), ('proteinas_totais_fracoes', 'Proteínas totais e frações', ''),
+    ('psa', 'PSA', 'ng/mL'), ('eas_urina', 'EAS', ''), ('outros_exames', 'Outros exames', ''),
+)
+
+
+def laboratory_text(results: LabResults | None) -> str:
+    if not results:
+        return ''
+    parts = []
+    for field, label, unit in LAB_FIELDS:
+        value = getattr(results, field)
+        if value is None:
+            continue
+        if unit:
+            separator = '' if unit == '%' else ' '
+            parts.append(f'{label} {format_lab_number(value)}{separator}{unit}')
+        elif text := plain(value):
+            parts.append(f'{label}: {text}')
+    if not parts:
+        return ''
+    suffix = ''
+    if results.exam_date:
+        year, month, day = results.exam_date.isoformat().split('-')
+        suffix = f' ({day}/{month}/{year})'
+    return f'Exames laboratoriais externos{suffix}: ' + ' | '.join(parts)
+
+
 def deterministic_soap(visit: VDInput) -> SOAPOutput:
     physical = []
     labels = [('general', 'Estado geral e hidratação'), ('cardiovascular', 'Ausculta cardíaca'),
@@ -245,6 +287,9 @@ def deterministic_soap(visit: VDInput) -> SOAPOutput:
     elif abdomen.status == 'Sem alterações':
         physical.append('Exame abdominal sem alterações ao exame')
     objective = paragraph(physical) if physical else 'Exame físico não registrado.'
+    labs = laboratory_text(visit.lab_results)
+    if labs:
+        objective += ' ' + paragraph([labs])
     observations = [a.observation for a in evaluate_clinical(visit) if a.code != 'cognition']
     if observations:
         objective += ' Parâmetros para revisão clínica: ' + paragraph(observations)
@@ -261,6 +306,7 @@ async def generate_soap(visit: VDInput) -> SOAPOutput:
         try:
             data = visit.model_dump(mode='json', exclude={
                 'id': True, 'patient_code': True, 'visited_at': True,
+                'lab_results': True,
                 'neuro_exam': {'mini_mental': {'items'}, 'ivcf20': {'answers'}},
             })
             data.update(preventive_history_required=preventive_history(visit), preventive_plan_required=preventive_plan(visit), clinical_analysis=clinical_analysis(visit), subjective_opening=subjective_opening(visit), objective_required=fallback.objective_text)
