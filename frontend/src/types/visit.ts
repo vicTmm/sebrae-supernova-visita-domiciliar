@@ -67,7 +67,36 @@ export const emptyWomensHealth = (): WomensHealth => ({ cervical: { status: null
 export interface NeuroExam { mini_mental?: MiniMental | null; ivcf20?: Ivcf20 | null; geriatric_screening?: GeriatricScreening | null; rankin: number | null; directed_flags: NeuroFlag[]; neuro_notes: string | null }
 export const emptyCompanions = (): Companions => ({ has_acs: false, acs_name: null, has_student: false, student_name: null, has_nurse: false, nurse_name: null, is_solo: false })
 export const emptyNeuro = (): NeuroExam => ({ mini_mental: null, geriatric_screening: null, rankin: null, directed_flags: [], neuro_notes: null })
+export const residentRelationships = [
+  { value: 'spouse', label: 'Cônjuge / companheiro(a)', plural: 'cônjuges / companheiros(as)' },
+  { value: 'child', label: 'Filho(a)', plural: 'filhos(as)' },
+  { value: 'grandchild', label: 'Neto(a)', plural: 'netos(as)' },
+  { value: 'parent', label: 'Pai / mãe', plural: 'pais / mães' },
+  { value: 'sibling', label: 'Irmão / irmã', plural: 'irmãos / irmãs' },
+  { value: 'other_relative', label: 'Outro familiar', plural: 'outros familiares' },
+  { value: 'friend', label: 'Amigo(a)', plural: 'amigos(as)' },
+  { value: 'housemate', label: 'Pessoa sem parentesco', plural: 'pessoas sem parentesco' },
+  { value: 'caregiver', label: 'Cuidador(a) residente', plural: 'cuidadores(as) residentes' },
+  { value: 'other', label: 'Outro vínculo', plural: 'outros vínculos' },
+] as const
+export interface ResidentPerson { name: string; phone: string }
+export interface ResidentGroup {
+  id: string; relationship: (typeof residentRelationships)[number]['value'] | ''; other_relationship: string
+  count: number; members: ResidentPerson[]
+}
+export function residentDescription(group: ResidentGroup): string {
+  const relation = residentRelationships.find(r => r.value === group.relationship)
+  const label = group.relationship === 'other' ? group.other_relationship.trim() : group.count === 1 ? relation?.label.toLowerCase() : relation?.plural
+  return `${group.count} ${label ?? 'pessoa(s)'}`
+}
+export interface Household {
+  residents?: ResidentGroup[]
+  living_arrangement: 'alone' | 'with_others' | null; cohabitants: string
+  caregiver_status: 'yes' | 'no' | null; caregiver_name: string; caregiver_relationship: string; caregiver_notes: string
+}
+export const emptyHousehold = (): Household => ({ living_arrangement: null, cohabitants: '', caregiver_status: null, caregiver_name: '', caregiver_relationship: '', caregiver_notes: '' })
 export interface Visit {
+  household?: Household | null
   lab_results?: LabResults | null
   id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | null; womens_health?: WomensHealth | null;
   conditions: (typeof conditions)[number][]; other_condition?: string; complaints: (typeof complaints)[number][];
@@ -90,7 +119,7 @@ export function upgradeVisit(v: Visit & { medications?: string }): Visit {
   const selected = v.complaints.filter(c => c !== 'Sem intercorrências')
   const legacyDetails = raw === undefined && selected.length ? v.subjective_notes : typeof raw === 'string' ? raw : ''
   const details = typeof raw === 'object' && raw !== null ? raw as Visit['intercurrence_details'] : selected.length && legacyDetails ? { [selected[0]]: legacyDetails } : {}
-  return { ...rest, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, ivcf20: v.neuro_exam.ivcf20 ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null }
+  return { ...rest, household: v.household ?? null, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, ivcf20: v.neuro_exam.ivcf20 ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null }
 }
 export function emptyVisit(): Visit {
   return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: null, womens_health: null, conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }

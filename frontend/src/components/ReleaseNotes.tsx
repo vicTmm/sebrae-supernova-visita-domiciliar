@@ -2,12 +2,12 @@ import { useRef, useState } from 'react'
 import { X } from 'lucide-react'
 
 const release = {
-  version: '0.1.4',
+  version: '0.1.5',
   changes: [
-    { title: 'Sinais vitais editáveis na revisão', description: 'Corrija as medidas no Objetivo do SOAP e aplique as alterações na mesma tela.' },
-    { title: 'Exames laboratoriais externos', description: 'Registre no Objetivo os resultados trazidos na visita, com a data do exame quando disponível.' },
-    { title: 'Revisão dos resultados no SOAP', description: 'O Objetivo reúne os valores preenchidos. O Plano inclui sugestões de revisão para os resultados sinalizados.' },
-    { title: 'Navegação e condições', description: 'A barra lateral ganhou atalhos para o formulário. As opções de condições acompanhadas seguem o sexo selecionado.' },
+    { title: 'Áudio para revisão da visita', description: 'Grave, pause e ouça áudios vinculados à visita, com autorização registrada, senha e armazenamento criptografado neste navegador.' },
+    { title: 'Prazo e exclusão dos áudios', description: 'Escolha 24 horas ou 7 dias para revisão. Exclua os áudios quando não forem mais necessários.' },
+    { title: 'Moradia e rede de apoio', description: 'Selecione os vínculos dos moradores e ajuste a quantidade pelas setas. Registre também quem é o cuidador.' },
+    { title: 'Identificação opcional dos moradores', description: 'Adicione nome e telefone quando necessário. Esses novos campos ficam fora do SOAP e da IA. Continue usando dados fictícios nesta fase de validação.' },
   ],
 }
 

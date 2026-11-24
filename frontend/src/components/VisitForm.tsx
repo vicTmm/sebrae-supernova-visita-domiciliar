@@ -5,6 +5,7 @@ import VitalSigns from './VitalSigns'
 import LabResultsSection from './LabResultsSection'
 import CompanionsSection from './CompanionsSection'
 import NeuroTestsSection from './NeuroTestsSection'
+import HouseholdSection from './HouseholdSection'
 import WomensHealthSection from './WomensHealthSection'
 import { evaluateClinical } from '../services/clinicalRules'
 function Choices<T extends string>({ options, value, onChange }: { options: readonly T[]; value: T[]; onChange: (v: T[]) => void }) {
@@ -33,6 +34,7 @@ export default function VisitForm({ value: v, onChange }: { value: Visit; onChan
         </div>}
       </fieldset>{v.conditions.includes('Outra') && <div className="contextual-details"><label>Qual outra condição?<input maxLength={500} value={v.other_condition ?? ''} placeholder="Ex.: doença de Parkinson" onChange={e => set('other_condition', e.target.value)}/></label></div>}
     </section>
+    <HouseholdSection value={v.household} onChange={x => set('household', x)}/>
     {v.sex === 'Feminino' && <WomensHealthSection value={v.womens_health ?? null} onChange={health => set('womens_health', health)}/>}
     <section className="panel visit-section" id="visit-subjective" tabIndex={-1}><div className="section-title"><HeartPulse/><div><span className="eyebrow">S · SUBJETIVO</span><h2>O que mudou desde a última visita?</h2></div><span className="step-number">02</span></div>
       <fieldset><legend>Queixas e intercorrências</legend><Choices options={complaints} value={v.complaints} onChange={x => {

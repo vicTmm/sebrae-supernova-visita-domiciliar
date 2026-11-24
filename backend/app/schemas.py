@@ -330,7 +330,57 @@ class LabResults(StrictModel):
         raise ValueError('Informe a data do exame no formato AAAA-MM-DD.')
 
 
+class ResidentPerson(StrictModel):
+    name: str = Field(default='', max_length=120)
+    phone: str = Field(default='', max_length=11, pattern=r'^(?:[1-9][0-9]{9,10})?$')
+
+    @model_validator(mode='after')
+    def named_contact(self):
+        if self.phone and not self.name:
+            raise ValueError('Informe o nome da pessoa de contato.')
+        return self
+
+
+class ResidentGroup(StrictModel):
+    id: UUID
+    relationship: Literal['spouse', 'child', 'grandchild', 'parent', 'sibling', 'other_relative', 'friend', 'housemate', 'caregiver', 'other']
+    other_relationship: str = Field(default='', max_length=100)
+    count: int = Field(ge=1, le=20, strict=True)
+    members: list[ResidentPerson] = Field(default_factory=list, max_length=20)
+
+    @model_validator(mode='after')
+    def coherent_group(self):
+        if self.relationship == 'other' and not self.other_relationship:
+            raise ValueError('Descreva o outro vínculo.')
+        if self.relationship != 'other' and self.other_relationship:
+            raise ValueError('Descrição de outro vínculo incompatível.')
+        if len(self.members) > self.count:
+            raise ValueError('Há mais pessoas identificadas que a quantidade informada.')
+        return self
+
+
+class Household(StrictModel):
+    residents: list[ResidentGroup] = Field(default_factory=list, max_length=10)
+    living_arrangement: Literal['alone', 'with_others'] | None = None
+    cohabitants: str = Field(default='', max_length=500)
+    caregiver_status: Literal['yes', 'no'] | None = None
+    caregiver_name: str = Field(default='', max_length=80)
+    caregiver_relationship: str = Field(default='', max_length=100)
+    caregiver_notes: str = Field(default='', max_length=500)
+
+    @model_validator(mode='after')
+    def coherent_household(self):
+        if (self.cohabitants or self.residents) and self.living_arrangement != 'with_others':
+            raise ValueError('Informe que mora com outras pessoas para descrever os moradores.')
+        if len({r.id for r in self.residents}) != len(self.residents):
+            raise ValueError('Grupos de moradores duplicados.')
+        if any([self.caregiver_name, self.caregiver_relationship, self.caregiver_notes]) and self.caregiver_status != 'yes':
+            raise ValueError('Informe a presença de cuidador para descrever os cuidados.')
+        return self
+
+
 class VDInput(StrictModel):
+    household: Household | None = None
     id: UUID
     visited_at: datetime
     patient_code: str = Field(min_length=1, max_length=30)

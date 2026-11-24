@@ -124,6 +124,36 @@ def subjective_opening(visit: VDInput) -> str:
             "Realizada visita domiciliar. Acompanhantes da equipe não informados.")
 
 
+def household_facts(visit: VDInput) -> list[str]:
+    h = visit.household
+    if not h:
+        return []
+    facts = []
+    if h.living_arrangement == 'alone':
+        facts.append('Relata morar sozinho(a)')
+    elif h.living_arrangement == 'with_others':
+        labels = {
+            'spouse': ('cônjuge / companheiro(a)', 'cônjuges / companheiros(as)'),
+            'child': ('filho(a)', 'filhos(as)'), 'grandchild': ('neto(a)', 'netos(as)'),
+            'parent': ('pai / mãe', 'pais / mães'), 'sibling': ('irmão / irmã', 'irmãos / irmãs'),
+            'other_relative': ('outro familiar', 'outros familiares'), 'friend': ('amigo(a)', 'amigos(as)'),
+            'housemate': ('pessoa sem parentesco', 'pessoas sem parentesco'),
+            'caregiver': ('cuidador(a) residente', 'cuidadores(as) residentes'),
+        }
+        groups = [f'{r.count} ' + (r.other_relationship if r.relationship == 'other' else labels[r.relationship][0 if r.count == 1 else 1]) for r in h.residents]
+        parts = [part for part in [', '.join(groups), h.cohabitants] if part]
+        facts.append('Reside com ' + '; relato complementar: '.join(parts) if parts else 'Relata morar com outras pessoas')
+    if h.caregiver_status == 'no':
+        facts.append('Relata não possuir cuidador de referência')
+    elif h.caregiver_status == 'yes':
+        name = f': {h.caregiver_name}' if h.caregiver_name else ' informado'
+        relation = f' (vínculo: {h.caregiver_relationship})' if h.caregiver_relationship else ''
+        facts.append(f'Cuidador de referência{name}{relation}')
+        if h.caregiver_notes:
+            facts.append(f'Sobre os cuidados: {h.caregiver_notes}')
+    return facts
+
+
 def subjective_facts(visit: VDInput) -> list[str]:
     labels = {Complaint.PAIN: 'dor', Complaint.DYSPNEA: 'dispneia', Complaint.FEVER: 'febre',
               Complaint.DIZZINESS: 'tontura', Complaint.FALL: 'queda',
@@ -134,7 +164,7 @@ def subjective_facts(visit: VDInput) -> list[str]:
         timeline = 'Desde a última visita domiciliar, houve relato de ' + joined([labels[c] for c in visit.complaints])
     else:
         timeline = 'Não foi informado como transcorreu o período desde a última visita domiciliar'
-    facts = [f"Em acompanhamento por {visit.other_condition}" if visit.other_condition else "", timeline, *[f"Quanto a {key.value.lower()}: {value}" for key, value in visit.intercurrence_details.items() if value], visit.subjective_notes]
+    facts = [*household_facts(visit), f"Em acompanhamento por {visit.other_condition}" if visit.other_condition else "", timeline, *[f"Quanto a {key.value.lower()}: {value}" for key, value in visit.intercurrence_details.items() if value], visit.subjective_notes]
     if visit.recent_medications:
         facts.append(f"No período recente, utilizou {visit.recent_medications}")
     if visit.medications_in_use:
@@ -306,7 +336,7 @@ async def generate_soap(visit: VDInput) -> SOAPOutput:
         try:
             data = visit.model_dump(mode='json', exclude={
                 'id': True, 'patient_code': True, 'visited_at': True,
-                'lab_results': True,
+                'lab_results': True, 'household': True,
                 'neuro_exam': {'mini_mental': {'items'}, 'ivcf20': {'answers'}},
             })
             data.update(preventive_history_required=preventive_history(visit), preventive_plan_required=preventive_plan(visit), clinical_analysis=clinical_analysis(visit), subjective_opening=subjective_opening(visit), objective_required=fallback.objective_text)
@@ -328,7 +358,7 @@ async def generate_soap(visit: VDInput) -> SOAPOutput:
                             and block_text(n.objective_text) == fallback.objective_text
                             and plan_is_list and all(note.rstrip('.') in model_plan for note in supplied_notes)):
                         plan = n.plan_text if visit.actions or supplied_notes else ''
-                        return make_output(visit, s, n.objective_text, plan, 'ai')
+                        return make_output(visit, paragraph([s, *household_facts(visit)]) if household_facts(visit) else s, n.objective_text, plan, 'ai')
         except Exception:
             logger.warning('IA indisponível; gerador determinístico utilizado.')
     return fallback

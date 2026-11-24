@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import { ArrowLeft, ArrowRight, Check, ClipboardList, Plus, RefreshCw, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
 import VisitForm from './components/VisitForm'
+import VisitAudio from './components/VisitAudio'
+import { listAudio, purgeExpiredAudio } from './services/audioVault'
 import VisitSidebar from './components/VisitSidebar'
 import ReleaseNotes from './components/ReleaseNotes'
 import SoapResultCard from './components/SoapResultCard'
@@ -14,6 +16,7 @@ import { clinicalRuleError, localSoapOutput, restoreSoap, updateSoapVitals } fro
 const syncConfigured = import.meta.env.VITE_SYNC_CONFIGURED !== 'false'
 
 export default function App() {
+  const [audioBusy, setAudioBusy] = useState(false)
   const [visit, setVisit] = useState<Visit>(emptyVisit)
   const [soap, setSoap] = useState(''), [source, setSource] = useState('local'), [revision, setRevision] = useState(0)
   const [result, setResult] = useState<SOAPOutput | null>(null)
@@ -33,6 +36,12 @@ export default function App() {
     const check = () => { if (navigator.onLine) void swRegistration.current?.update().catch(() => {}) }
     window.addEventListener('focus', check); window.addEventListener('online', check)
     return () => { window.removeEventListener('focus', check); window.removeEventListener('online', check) }
+  }, [])
+  useEffect(() => {
+    const purge = () => { void purgeExpiredAudio().catch(() => {}) }
+    purge()
+    const timer = setInterval(purge, 15000)
+    return () => clearInterval(timer)
   }, [])
   const form = useRef<HTMLFormElement>(null)
   const editVersion = useRef(0)
@@ -114,13 +123,28 @@ export default function App() {
     catch { setStorageError('Não foi possível salvar a visita. Mantenha esta tela aberta e copie a evolução.') }
   }
   function replace(v: Visit, text = '', rev = 0, blocks?: SOAPOutput | null) { editVersion.current++; setVisit(v); setOutput(text ? restoreSoap(v, text, blocks) : null); setRevision(rev); setTab('visit'); setReview(Boolean(text)); setNotice(''); window.scrollTo({ top: 0 }) }
-  function newVisit(example = false) { if ((visit.patient_code || soap) && !confirm('Iniciar outro registro? Salve a visita atual no histórico para mantê-la.')) return; replace(example ? exampleVisit() : emptyVisit()) }
+  async function canLeaveVisit() {
+    if (audioBusy) { setNotice('Encerre e salve o áudio antes de iniciar outra visita.'); return false }
+    try {
+      if ((await listAudio(visit.id)).length && !rows.some(r => r.visit.id === visit.id)) {
+        setNotice('Esta visita tem áudio. Gere a evolução e salve no histórico antes de abrir outra visita, ou exclua os áudios.')
+        return false
+      }
+      return true
+    } catch { setNotice('Não foi possível conferir os áudios desta visita. Tente novamente antes de iniciar outra.'); return false }
+  }
+  async function newVisit(example = false) {
+    if (!await canLeaveVisit()) return
+    if ((visit.patient_code || soap) && !confirm('Iniciar outro registro? Salve a visita atual no histórico para mantê-la.')) return
+    replace(example ? exampleVisit() : emptyVisit())
+  }
   async function resolve(row: LocalVisit, keepLocal: boolean) {
     if (!row.conflict) return
     try { await db.visits.put(keepLocal ? { ...row, revision: row.conflict.revision, conflict: undefined, localVersion: row.localVersion + 1, pending: true } : { ...row.conflict, pending: false, localVersion: row.localVersion + 1 }); await refresh(); if (keepLocal) void sync() }
     catch { setNotice('Não foi possível resolver o conflito. Tente novamente.') }
   }
   function openTab(next: 'visit' | 'history') {
+    if (audioBusy) { setNotice('Encerre e salve o áudio antes de trocar de tela.'); return }
     setTab(next)
     window.scrollTo({ top: 0 })
   }
@@ -148,9 +172,10 @@ export default function App() {
       {!ready ? <div className="panel">Abrindo armazenamento local…</div> : tab === 'history' ? <>
         <div className="history-heading"><h2>Hoje <span className="muted">/ {todayRows.length} visitas</span></h2><button className="secondary" onClick={() => newVisit()}><Plus size={16}/>Nova visita</button></div>
         {!rows.length && <div className="panel empty"><ClipboardList size={34}/><h2>Nenhuma visita salva</h2><p>As visitas salvas aparecerão neste histórico.</p><button className="primary" onClick={() => newVisit()}>Registrar primeira visita</button></div>}
-        {rows.map(row => <article className="panel history-card" key={row.visit.id}><div className="history-meta"><span className="patient-avatar">{row.visit.patient_code.slice(0, 2)}</span><div><h2>{row.visit.patient_code} <span className="muted">· {row.visit.age} anos</span></h2><p>{new Date(row.visit.visited_at).toLocaleString('pt-BR')} · {row.visit.conditions.join(', ')}</p></div><span className={`save-state ${row.pending ? 'waiting' : ''}`}>{row.conflict ? 'Conflito' : row.pending ? 'No dispositivo' : 'Sincronizada'}</span></div><p className="history-preview">{row.soap_text.slice(0, 180)}…</p><button className="text-button" onClick={() => { if ((visit.patient_code || soap) && visit.id !== row.visit.id && !confirm('Abrir esta visita substituirá o rascunho atual. Continuar?')) return; replace(row.visit, row.soap_text, row.revision, row.soap_blocks) }}>Abrir evolução <ArrowRight size={16}/></button>{row.conflict && <div className="conflict"><strong>Existe outra edição no servidor.</strong><pre>{row.conflict.soap_text}</pre><p>Seu texto local foi preservado. Escolha qual versão manter.</p><button className="secondary" onClick={() => void resolve(row, false)}>Usar versão do servidor</button><button className="secondary" onClick={() => void resolve(row, true)}>Manter minha versão e reenviar</button></div>}</article>)}
+        {rows.map(row => <article className="panel history-card" key={row.visit.id}><div className="history-meta"><span className="patient-avatar">{row.visit.patient_code.slice(0, 2)}</span><div><h2>{row.visit.patient_code} <span className="muted">· {row.visit.age} anos</span></h2><p>{new Date(row.visit.visited_at).toLocaleString('pt-BR')} · {row.visit.conditions.join(', ')}</p></div><span className={`save-state ${row.pending ? 'waiting' : ''}`}>{row.conflict ? 'Conflito' : row.pending ? 'No dispositivo' : 'Sincronizada'}</span></div><p className="history-preview">{row.soap_text.slice(0, 180)}…</p><button className="text-button" onClick={async () => { if (visit.id !== row.visit.id && !await canLeaveVisit()) return; if ((visit.patient_code || soap) && visit.id !== row.visit.id && !confirm('Abrir esta visita substituirá o rascunho atual. Continuar?')) return; replace(row.visit, row.soap_text, row.revision, row.soap_blocks) }}>Abrir evolução <ArrowRight size={16}/></button>{row.conflict && <div className="conflict"><strong>Existe outra edição no servidor.</strong><pre>{row.conflict.soap_text}</pre><p>Seu texto local foi preservado. Escolha qual versão manter.</p><button className="secondary" onClick={() => void resolve(row, false)}>Usar versão do servidor</button><button className="secondary" onClick={() => void resolve(row, true)}>Manter minha versão e reenviar</button></div>}</article>)}
       </> : <>
         <div className="form-topline"><div className="breadcrumb" aria-label="Etapas da visita"><span className={!review ? 'current' : ''} aria-current={!review ? 'step' : undefined}>Registro</span><ArrowRight size={14} aria-hidden="true"/><span className={review ? 'current' : ''} aria-current={review ? 'step' : undefined}>Revisão SOAP</span></div><span className="draft-state">{draftSaved && <Check size={14} aria-hidden="true"/>}{draftSaved ? 'Rascunho salvo' : 'Salvando rascunho…'}</span></div>
+        <VisitAudio key={visit.id} visitId={visit.id} onBusy={setAudioBusy}/>
         <form ref={form} onSubmit={e => { e.preventDefault(); generate() }}>
           <div hidden={review}>
             <section className="example-banner">

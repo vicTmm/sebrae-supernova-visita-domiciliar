@@ -1,3 +1,4 @@
+import { residentDescription, residentRelationships } from '../types/visit'
 import { preventiveHistory, preventivePlan } from './screenings'
 import { evaluateClinical, cognitiveInterpretation, type ClinicalAlert } from './clinicalRules'
 import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalDomains, miniMentalTotal, conditionsForSex, type Visit, type Vitals, type SOAPOutput } from '../types/visit'
@@ -15,6 +16,20 @@ export function clinicalRuleError(v: Visit): string | null {
   }
   const labError = v.lab_results && validateLabResults(v.lab_results)
   if (labError) return labError
+  const h = v.household
+  if ((h?.cohabitants.trim() || h?.residents?.length) && h.living_arrangement !== 'with_others') return 'Informe que mora com outras pessoas para descrever os moradores.'
+  if (h && [h.caregiver_name, h.caregiver_relationship, h.caregiver_notes].some(s => s.trim()) && h.caregiver_status !== 'yes') return 'Informe a presença de cuidador para descrever os cuidados.'
+  if (h?.residents) {
+    if (h.residents.length > 10 || new Set(h.residents.map(g => g.id)).size !== h.residents.length) return 'Confira os grupos de moradores.'
+    for (const g of h.residents) {
+      if (!residentRelationships.some(r => r.value === g.relationship) || !Number.isInteger(g.count) || g.count < 1 || g.count > 20) return 'Selecione o vínculo e uma quantidade de 1 a 20 para cada grupo.'
+      if (g.relationship === 'other' ? !g.other_relationship.trim() : Boolean(g.other_relationship.trim())) return 'Confira a descrição do outro vínculo.'
+      if (g.other_relationship.length > 100 || g.members.length > g.count) return 'Confira a quantidade e os detalhes dos moradores.'
+      for (const person of g.members) {
+        if (person.name.length > 120 || (person.phone && (!person.name.trim() || !/^[1-9][0-9]{9,10}$/.test(person.phone)))) return 'Informe o nome do contato e um telefone com DDD (10 ou 11 dígitos).'
+      }
+    }
+  }
   const c = v.companions
   if (c.is_solo && (c.has_acs || c.has_student || c.has_nurse)) return 'Apenas Médico não pode ser combinado com acompanhantes.'
   if ((c.acs_name?.trim() && !c.has_acs) || (c.student_name?.trim() && !c.has_student) || (c.nurse_name?.trim() && !c.has_nurse)) return 'Selecione o acompanhante correspondente ao nome informado.'
@@ -184,6 +199,13 @@ export function updateSoapVitals(visit: Visit, result: SOAPOutput, vitals: Vital
     needsReview,
   }
 }
+export function householdFacts(v: Visit): string[] {
+  const h = v.household
+  if (!h) return []
+  return [h.living_arrangement === 'alone' ? 'Relata morar sozinho(a)' : h.living_arrangement === 'with_others' ? ((h.residents?.length || h.cohabitants.trim()) ? `Reside com ${[h.residents?.map(residentDescription).join(', '), h.cohabitants.trim()].filter(Boolean).join('; relato complementar: ')}` : 'Relata morar com outras pessoas') : '',
+    h.caregiver_status === 'no' ? 'Relata não possuir cuidador de referência' : h.caregiver_status === 'yes' ? `Cuidador de referência${h.caregiver_name.trim() ? `: ${h.caregiver_name.trim()}` : ' informado'}${h.caregiver_relationship.trim() ? ` (vínculo: ${h.caregiver_relationship.trim()})` : ''}` : '',
+    h.caregiver_status === 'yes' && h.caregiver_notes.trim() ? `Sobre os cuidados: ${h.caregiver_notes.trim()}` : ''].filter(Boolean)
+}
 export function localSoapOutput(v: Visit): SOAPOutput {
   const error = clinicalRuleError(v)
   if (error) throw new Error(error)
@@ -192,7 +214,7 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   const adherence = { Regular: 'Refere uso regular das medicações', Irregular: 'Refere uso irregular das medicações', 'Não faz uso': 'Refere não fazer uso de medicações', 'Não informado': '' }
   const screening = v.neuro_exam?.geriatric_screening
   const screeningFacts = screening ? [screening.flags.length ? `No rastreio geriátrico, foram assinalados ${joined(screening.flags.map(f => f.toLowerCase()))}` : '', screening.notes] : []
-  const s = paragraph([subjectiveOpening(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence], ...preventiveHistory(v), ...screeningFacts])
+  const s = paragraph([subjectiveOpening(v), ...householdFacts(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence], ...preventiveHistory(v), ...screeningFacts])
   const physical: string[] = []
   for (const [key, label] of [['general', 'Estado geral e hidratação'], ['cardiovascular', 'Ausculta cardíaca'], ['respiratory', 'Ausculta pulmonar']] as const) {
     const f = v.exam[key]
