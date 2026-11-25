@@ -1,6 +1,6 @@
 import GlassIcon from './GlassIcon'
 import { useRef } from 'react'
-import { Activity, ClipboardList, HeartPulse, X } from 'lucide-react'
+import { X } from 'lucide-react'
 
 const sections = [
   { id: 'visit-team', label: 'Equipe', icon: <GlassIcon name="equipe" size={22}/> },
@@ -9,9 +9,9 @@ const sections = [
   { id: 'visit-audio', label: 'Áudio', icon: <GlassIcon name="audio" size={22}/> },
 ]
 const soapSections = [
-  { id: 'visit-subjective', label: 'Subjetivo', icon: <HeartPulse size={18} aria-hidden="true"/> },
-  { id: 'visit-objective', label: 'Objetivo', icon: <Activity size={18} aria-hidden="true"/> },
-  { id: 'visit-plan', label: 'Avaliação e plano', icon: <ClipboardList size={18} aria-hidden="true"/> },
+  { id: 'visit-subjective', label: 'Subjetivo', icon: <GlassIcon name="subjetivo" size={22}/> },
+  { id: 'visit-objective', label: 'Objetivo', icon: <GlassIcon name="objetivo" size={22}/> },
+  { id: 'visit-plan', label: 'Avaliação e plano', icon: <GlassIcon name="avaliacao-plano" size={22}/> },
 ]
 
 export function SectionLinks({ step, onSelect }: { step: "general" | "soap"; onSelect?: () => void }) {

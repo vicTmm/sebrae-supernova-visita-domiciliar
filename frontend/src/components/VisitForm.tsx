@@ -1,7 +1,6 @@
 import ConditionPicker from './ConditionPicker'
 import GlassIcon from './GlassIcon'
 import { useState } from 'react'
-import { Activity, ClipboardList, HeartPulse } from 'lucide-react'
 import { changeVisitSex, conditionsForSex, complaints, actions, examLabels, type Visit } from '../types/visit'
 import VitalSigns from './VitalSigns'
 import LabResultsSection from './LabResultsSection'
@@ -50,7 +49,7 @@ export default function VisitForm({ value: v, onChange, step }: { step: "general
   </>
   return <>
     {v.sex === 'Feminino' && <WomensHealthSection value={v.womens_health ?? null} onChange={health => set('womens_health', health)}/>}
-    <section className="panel visit-section" id="visit-subjective" tabIndex={-1}><div className="section-title"><HeartPulse/><div><span className="eyebrow">S · SUBJETIVO</span><h2>O que mudou desde a última visita?</h2></div></div>
+    <section className="panel visit-section" id="visit-subjective" tabIndex={-1}><div className="section-title"><GlassIcon name="subjetivo" size={30}/><div><span className="eyebrow">S · SUBJETIVO</span><h2>O que mudou desde a última visita?</h2></div></div>
       <fieldset><legend>Queixas e intercorrências</legend><Choices options={complaints} value={v.complaints} onChange={x => {
         const added = x.find(c => !v.complaints.includes(c))
         const next = added === 'Sem intercorrências' ? ['Sem intercorrências'] as Visit['complaints'] : x.filter(c => c !== 'Sem intercorrências')
@@ -65,14 +64,14 @@ export default function VisitForm({ value: v, onChange, step }: { step: "general
       <label>Medicações utilizadas recentemente (ex.: pós-alta / intercorrência)<input maxLength={1000} value={v.recent_medications ?? ''} placeholder="Ex.: Ceftriaxona durante internação por pneumonia" onChange={e => set('recent_medications', e.target.value || null)} /></label>
       <details className="additional-notes" open={v.subjective_notes ? true : undefined}><summary>Relato complementar do paciente ou cuidador (opcional)</summary><label>Outras informações do relato<textarea maxLength={2000} value={v.subjective_notes} placeholder="Informações adicionais à história. Use o ditado do teclado se preferir." onChange={e => set('subjective_notes', e.target.value)} /></label></details>
     </section>
-    <section className="panel visit-section" id="visit-objective" tabIndex={-1}><div className="section-title"><Activity/><div><span className="eyebrow">O · OBJETIVO</span><h2>Sinais vitais e exame físico</h2><p>Preencha apenas o que foi aferido ou avaliado.</p></div></div>
+    <section className="panel visit-section" id="visit-objective" tabIndex={-1}><div className="section-title"><GlassIcon name="objetivo" size={30}/><div><span className="eyebrow">O · OBJETIVO</span><h2>Sinais vitais e exame físico</h2><p>Preencha apenas o que foi aferido ou avaliado.</p></div></div>
       <VitalSigns alerts={alerts} value={v.vitals} onChange={x => set('vitals', x)} />
       <LabResultsSection key={v.id} alerts={alerts} value={v.lab_results} onChange={x => set('lab_results', x)} />
       <details className="additional-notes"><summary>Contextualizar os sinais vitais (opcional)</summary><label>Contexto clínico e meta individual definida pelo médico<textarea maxLength={1000} value={v.vitals_context} placeholder="Ex.: sintomas associados, condição da aferição ou meta individual já definida" onChange={e => set('vitals_context', e.target.value)} /></label><div className="identity-grid"><label>Meta individual PAS menor que (mmHg)<input type="number" inputMode="numeric" min={80} max={180} value={v.bp_target?.systolic ?? ''} onChange={e => { const systolic = e.target.value === '' ? null : Number(e.target.value); set('bp_target', systolic === null && v.bp_target?.diastolic == null ? null : { systolic, diastolic: v.bp_target?.diastolic ?? null }) }}/></label><label>Meta individual PAD menor que (mmHg)<input type="number" inputMode="numeric" min={40} max={110} value={v.bp_target?.diastolic ?? ''} onChange={e => { const diastolic = e.target.value === '' ? null : Number(e.target.value); set('bp_target', diastolic === null && v.bp_target?.systolic == null ? null : { systolic: v.bp_target?.systolic ?? null, diastolic }) }}/></label></div><p className="small-note">Limiares de apoio à revisão do MVP. Sem alerta não significa normalidade. Metas dependem da avaliação individual; idade e acamamento não definem fragilidade automaticamente.</p></details>
       <NeuroTestsSection age={v.age} value={v.neuro_exam} onChange={x => set('neuro_exam', x)} />
       <fieldset><legend>Exame físico</legend><div className="exam-list">{(Object.keys(examLabels) as (keyof typeof examLabels)[]).map(key => <div className="exam-row" key={key}><label>{examLabels[key]}<select value={v.exam[key].status} onChange={e => set('exam', { ...v.exam, [key]: { status: e.target.value, notes: '' } })}>{['Não avaliado', 'Sem alterações', 'Alterado'].map(x => <option key={x}>{x}</option>)}</select></label>{v.exam[key].status === 'Alterado' && <label>Descreva a alteração<textarea required maxLength={500} value={v.exam[key].notes} onChange={e => set('exam', { ...v.exam, [key]: { ...v.exam[key], notes: e.target.value } })} /></label>}</div>)}</div></fieldset>
     </section>
-    <section className="panel visit-section" id="visit-plan" tabIndex={-1}><div className="section-title"><ClipboardList/><div><span className="eyebrow">A/P · AVALIAÇÃO E PLANO</span><h2>Como vamos seguir?</h2></div></div>
+    <section className="panel visit-section" id="visit-plan" tabIndex={-1}><div className="section-title"><GlassIcon name="avaliacao-plano" size={30}/><div><span className="eyebrow">A/P · AVALIAÇÃO E PLANO</span><h2>Como vamos seguir?</h2></div></div>
       <label>Avaliação clínica (opcional)<textarea maxLength={2000} value={v.assessment} placeholder="Preencha apenas se desejar acrescentar uma observação diagnóstica ao cadastro existente" onChange={e => set('assessment', e.target.value)} /></label>
       <fieldset><legend>Condutas realizadas ou definidas</legend><Choices options={actions} value={v.actions} onChange={x => set('actions', x)} /></fieldset>
       <label>Detalhes da conduta<textarea maxLength={2000} value={v.plan_notes} placeholder="Especifique ajustes, exames, orientações e prazo de retorno" onChange={e => set('plan_notes', e.target.value)} /></label>
