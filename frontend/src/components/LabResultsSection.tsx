@@ -60,7 +60,7 @@ export default function LabResultsSection({ value, alerts, onChange }: {
   }
 
   return <details className="lab-results" onInvalid={event => { event.currentTarget.open = true }}>
-    <summary>Resultados de Exames (Externos / Trazidos pelo Paciente)
+    <summary>Resultados de exames externos
       <span>{total ? `${total} ${total === 1 ? 'resultado' : 'resultados'}` : 'Opcional'}</span>
     </summary>
     <div className="lab-results-body">

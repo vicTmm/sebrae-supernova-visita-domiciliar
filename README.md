@@ -1,6 +1,8 @@
 # Visitário · Visita domiciliar ESF
 
-MVP mobile-first para registrar uma visita domiciliar, revisar a evolução SOAP e copiar texto simples para o VitaCare. React/TypeScript/Tailwind, IndexedDB (Dexie), PWA com Workbox, FastAPI/Pydantic v2 e SQLite/SQLAlchemy assíncrono. Não há integração direta com o VitaCare.
+O Visitário permite registrar visitas domiciliares pelo celular e revisar a evolução SOAP. O profissional copia os blocos revisados e os cola nos campos correspondentes do VitaCare.
+
+O aplicativo usa React, TypeScript e Tailwind. Os registros locais ficam no IndexedDB, via Dexie, e o Workbox dá suporte ao uso offline. A API usa FastAPI, Pydantic v2 e SQLAlchemy assíncrono com SQLite.
 
 ## Executar no Windows / PowerShell
 
@@ -54,10 +56,10 @@ Instalação e clipboard exigem contexto seguro: localhost ou HTTPS. Para testar
 
 ## Fluxo de demonstração
 
-1. Toque em **Preencher Exemplo de Caso Clínico**. O caso é fictício.
-2. Ajuste queixas, sinais vitais, exame, avaliação e plano. O rascunho é salvo em IndexedDB a cada mudança.
-3. Toque em **Gerar evolução SOAP**: a geração local funciona sem rede nem API key.
-4. Revise os cards S, O e P e copie cada um para sua aba no VitaCare. Os badges de PAS, PAD, SatO2, FC, FR, Tax e HGT ficam separados para transcrição nos campos numéricos. O botão discreto **Copiar Evolução Completa** inclui também as medidas. A aparece apenas se foi preenchida uma observação diagnóstica.
+1. Na tela inicial, toque em **Preencher exemplo** para abrir um caso fictício.
+2. Confira os dados gerais. Ao selecionar **Feminino**, a seção **Saúde da Mulher** aparece após a identificação. Toque em **Continuar para SOAP** para registrar queixas, sinais vitais, exame físico, avaliação e plano. O rascunho é salvo no dispositivo a cada mudança.
+3. Toque em **Gerar evolução SOAP**. O aplicativo monta o texto no dispositivo, inclusive sem internet.
+4. Revise os blocos S, O e P e copie cada um para a aba correspondente no VitaCare. O bloco A aparece quando há uma observação diagnóstica. Transcreva os sinais vitais nos campos numéricos do VitaCare. Para copiar o texto com as medidas, use **Copiar Evolução Completa**.
 5. **Salvar visita no histórico** cria uma pendência persistente. **Iniciar nova visita** abre outro registro. O histórico mantém os registros locais anteriores e recupera do servidor as visitas do dia no fuso do dispositivo.
 
 Alterar os campos do registro invalida o SOAP anterior para evitar copiar texto desatualizado. Substituir um rascunho ou usar o servidor para reorganizar um texto editado pede confirmação. Salvar no histórico e copiar são ações independentes.

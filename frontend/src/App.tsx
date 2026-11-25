@@ -190,13 +190,13 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
     return next.needsReview
   }
   async function ai() {
-    if (!syncConfigured) { setNotice('Esta versão funciona em modo local. Revise a evolução já gerada para copiar ao VitaCare.'); return }
-    if (soap && !confirm('O texto revisado será substituído pelo resultado do servidor. Continuar?')) return
-    if (!navigator.onLine) { setNotice('Sem conexão. A evolução local já está disponível para revisão.'); return }
+    if (!syncConfigured) { setNotice('A evolução desta visita está disponível para revisão neste dispositivo.'); return }
+    if (soap && !confirm('Gerar uma nova versão a partir dos dados da visita? O servidor poderá usar IA. A nova versão substituirá o texto atual, inclusive suas edições.')) return
+    if (!navigator.onLine) { setNotice('Sem conexão para gerar uma nova versão. Você pode continuar revisando o texto atual.'); return }
     const version = editVersion.current
     setAiBusy(true)
-    try { const next = await generateSoap(visit); if (version === editVersion.current) { setOutput(next); setNotice(next.source === 'ai' ? 'Texto organizado por IA. Revise antes de copiar.' : 'Gerador determinístico utilizado. Revise antes de copiar.') } }
-    catch { setNotice('Servidor indisponível. Sua evolução local e suas edições foram preservadas.') }
+    try { const next = await generateSoap(visit); if (version === editVersion.current) { setOutput(next); setNotice(next.source === 'ai' ? 'Nova versão preparada com IA. Confira o texto antes de usá-lo no prontuário.' : 'Nova versão preparada com os dados da visita, sem uso de IA.') } }
+    catch { setNotice('Não foi possível gerar uma nova versão. Suas edições continuam disponíveis.') }
     finally { setAiBusy(false) }
   }
   async function save() {
@@ -259,7 +259,7 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
         offlineReady={offlineReady || Boolean(navigator.serviceWorker?.controller)}
         location={tab === 'home' ? 'Página inicial' : tab === 'history' ? 'Histórico' : 'Atendimento'}/>
       {!online && <p className="offline-line">Modo offline · registros neste dispositivo</p>}
-      <div className="page-heading"><div><h1>{tab === 'home' ? 'Minhas visitas' : tab === 'history' ? 'Histórico de visitas' : review ? 'Revisão da evolução SOAP' : step === 'soap' ? 'Preenchimento SOAP' : 'Dados gerais da visita'}</h1><p>{tab === 'home' ? 'Inicie uma visita domiciliar ou consulte os registros anteriores.' : tab === 'history' ? (syncConfigured ? 'Registros salvos neste dispositivo e visitas de hoje vindas do servidor.' : 'Registros salvos neste dispositivo.') : review ? 'Confira a evolução antes de salvar ou copiar para o prontuário.' : step === 'soap' ? 'Registre os achados e a conduta antes de gerar a evolução.' : 'Identifique o paciente, a equipe e a rede de apoio.'}</p></div></div>
+      <div className="page-heading"><div><h1>{tab === 'home' ? 'Minhas visitas' : tab === 'history' ? 'Histórico de visitas' : review ? 'Revisão da evolução SOAP' : step === 'soap' ? 'Preenchimento SOAP' : 'Dados gerais da visita'}</h1><p>{tab === 'home' ? 'Inicie uma visita domiciliar ou consulte os registros anteriores.' : tab === 'history' ? (syncConfigured ? 'Registros salvos neste dispositivo e visitas de hoje vindas do servidor.' : 'Registros salvos neste dispositivo.') : review ? 'A revisão médica é obrigatória. Confira os dados e ajuste o texto antes de salvar a visita ou copiá-lo para o prontuário.' : step === 'soap' ? 'Registre o que o paciente relatou, o que você observou e o plano de cuidado.' : 'Identifique o paciente, a equipe e a rede de apoio.'}</p></div></div>
       {needRefresh && <div className="notice">Nova versão disponível. Salve a visita antes de atualizar. <button onClick={() => void updateServiceWorker(true)}>Atualizar aplicativo</button></div>}
       {storageError && <div role="alert" className="error notice">{storageError}</div>}
       {notice && <div role="status" className="notice">{notice}<button aria-label="Fechar aviso" onClick={() => setNotice('')}>×</button></div>}
@@ -282,7 +282,7 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
           <button type="button" className="text-button" onClick={() => openTab('history')}>Consultar histórico <ArrowRight size={16}/></button>
         </section></div>
         <section className="example-banner">
-          <div><h2>Caso clínico fictício</h2><p>Experimente o fluxo com um formulário preenchido.</p></div>
+          <div><h2>Caso clínico fictício</h2><p>Abra uma visita de exemplo para editar os dados e gerar a evolução SOAP.</p></div>
           <button type="button" className="secondary" onClick={() => void newVisit(true)}>Preencher exemplo <ArrowRight size={16}/></button>
         </section>
       </> : tab === 'history' ? <>
@@ -312,7 +312,7 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
             <button type="submit" form="visit-fields" className="primary" disabled={audioBusy}>{step === 'general' ? 'Continuar para SOAP' : 'Gerar evolução SOAP'} <ArrowRight size={19}/></button>
           </div>
         </>}
-          {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao preenchimento SOAP</button>{result && <SoapResultCard key={visit.id} visit={visit} result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onVitalsChange={applyVitals} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
+          {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar aos dados clínicos</button>{result && <SoapResultCard key={visit.id} visit={visit} result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onVitalsChange={applyVitals} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
       </>}
 
     </main></div>

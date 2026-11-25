@@ -10,7 +10,7 @@ export default function CompanionsSection({ value: c, onChange }: { value: Compa
     if (!next.has_nurse) next.nurse_name = null
     onChange(next)
   }
-  return <section className="panel visit-section" id="visit-team" tabIndex={-1}><div className="section-title"><GlassIcon name="equipe" size={30}/><div><h2>Equipe na Visita</h2><p>Selecione quem participou. Sem seleção: equipe não informada.</p></div></div>
+  return <section className="panel visit-section" id="visit-team" tabIndex={-1}><div className="section-title"><GlassIcon name="equipe" size={30}/><div><h2>Equipe na Visita</h2><p>Selecione quem participou da visita. Se deixar em branco, a equipe ficará como não informada.</p></div></div>
     <fieldset><legend>Acompanhantes da equipe</legend><div className="choices team-choices">
       {([['has_acs', 'ACS'], ['has_student', 'Estudante'], ['has_nurse', 'Enfermeiro(a) / Técnico(a)'], ['is_solo', 'Apenas Médico']] as const).map(([key, label]) => <label key={key} className={`chip ${c[key] ? 'selected' : ''}`}><input type="checkbox" checked={c[key]} onChange={() => toggle(key)} />{label}</label>)}
     </div></fieldset>

@@ -94,6 +94,14 @@ input:focus,select:focus,textarea:focus { border-color: var(--vl-info); box-shad
 .vitals-grid input,.vital-badges dd { font-variant-numeric: tabular-nums; }
 .vital-badges>div { background: var(--vl-canvas); border-color: var(--vl-border); }
 .vital-badges dt,.vital-badges dd small,.unit-input span { font-size: 12px; }
+.soap-results :is(.review-intro, .block-heading) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  row-gap: 0;
+}
+.soap-results :is(.review-intro, .block-heading) > div { display: contents; }
+.soap-results :is(.review-intro, .block-heading) :is(h2, p, small) { grid-column: 2; }
 .review-vitals-heading {
   display: flex;
   flex-wrap: wrap;

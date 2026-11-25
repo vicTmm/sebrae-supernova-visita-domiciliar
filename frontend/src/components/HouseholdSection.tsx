@@ -36,7 +36,7 @@ export default function HouseholdSection({ value, onChange }: { value?: Househol
       setExpanded([])
     }}><option value="">Não informado</option><option value="alone">Mora sozinho(a)</option><option value="with_others">Mora com outras pessoas</option></select></label>
     {v.living_arrangement === 'with_others' && <div className="household-residents">
-      <p className="small-note">Adicione quem vive com o paciente, sem contar o próprio paciente. A quantidade se refere ao vínculo selecionado.</p>
+      <p className="small-note">Para cada vínculo, informe quantas pessoas moram com o paciente. Exclua o paciente da contagem.</p>
       {groups.map((group, index) => <div className="resident-group" key={group.id}>
         <div className="resident-row">
           <label className="resident-relationship">Vínculo {index + 1}<select required value={group.relationship} onChange={e => update(group.id, { relationship: e.target.value as ResidentGroup['relationship'], other_relationship: '' })}><option value="" disabled>Selecione o vínculo</option>{residentRelationships.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}</select></label>
