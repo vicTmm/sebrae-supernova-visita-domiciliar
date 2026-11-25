@@ -2,7 +2,9 @@ import type { Ivcf20 } from './ivcf20'
 import type { LabResults } from './labResults'
 export type { LabResults } from './labResults'
 
-export const conditions = ['Acamado', 'Hipertenso', 'Diabético', 'DPOC/pneumopata', 'Gestante', 'Puérpera', 'Saúde Mental', 'Outra'] as const
+export const conditions = ['Acamado', 'Hipertenso', 'Diabético', 'DPOC/pneumopata', 'Gestante', 'Puérpera', 'Saúde Mental',
+  'Asma', 'Insuficiência cardíaca', 'Infarto prévio', 'AVC prévio', 'Doença renal crônica', 'Câncer', 'Demência',
+  'Doença de Alzheimer', 'Doença de Parkinson', 'Tuberculose', 'Hanseníase', 'Lesão por pressão', 'Ferida crônica', 'Cuidados paliativos', 'Outra'] as const
 const conditionSex: Partial<Record<Visit['conditions'][number], NonNullable<Visit['sex']>>> = {
   Gestante: 'Feminino',
   Puérpera: 'Feminino',
@@ -112,7 +114,7 @@ export interface SOAPOutput {
 }
 export interface ServerVisit { visit: Visit; soap_text: string; soap_blocks?: SOAPOutput | null; revision: number }
 export interface LocalVisit extends ServerVisit { pending: boolean; localVersion: number; conflict?: ServerVisit }
-export interface Draft { visit: Visit; soap: string; soap_blocks?: SOAPOutput | null; baseRevision: number; source: string }
+export interface Draft { step?: "general" | "soap"; visit: Visit; soap: string; soap_blocks?: SOAPOutput | null; baseRevision: number; source: string }
 export function upgradeVisit(v: Visit & { medications?: string }): Visit {
   const { medications, ...rest } = v
   const raw = v.intercurrence_details as unknown

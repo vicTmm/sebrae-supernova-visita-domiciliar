@@ -1,0 +1,23 @@
+{
+  "name": "visitario-pitch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "check": "tsc --noEmit",
+    "render": "remotion render VisitarioPitch out/visitario-pitch.mp4 --codec=h264 --crf=12 --scale=2"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.547",
+    "@remotion/whisper-webgpu": "4.0.547",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "4.0.547"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.1",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.0"
+  }
+}

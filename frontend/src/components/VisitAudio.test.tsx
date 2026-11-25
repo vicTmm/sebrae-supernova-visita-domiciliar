@@ -29,9 +29,8 @@ beforeEach(() => {
 })
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals(); vi.clearAllMocks() })
 function setup() {
-  render(<VisitAudio visitId="visita-teste" onBusy={vi.fn()}/> )
+  render(<VisitAudio visitId="visita-teste" professional="Profissional fictício / TESTE" onBusy={vi.fn()}/> )
   fireEvent.click(screen.getByText('Nova gravação'))
-  fireEvent.change(screen.getByLabelText('Profissional responsável (nome e registro)'), { target: { value: 'Profissional fictício / TESTE' } })
   fireEvent.change(screen.getByLabelText('Senha do áudio (mínimo 12 caracteres)'), { target: { value: 'senha exclusiva de teste' } })
   fireEvent.change(screen.getByLabelText('Repita a senha'), { target: { value: 'senha exclusiva de teste' } })
 }
@@ -78,7 +77,7 @@ it('revoga o player ao ocultar a aba e permite excluir sem apagar a evolução',
   mocks.open.mockResolvedValue({ blob: new Blob(['audio']), consent: { professional: 'Teste', mode: 'dictation', acceptedAt: new Date().toISOString() } })
   const revoke = vi.fn()
   vi.stubGlobal('URL', { createObjectURL: vi.fn(() => 'blob:audio-test'), revokeObjectURL: revoke })
-  render(<VisitAudio visitId="visita-teste" onBusy={vi.fn()}/> )
+  render(<VisitAudio visitId="visita-teste" professional="Profissional fictício / TESTE" onBusy={vi.fn()}/> )
   fireEvent.click(await screen.findByText('Desbloquear para ouvir'))
   fireEvent.change(screen.getByLabelText('Senha desta gravação'), { target: { value: 'senha de teste' } })
   fireEvent.click(screen.getByText('Ouvir áudio'))

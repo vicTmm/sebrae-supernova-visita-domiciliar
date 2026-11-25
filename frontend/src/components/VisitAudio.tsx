@@ -1,13 +1,14 @@
+import GlassIcon from './GlassIcon'
 import { useEffect, useRef, useState } from 'react'
-import { LockKeyhole, Mic, Pause, Play, Square, Trash2 } from 'lucide-react'
+import { LockKeyhole, Pause, Play, Square, Trash2 } from 'lucide-react'
 import { audioDb, CONSENT_VERSION, listAudio, MAX_AUDIO_BYTES, MAX_AUDIO_SECONDS, openAudio, sealAudio, storeAudio, type AudioConsent, type StoredAudio } from '../services/audioVault'
 
 const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`
-export default function VisitAudio({ visitId, onBusy }: { visitId: string; onBusy: (busy: boolean) => void }) {
+export default function VisitAudio({ visitId, onBusy, professional }: { professional: string; visitId: string; onBusy: (busy: boolean) => void }) {
   const [clips, setClips] = useState<StoredAudio[]>([])
   const [mode, setMode] = useState<AudioConsent['mode']>('dictation')
   const [authorizedBy, setAuthorizedBy] = useState<'patient' | 'representative'>('patient')
-  const [professional, setProfessional] = useState(''), [consent, setConsent] = useState(false)
+  const [consent, setConsent] = useState(false)
   const [password, setPassword] = useState(''), [confirmation, setConfirmation] = useState(''), [days, setDays] = useState(1)
   const [status, setStatus] = useState<'idle' | 'requesting' | 'recording' | 'paused' | 'saving' | 'retry'>('idle')
   const [seconds, setSeconds] = useState(0), [error, setError] = useState(''), [message, setMessage] = useState('')
@@ -149,22 +150,22 @@ export default function VisitAudio({ visitId, onBusy }: { visitId: string; onBus
     catch { setError('Não foi possível excluir. Tente novamente.') }
   }
   const busy = status !== 'idle'
-  return <section className="panel visit-audio" aria-labelledby="visit-audio-title">
-    <div className="audio-heading"><Mic size={20} aria-hidden="true"/><div><h2 id="visit-audio-title">Áudio da visita</h2><p>Grave um relato ou o atendimento para conferir durante a revisão.</p></div></div>
+  return <section id="visit-audio" tabIndex={-1} className="panel visit-section visit-audio" aria-labelledby="visit-audio-title">
+    <div className="audio-heading"><GlassIcon name="audio" size={30}/><div><h2 id="visit-audio-title">Áudio da visita</h2><p>Grave um relato ou o atendimento para conferir durante a revisão.</p></div></div>
     <p className="small-note">Áudios criptografados, somente neste navegador. Não são enviados à API nem à IA. A senha não pode ser recuperada. Ao limpar os dados do site, os áudios serão perdidos.</p>
     {!supported && <p role="alert" className="error">A gravação exige HTTPS ou localhost, um navegador com suporte a áudio e acesso ao microfone.</p>}
     <details className="audio-setup" open={busy || undefined}>
       <summary>Nova gravação</summary>
       <fieldset disabled={busy || !supported}>
         <label>Tipo de gravação<select value={mode} onChange={e => { setMode(e.target.value as AudioConsent['mode']); setConsent(false) }}><option value="dictation">Relato ditado pelo profissional</option><option value="encounter">Conversa do atendimento</option></select></label>
-        <label>Profissional responsável (nome e registro)<input maxLength={120} autoComplete="off" value={professional} onChange={e => setProfessional(e.target.value)}/></label>
+        <p>Profissional responsável: {professional || 'Complete o nome e o CRM em Meu perfil para gravar.'}</p>
         {mode === 'encounter' && <label>Quem autorizou a gravação?<select value={authorizedBy} onChange={e => { setAuthorizedBy(e.target.value as typeof authorizedBy); setConsent(false) }}><option value="patient">Paciente</option><option value="representative">Responsável legal</option></select></label>}
         <p className="small-note">Finalidade: conferir o registro clínico desta visita. A gravação é opcional; recusar não impede o atendimento. Explique quem poderá ouvir neste dispositivo, o prazo e a possibilidade de exclusão.</p>
         <label className="audio-consent"><input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)}/><span>{mode === 'encounter' ? 'Confirmei a autorização livre do paciente ou responsável após explicar a finalidade, o acesso e o prazo. Todas as pessoas que terão a voz gravada foram informadas e concordaram.' : 'Autorizo gravar meu relato para revisão e confirmo que não gravarei vozes de outras pessoas neste modo.'}</span></label>
         <div className="audio-fields"><label>Senha do áudio (mínimo 12 caracteres)<input type="password" autoComplete="new-password" minLength={12} maxLength={256} value={password} onChange={e => setPassword(e.target.value)}/></label><label>Repita a senha<input type="password" autoComplete="new-password" maxLength={256} value={confirmation} onChange={e => setConfirmation(e.target.value)}/></label></div>
         <label>Prazo para revisão<select value={days} onChange={e => setDays(Number(e.target.value))}><option value={1}>24 horas (recomendado)</option><option value={7}>7 dias</option></select></label>
         <p className="small-note">Após o prazo, o acesso é bloqueado e o arquivo é removido na próxima abertura ou enquanto o app estiver aberto. Use uma senha forte e exclusiva. O áudio não substitui a evolução revisada.</p>
-        <button type="button" className="secondary" disabled={!consent || !professional.trim() || password.length < 12 || password !== confirmation} onClick={() => void start()}><Mic size={16}/>Iniciar gravação</button>
+        <button type="button" className="secondary" disabled={!consent || !professional.trim() || password.length < 12 || password !== confirmation} onClick={() => void start()}><GlassIcon name="audio" size={22}/>Iniciar gravação</button>
       </fieldset>
     </details>
     {busy && <div className="audio-session"><p role="status">{status === 'requesting' ? 'Aguardando permissão do microfone…' : status === 'saving' ? 'Criptografando e salvando…' : status === 'retry' ? 'Gravação aguardando salvamento' : `${status === 'paused' ? 'Pausado' : 'Gravando'} · ${clock(seconds)} / 15:00`}</p>

@@ -6,7 +6,7 @@ Grafia oficial: **Visitário**, com acento agudo. Descritor: **Registro de visit
 
 Propósito: apoiar o registro profissional em campo e a continuidade do cuidado. Linguagem clara, objetiva e próxima. Apresentar capacidades disponíveis e identificar funcionalidades futuras explicitamente.
 
-A assinatura inicial combina Bricolage Grotesque com o ícone Link2 da Lucide. O mesmo símbolo aparece no cabeçalho, no favicon e nos ícones instaláveis. O SVG está em `frontend/public/icon.svg`. Para regenerar os PNGs a partir dele, instale `resvg-py` e execute `py -3 frontend/scripts/generate_icons.py` na raiz do projeto. A pesquisa de disponibilidade da marca e o desenho do símbolo exclusivo continuam pendentes.
+O cabeçalho combina o render de elos de conexão com Visitário em Bricolage Grotesque. A versão compacta Link2 da Lucide identifica o favicon e os ícones instaláveis. O SVG está em `frontend/public/icon.svg`. Para regenerar os PNGs a partir dele, instale `resvg-py` e execute `py -3 frontend/scripts/generate_icons.py` na raiz do projeto. A pesquisa de disponibilidade da marca e o desenho do símbolo exclusivo continuam pendentes.
 
 ## Fundamentos implementados
 

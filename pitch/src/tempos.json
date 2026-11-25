@@ -1,0 +1,843 @@
+{
+  "duration": 35.29,
+  "words": [
+    {
+      "word": "Na",
+      "start": 0.0,
+      "end": 0.22,
+      "scene": 1
+    },
+    {
+      "word": "visita",
+      "start": 0.22,
+      "end": 1.08,
+      "scene": 1
+    },
+    {
+      "word": "o",
+      "start": 1.08,
+      "end": 1.14,
+      "scene": 1
+    },
+    {
+      "word": "registro",
+      "start": 1.14,
+      "end": 1.74,
+      "scene": 1
+    },
+    {
+      "word": "começa",
+      "start": 1.74,
+      "end": 2.14,
+      "scene": 1
+    },
+    {
+      "word": "no",
+      "start": 2.14,
+      "end": 2.66,
+      "scene": 1
+    },
+    {
+      "word": "papel",
+      "start": 2.66,
+      "end": 2.94,
+      "scene": 1
+    },
+    {
+      "word": "e",
+      "start": 2.94,
+      "end": 3.34,
+      "scene": 1
+    },
+    {
+      "word": "termina",
+      "start": 3.34,
+      "end": 3.78,
+      "scene": 1
+    },
+    {
+      "word": "digitado",
+      "start": 3.78,
+      "end": 4.58,
+      "scene": 1
+    },
+    {
+      "word": "duas",
+      "start": 4.58,
+      "end": 4.94,
+      "scene": 1
+    },
+    {
+      "word": "vezes",
+      "start": 4.94,
+      "end": 5.74,
+      "scene": 1
+    },
+    {
+      "word": "O",
+      "start": 6.01,
+      "end": 6.21,
+      "scene": 2
+    },
+    {
+      "word": "profissional",
+      "start": 6.21,
+      "end": 6.91,
+      "scene": 2
+    },
+    {
+      "word": "anota",
+      "start": 6.91,
+      "end": 7.29,
+      "scene": 2
+    },
+    {
+      "word": "e",
+      "start": 7.29,
+      "end": 7.59,
+      "scene": 2
+    },
+    {
+      "word": "reescreve",
+      "start": 7.59,
+      "end": 8.27,
+      "scene": 2
+    },
+    {
+      "word": "a",
+      "start": 8.27,
+      "end": 8.47,
+      "scene": 2
+    },
+    {
+      "word": "evolução",
+      "start": 8.47,
+      "end": 8.77,
+      "scene": 2
+    },
+    {
+      "word": "depois",
+      "start": 8.77,
+      "end": 9.81,
+      "scene": 2
+    },
+    {
+      "word": "O",
+      "start": 10.17,
+      "end": 10.39,
+      "scene": 3
+    },
+    {
+      "word": "Visitário",
+      "start": 10.39,
+      "end": 11.15,
+      "scene": 3
+    },
+    {
+      "word": "organiza",
+      "start": 11.15,
+      "end": 11.95,
+      "scene": 3
+    },
+    {
+      "word": "a",
+      "start": 11.95,
+      "end": 12.09,
+      "scene": 3
+    },
+    {
+      "word": "visita",
+      "start": 12.09,
+      "end": 12.55,
+      "scene": 3
+    },
+    {
+      "word": "no",
+      "start": 12.55,
+      "end": 12.79,
+      "scene": 3
+    },
+    {
+      "word": "celular",
+      "start": 12.79,
+      "end": 13.71,
+      "scene": 3
+    },
+    {
+      "word": "sem",
+      "start": 13.71,
+      "end": 13.91,
+      "scene": 3
+    },
+    {
+      "word": "sinal",
+      "start": 13.91,
+      "end": 14.79,
+      "scene": 3
+    },
+    {
+      "word": "Sinais",
+      "start": 14.95,
+      "end": 15.43,
+      "scene": 4
+    },
+    {
+      "word": "e",
+      "start": 15.43,
+      "end": 15.57,
+      "scene": 4
+    },
+    {
+      "word": "queixas",
+      "start": 15.57,
+      "end": 16.09,
+      "scene": 4
+    },
+    {
+      "word": "viram",
+      "start": 16.09,
+      "end": 16.59,
+      "scene": 4
+    },
+    {
+      "word": "SOAP",
+      "start": 16.59,
+      "end": 17.09,
+      "scene": 4
+    },
+    {
+      "word": "para",
+      "start": 17.09,
+      "end": 17.31,
+      "scene": 4
+    },
+    {
+      "word": "revisão",
+      "start": 17.31,
+      "end": 17.97,
+      "scene": 4
+    },
+    {
+      "word": "O",
+      "start": 18.61,
+      "end": 18.81,
+      "scene": 5
+    },
+    {
+      "word": "texto",
+      "start": 18.81,
+      "end": 19.41,
+      "scene": 5
+    },
+    {
+      "word": "sai",
+      "start": 19.41,
+      "end": 19.73,
+      "scene": 5
+    },
+    {
+      "word": "em",
+      "start": 19.73,
+      "end": 19.97,
+      "scene": 5
+    },
+    {
+      "word": "blocos",
+      "start": 19.97,
+      "end": 20.39,
+      "scene": 5
+    },
+    {
+      "word": "e",
+      "start": 20.39,
+      "end": 20.77,
+      "scene": 5
+    },
+    {
+      "word": "segue",
+      "start": 20.77,
+      "end": 21.01,
+      "scene": 5
+    },
+    {
+      "word": "ao",
+      "start": 21.01,
+      "end": 21.49,
+      "scene": 5
+    },
+    {
+      "word": "VitaCare",
+      "start": 21.49,
+      "end": 22.13,
+      "scene": 5
+    },
+    {
+      "word": "por",
+      "start": 22.13,
+      "end": 22.47,
+      "scene": 5
+    },
+    {
+      "word": "cópia",
+      "start": 22.47,
+      "end": 23.35,
+      "scene": 5
+    },
+    {
+      "word": "Sem",
+      "start": 23.59,
+      "end": 23.97,
+      "scene": 6
+    },
+    {
+      "word": "sinal",
+      "start": 23.97,
+      "end": 24.83,
+      "scene": 6
+    },
+    {
+      "word": "o",
+      "start": 24.83,
+      "end": 24.91,
+      "scene": 6
+    },
+    {
+      "word": "rascunho",
+      "start": 24.91,
+      "end": 25.47,
+      "scene": 6
+    },
+    {
+      "word": "fica",
+      "start": 25.47,
+      "end": 25.85,
+      "scene": 6
+    },
+    {
+      "word": "no",
+      "start": 25.85,
+      "end": 26.23,
+      "scene": 6
+    },
+    {
+      "word": "aparelho",
+      "start": 26.23,
+      "end": 26.93,
+      "scene": 6
+    },
+    {
+      "word": "e",
+      "start": 26.93,
+      "end": 27.13,
+      "scene": 6
+    },
+    {
+      "word": "sincroniza",
+      "start": 27.13,
+      "end": 27.93,
+      "scene": 6
+    },
+    {
+      "word": "depois",
+      "start": 27.93,
+      "end": 28.79,
+      "scene": 6
+    },
+    {
+      "word": "Visitário",
+      "start": 29.51,
+      "end": 30.51,
+      "scene": 7
+    },
+    {
+      "word": "Mais",
+      "start": 30.51,
+      "end": 30.85,
+      "scene": 7
+    },
+    {
+      "word": "clareza",
+      "start": 30.85,
+      "end": 31.43,
+      "scene": 7
+    },
+    {
+      "word": "no",
+      "start": 31.43,
+      "end": 31.69,
+      "scene": 7
+    },
+    {
+      "word": "registro",
+      "start": 31.69,
+      "end": 32.75,
+      "scene": 7
+    },
+    {
+      "word": "continuidade",
+      "start": 32.75,
+      "end": 33.49,
+      "scene": 7
+    },
+    {
+      "word": "no",
+      "start": 33.49,
+      "end": 33.87,
+      "scene": 7
+    },
+    {
+      "word": "cuidado",
+      "start": 33.87,
+      "end": 34.87,
+      "scene": 7
+    }
+  ],
+  "sentences": [
+    {
+      "index": 1,
+      "text": "Na visita, o registro começa no papel e termina digitado duas vezes.",
+      "start": 0.0,
+      "end": 5.74,
+      "words": [
+        {
+          "word": "Na",
+          "start": 0.0,
+          "end": 0.22,
+          "scene": 1
+        },
+        {
+          "word": "visita",
+          "start": 0.22,
+          "end": 1.08,
+          "scene": 1
+        },
+        {
+          "word": "o",
+          "start": 1.08,
+          "end": 1.14,
+          "scene": 1
+        },
+        {
+          "word": "registro",
+          "start": 1.14,
+          "end": 1.74,
+          "scene": 1
+        },
+        {
+          "word": "começa",
+          "start": 1.74,
+          "end": 2.14,
+          "scene": 1
+        },
+        {
+          "word": "no",
+          "start": 2.14,
+          "end": 2.66,
+          "scene": 1
+        },
+        {
+          "word": "papel",
+          "start": 2.66,
+          "end": 2.94,
+          "scene": 1
+        },
+        {
+          "word": "e",
+          "start": 2.94,
+          "end": 3.34,
+          "scene": 1
+        },
+        {
+          "word": "termina",
+          "start": 3.34,
+          "end": 3.78,
+          "scene": 1
+        },
+        {
+          "word": "digitado",
+          "start": 3.78,
+          "end": 4.58,
+          "scene": 1
+        },
+        {
+          "word": "duas",
+          "start": 4.58,
+          "end": 4.94,
+          "scene": 1
+        },
+        {
+          "word": "vezes",
+          "start": 4.94,
+          "end": 5.74,
+          "scene": 1
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "text": "O profissional anota e reescreve a evolução depois.",
+      "start": 6.01,
+      "end": 9.81,
+      "words": [
+        {
+          "word": "O",
+          "start": 6.01,
+          "end": 6.21,
+          "scene": 2
+        },
+        {
+          "word": "profissional",
+          "start": 6.21,
+          "end": 6.91,
+          "scene": 2
+        },
+        {
+          "word": "anota",
+          "start": 6.91,
+          "end": 7.29,
+          "scene": 2
+        },
+        {
+          "word": "e",
+          "start": 7.29,
+          "end": 7.59,
+          "scene": 2
+        },
+        {
+          "word": "reescreve",
+          "start": 7.59,
+          "end": 8.27,
+          "scene": 2
+        },
+        {
+          "word": "a",
+          "start": 8.27,
+          "end": 8.47,
+          "scene": 2
+        },
+        {
+          "word": "evolução",
+          "start": 8.47,
+          "end": 8.77,
+          "scene": 2
+        },
+        {
+          "word": "depois",
+          "start": 8.77,
+          "end": 9.81,
+          "scene": 2
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "text": "O Visitário organiza a visita no celular, sem sinal.",
+      "start": 10.17,
+      "end": 14.79,
+      "words": [
+        {
+          "word": "O",
+          "start": 10.17,
+          "end": 10.39,
+          "scene": 3
+        },
+        {
+          "word": "Visitário",
+          "start": 10.39,
+          "end": 11.15,
+          "scene": 3
+        },
+        {
+          "word": "organiza",
+          "start": 11.15,
+          "end": 11.95,
+          "scene": 3
+        },
+        {
+          "word": "a",
+          "start": 11.95,
+          "end": 12.09,
+          "scene": 3
+        },
+        {
+          "word": "visita",
+          "start": 12.09,
+          "end": 12.55,
+          "scene": 3
+        },
+        {
+          "word": "no",
+          "start": 12.55,
+          "end": 12.79,
+          "scene": 3
+        },
+        {
+          "word": "celular",
+          "start": 12.79,
+          "end": 13.71,
+          "scene": 3
+        },
+        {
+          "word": "sem",
+          "start": 13.71,
+          "end": 13.91,
+          "scene": 3
+        },
+        {
+          "word": "sinal",
+          "start": 13.91,
+          "end": 14.79,
+          "scene": 3
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "text": "Sinais e queixas viram SOAP para revisão.",
+      "start": 14.95,
+      "end": 17.97,
+      "words": [
+        {
+          "word": "Sinais",
+          "start": 14.95,
+          "end": 15.43,
+          "scene": 4
+        },
+        {
+          "word": "e",
+          "start": 15.43,
+          "end": 15.57,
+          "scene": 4
+        },
+        {
+          "word": "queixas",
+          "start": 15.57,
+          "end": 16.09,
+          "scene": 4
+        },
+        {
+          "word": "viram",
+          "start": 16.09,
+          "end": 16.59,
+          "scene": 4
+        },
+        {
+          "word": "SOAP",
+          "start": 16.59,
+          "end": 17.09,
+          "scene": 4
+        },
+        {
+          "word": "para",
+          "start": 17.09,
+          "end": 17.31,
+          "scene": 4
+        },
+        {
+          "word": "revisão",
+          "start": 17.31,
+          "end": 17.97,
+          "scene": 4
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "text": "O texto sai em blocos e segue ao VitaCare por cópia.",
+      "start": 18.61,
+      "end": 23.35,
+      "words": [
+        {
+          "word": "O",
+          "start": 18.61,
+          "end": 18.81,
+          "scene": 5
+        },
+        {
+          "word": "texto",
+          "start": 18.81,
+          "end": 19.41,
+          "scene": 5
+        },
+        {
+          "word": "sai",
+          "start": 19.41,
+          "end": 19.73,
+          "scene": 5
+        },
+        {
+          "word": "em",
+          "start": 19.73,
+          "end": 19.97,
+          "scene": 5
+        },
+        {
+          "word": "blocos",
+          "start": 19.97,
+          "end": 20.39,
+          "scene": 5
+        },
+        {
+          "word": "e",
+          "start": 20.39,
+          "end": 20.77,
+          "scene": 5
+        },
+        {
+          "word": "segue",
+          "start": 20.77,
+          "end": 21.01,
+          "scene": 5
+        },
+        {
+          "word": "ao",
+          "start": 21.01,
+          "end": 21.49,
+          "scene": 5
+        },
+        {
+          "word": "VitaCare",
+          "start": 21.49,
+          "end": 22.13,
+          "scene": 5
+        },
+        {
+          "word": "por",
+          "start": 22.13,
+          "end": 22.47,
+          "scene": 5
+        },
+        {
+          "word": "cópia",
+          "start": 22.47,
+          "end": 23.35,
+          "scene": 5
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "text": "Sem sinal, o rascunho fica no aparelho e sincroniza depois.",
+      "start": 23.59,
+      "end": 28.79,
+      "words": [
+        {
+          "word": "Sem",
+          "start": 23.59,
+          "end": 23.97,
+          "scene": 6
+        },
+        {
+          "word": "sinal",
+          "start": 23.97,
+          "end": 24.83,
+          "scene": 6
+        },
+        {
+          "word": "o",
+          "start": 24.83,
+          "end": 24.91,
+          "scene": 6
+        },
+        {
+          "word": "rascunho",
+          "start": 24.91,
+          "end": 25.47,
+          "scene": 6
+        },
+        {
+          "word": "fica",
+          "start": 25.47,
+          "end": 25.85,
+          "scene": 6
+        },
+        {
+          "word": "no",
+          "start": 25.85,
+          "end": 26.23,
+          "scene": 6
+        },
+        {
+          "word": "aparelho",
+          "start": 26.23,
+          "end": 26.93,
+          "scene": 6
+        },
+        {
+          "word": "e",
+          "start": 26.93,
+          "end": 27.13,
+          "scene": 6
+        },
+        {
+          "word": "sincroniza",
+          "start": 27.13,
+          "end": 27.93,
+          "scene": 6
+        },
+        {
+          "word": "depois",
+          "start": 27.93,
+          "end": 28.79,
+          "scene": 6
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "text": "Visitário. Mais clareza no registro, continuidade no cuidado.",
+      "start": 29.51,
+      "end": 35.29,
+      "words": [
+        {
+          "word": "Visitário",
+          "start": 29.51,
+          "end": 30.51,
+          "scene": 7
+        },
+        {
+          "word": "Mais",
+          "start": 30.51,
+          "end": 30.85,
+          "scene": 7
+        },
+        {
+          "word": "clareza",
+          "start": 30.85,
+          "end": 31.43,
+          "scene": 7
+        },
+        {
+          "word": "no",
+          "start": 31.43,
+          "end": 31.69,
+          "scene": 7
+        },
+        {
+          "word": "registro",
+          "start": 31.69,
+          "end": 32.75,
+          "scene": 7
+        },
+        {
+          "word": "continuidade",
+          "start": 32.75,
+          "end": 33.49,
+          "scene": 7
+        },
+        {
+          "word": "no",
+          "start": 33.49,
+          "end": 33.87,
+          "scene": 7
+        },
+        {
+          "word": "cuidado",
+          "start": 33.87,
+          "end": 34.87,
+          "scene": 7
+        }
+      ]
+    }
+  ]
+}

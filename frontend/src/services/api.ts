@@ -33,3 +33,8 @@ async function performSync() {
     if (rows.length < 100) break
   }
 }
+
+export async function sendFeedback(id: string, message: string, category: 'idea' | 'issue', reply_to: string | null) {
+  const receipt = await request<{ id: string }>('/feedback', { id, message, category, reply_to })
+  if (receipt?.id !== id) throw new Error('Envio sem confirmação.')
+}

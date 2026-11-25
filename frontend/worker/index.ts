@@ -13,7 +13,7 @@ export default {
     if (url.pathname === '/health') {
       return json({ status: 'ok', service: 'sebrae-supernova-visita-domiciliar', api_configured: Boolean(env.API_ORIGIN) })
     }
-    if (url.pathname !== '/visits' && !url.pathname.startsWith('/visits/')) return json({ detail: 'Rota não encontrada.' }, 404)
+    if (url.pathname !== '/feedback' && url.pathname !== '/visits' && !url.pathname.startsWith('/visits/')) return json({ detail: 'Rota não encontrada.' }, 404)
     if (!env.API_ORIGIN) {
       return json({ detail: 'Sincronização ainda não configurada. Os registros continuam neste dispositivo.' }, 503)
     }

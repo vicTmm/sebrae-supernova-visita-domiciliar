@@ -18,6 +18,20 @@ class Condition(str, Enum):
     PREGNANT = "Gestante"
     POSTPARTUM = "Puérpera"
     MENTAL = "Saúde Mental"
+    ASTHMA = "Asma"
+    HEART_FAILURE = "Insuficiência cardíaca"
+    PREVIOUS_MI = "Infarto prévio"
+    PREVIOUS_STROKE = "AVC prévio"
+    CKD = "Doença renal crônica"
+    CANCER = "Câncer"
+    DEMENTIA = "Demência"
+    ALZHEIMER = "Doença de Alzheimer"
+    PARKINSON = "Doença de Parkinson"
+    TUBERCULOSIS = "Tuberculose"
+    LEPROSY = "Hanseníase"
+    PRESSURE_INJURY = "Lesão por pressão"
+    CHRONIC_WOUND = "Ferida crônica"
+    PALLIATIVE_CARE = "Cuidados paliativos"
     OTHER = "Outra"
 
 
@@ -387,7 +401,7 @@ class VDInput(StrictModel):
     age: int = Field(ge=0, le=130)
     sex: Literal['Feminino', 'Masculino'] | None = None
     womens_health: WomensHealth | None = None
-    conditions: list[Condition] = Field(min_length=1, max_length=8)
+    conditions: list[Condition] = Field(min_length=1, max_length=len(Condition))
     other_condition: str = Field(default="", max_length=500)
     companions: Companions = Field(default_factory=Companions)
     complaints: list[Complaint] = Field(default_factory=list, max_length=8)

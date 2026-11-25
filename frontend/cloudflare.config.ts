@@ -18,7 +18,7 @@ export default defineConfig({
     previewUrls: true,
     assets: {
       notFoundHandling: 'single-page-application',
-      runWorkerFirst: ['/visits', '/visits/*', '/health'],
+      runWorkerFirst: ['/visits', '/visits/*', '/feedback', '/health'],
     },
     env: { API_ORIGIN: bindings.text(apiOrigin) },
     observability: {

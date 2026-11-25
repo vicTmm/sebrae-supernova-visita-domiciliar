@@ -1,9 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
-import { ArrowLeft, ArrowRight, Check, ClipboardList, Plus, RefreshCw, ShieldCheck, Wifi, WifiOff } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Plus } from 'lucide-react'
+import GlassIcon from './components/GlassIcon'
+import WorkspaceTools from './components/WorkspaceTools'
+import { ProfileProvider, useProfile } from './components/ProfessionalProfile'
+import DoctorAccess from './components/DoctorAccess'
 import VisitForm from './components/VisitForm'
 import VisitAudio from './components/VisitAudio'
 import { listAudio, purgeExpiredAudio } from './services/audioVault'
+import { MobileNavigation } from './components/VisitNavigation'
+import VisitHistory from './components/VisitHistory'
 import VisitSidebar from './components/VisitSidebar'
 import ReleaseNotes from './components/ReleaseNotes'
 import SoapResultCard from './components/SoapResultCard'
@@ -11,17 +17,60 @@ import { validateVitals } from './types/vitals'
 import { emptyVisit, exampleVisit, type Draft, type LocalVisit, type Visit, type Vitals, type SOAPOutput } from './types/visit'
 import { db, saveLocal } from './services/offlineDb'
 import { generateSoap, syncVisits } from './services/api'
-import { clinicalRuleError, localSoapOutput, restoreSoap, updateSoapVitals } from './services/soap'
+import { clinicalRuleError, generalVisitError, localSoapOutput, restoreSoap, updateSoapVitals } from './services/soap'
 
 const syncConfigured = import.meta.env.VITE_SYNC_CONFIGURED !== 'false'
 
 export default function App() {
+  const [preference, setPreference] = useState<'dark' | 'light' | null>(() => {
+    try {
+      const saved = localStorage.getItem('visitario.theme')
+      return saved === 'dark' || saved === 'light' ? saved : null
+    } catch { return null }
+  })
+  const [systemDark, setSystemDark] = useState(() => window.matchMedia('(prefers-color-scheme: dark)').matches)
+  const dark = preference ? preference === 'dark' : systemDark
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+    const sync = () => setSystemDark(media.matches)
+    media.addEventListener('change', sync)
+    sync()
+    return () => media.removeEventListener('change', sync)
+  }, [])
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#141416' : '#145b49')
+  }, [dark])
+  function toggleTheme() {
+    const next = dark ? 'light' : 'dark'
+    setPreference(next)
+    try { localStorage.setItem('visitario.theme', next) } catch { /* Continua nesta sessão. */ }
+  }
+  const [entered, setEntered] = useState(() => {
+    try { return sessionStorage.getItem('visitario.demo') === '1' } catch { return false }
+  })
+  function changeSession(active: boolean) {
+    try {
+      if (active) sessionStorage.setItem('visitario.demo', '1')
+      else sessionStorage.removeItem('visitario.demo')
+    } catch { /* Session remains available in memory. */ }
+    setEntered(active)
+    window.scrollTo(0, 0)
+  }
+  return <ProfileProvider>{entered ? <VisitWorkspace dark={dark} toggleTheme={toggleTheme} onExit={() => changeSession(false)}/> : <DoctorAccess onEnter={() => changeSession(true)}/>}</ProfileProvider>
+}
+
+function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dark: boolean; toggleTheme: () => void }) {
+  const advisor = useRef<HTMLDialogElement>(null)
+  const { profile } = useProfile()
+  const [step, setStep] = useState<"general" | "soap">("general")
   const [audioBusy, setAudioBusy] = useState(false)
   const [visit, setVisit] = useState<Visit>(emptyVisit)
   const [soap, setSoap] = useState(''), [source, setSource] = useState('local'), [revision, setRevision] = useState(0)
   const [result, setResult] = useState<SOAPOutput | null>(null)
   function setOutput(next: SOAPOutput | null) { setResult(next); setSoap(next?.full_text_fallback ?? ''); setSource(next?.source ?? 'local') }
-  const [tab, setTab] = useState<'visit' | 'history'>('visit'), [review, setReview] = useState(false)
+  const [tab, setTab] = useState<'home' | 'visit' | 'history'>('home'), [review, setReview] = useState(false)
+  const [hasDraft, setHasDraft] = useState(false)
   const [rows, setRows] = useState<LocalVisit[]>([]), [ready, setReady] = useState(false)
   const [online, setOnline] = useState(navigator.onLine), [syncing, setSyncing] = useState(false), [aiBusy, setAiBusy] = useState(false)
   const [notice, setNotice] = useState(''), [storageError, setStorageError] = useState(''), [draftSaved, setDraftSaved] = useState(false)
@@ -48,7 +97,7 @@ export default function App() {
   const currentEditor = useRef({ visit, soap })
   currentEditor.current = { visit, soap }
   async function refresh() {
-    const records = (await db.visits.toArray()).sort((a, b) => b.visit.visited_at.localeCompare(a.visit.visited_at))
+    const records = (await db.visits.toArray()).sort((a, b) => Date.parse(b.visit.visited_at) - Date.parse(a.visit.visited_at))
     setRows(records)
     const editor = currentEditor.current
     const own = records.find(r => r.visit.id === editor.visit.id)
@@ -56,26 +105,36 @@ export default function App() {
     if (own && !own.conflict && normalized(own.visit) === normalized(editor.visit) && own.soap_text === editor.soap) setRevision(own.revision)
   }
   useEffect(() => {
-    void (async () => { try { const draft = await db.drafts.get('active'); if (draft) { setVisit(draft.visit); setOutput(draft.soap ? restoreSoap(draft.visit, draft.soap, draft.soap_blocks) : null); setReview(Boolean(draft.soap)); setRevision(draft.baseRevision) } await refresh(); setReady(true) } catch { setStorageError('Armazenamento local indisponível. Libere o IndexedDB no navegador antes de registrar visitas.') } })()
+    void (async () => { try { const draft = await db.drafts.get('active'); if (draft) { setHasDraft(true); setStep(draft.soap || draft.step === "soap" ? "soap" : "general"); setVisit(draft.visit); setOutput(draft.soap ? restoreSoap(draft.visit, draft.soap, draft.soap_blocks) : null); setReview(Boolean(draft.soap)); setRevision(draft.baseRevision) } await refresh(); setReady(true) } catch { setStorageError('Armazenamento local indisponível. Libere o IndexedDB no navegador antes de registrar visitas.') } })()
     const on = () => setOnline(true), off = () => setOnline(false)
     window.addEventListener('online', on); window.addEventListener('offline', off)
     return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off) }
   }, [])
   useEffect(() => {
-    if (!ready) return
+    if (!ready || !hasDraft) return
     let active = true
     setDraftSaved(false)
-    const draft: Draft & { key: string } = { key: 'active', visit, soap, soap_blocks: result, baseRevision: revision, source }
+    const draft: Draft & { key: string } = { key: 'active', step, visit, soap, soap_blocks: result, baseRevision: revision, source }
     void db.drafts.put(draft).then(() => { if (active) setDraftSaved(true) }).catch(() => setStorageError('Não foi possível salvar o rascunho. Verifique o espaço e as permissões do navegador.'))
     return () => { active = false }
-  }, [visit, soap, result, revision, source, ready])
-  async function sync(manual = false) {
-    if (!syncConfigured) { if (manual) setNotice('Sincronização ainda não configurada. Seus registros ficam salvos neste dispositivo.'); return }
-    if (!navigator.onLine) { if (manual) setNotice('Sem conexão. Suas visitas permanecem neste dispositivo.'); return }
+  }, [visit, soap, result, revision, source, ready, hasDraft, step])
+  const [syncFailed, setSyncFailed] = useState(false)
+  const syncInProgress = useRef(false)
+  async function sync() {
+    if (!syncConfigured || !navigator.onLine || syncInProgress.current) return
+    syncInProgress.current = true
     setSyncing(true)
-    try { await syncVisits(); await refresh(); if (manual) setNotice('Sincronização concluída. Confira possíveis conflitos no histórico.') }
-    catch (e) { if (manual) setNotice(`${(e as Error).message} As visitas continuam salvas neste dispositivo.`) }
-    finally { setSyncing(false) }
+    try {
+      await syncVisits()
+      await refresh()
+      setSyncFailed(false)
+    } catch {
+      setSyncFailed(true)
+      await refresh().catch(() => {})
+    } finally {
+      syncInProgress.current = false
+      setSyncing(false)
+    }
   }
   useEffect(() => {
     if (!ready || !online || !syncConfigured) return
@@ -90,14 +149,36 @@ export default function App() {
     if (!form.current?.reportValidity()) return false
     if (!visit.patient_code.trim() || !Number.isInteger(visit.age) || visit.age < 0 || visit.age > 130) { setNotice('Informe código e idade válida.'); return false }
     if (!visit.conditions.length) { setNotice('Selecione ao menos uma condição acompanhada.'); return false }
-    const ruleError = clinicalRuleError(visit)
+    const ruleError = step === "general" ? generalVisitError(visit) : clinicalRuleError(visit)
     if (ruleError) { setNotice(ruleError); window.scrollTo({ top: 0, behavior: 'smooth' }); return false }
+    if (step === "general") return true
     const vitalsError = validateVitals(visit.vitals)
     if (vitalsError) { setNotice(vitalsError); return false }
     if (Object.values(visit.exam).some(f => f.status === 'Alterado' && !f.notes.trim())) { setNotice('Descreva as alterações selecionadas no exame.'); return false }
     return true
   }
-  function generate() { if (!validate()) return; setOutput(localSoapOutput(visit)); setReview(true); setNotice(''); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+  function advanceVisit() {
+    if (audioBusy) { setNotice('Encerre e salve a gravação para continuar.'); return }
+    if (!validate()) { window.scrollTo({ top: 0 }); return }
+    if (step === 'general') {
+      setStep('soap'); setNotice(''); window.scrollTo({ top: 0 }); return
+    }
+    const hasClinicalEntry = visit.complaints.length || visit.actions.length || visit.adherence !== 'Não informado'
+      || [visit.subjective_notes, visit.assessment, visit.plan_notes, visit.medications_in_use, visit.recent_medications, visit.vitals_context].some(text => text?.trim())
+      || Object.values(visit.vitals).some(value => value != null)
+      || Object.values(visit.exam).some(finding => finding.status !== 'Não avaliado' || finding.notes.trim())
+      || visit.bp_target || visit.lab_results || visit.neuro_exam
+      || Object.values(visit.womens_health ?? {}).some(screening => screening.status || screening.year || screening.notes.trim())
+    if (!hasClinicalEntry) {
+      setNotice('Registre um relato, achado, avaliação ou conduta antes de gerar a evolução.')
+      window.scrollTo({ top: 0 })
+      return
+    }
+    setOutput(localSoapOutput(visit))
+    setReview(true)
+    setNotice('')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   function applyVitals(vitals: Vitals) {
     if (!result) return false
     const next = updateSoapVitals(visit, result, vitals)
@@ -119,10 +200,18 @@ export default function App() {
     finally { setAiBusy(false) }
   }
   async function save() {
-    try { await saveLocal(visit, soap, revision, result); await refresh(); setNotice('Visita salva neste dispositivo. Sincronização pendente até confirmação do servidor.'); void sync() }
+    if (audioBusy) { setNotice('Encerre e salve o áudio antes de concluir a visita.'); return }
+    const version = editVersion.current
+    try { await saveLocal(visit, soap, revision, result);
+      if (version === editVersion.current) {
+        setHasDraft(false)
+        setTab('history')
+        window.scrollTo({ top: 0 })
+      }
+      await refresh(); setNotice('Visita salva neste dispositivo.'); void sync() }
     catch { setStorageError('Não foi possível salvar a visita. Mantenha esta tela aberta e copie a evolução.') }
   }
-  function replace(v: Visit, text = '', rev = 0, blocks?: SOAPOutput | null) { editVersion.current++; setVisit(v); setOutput(text ? restoreSoap(v, text, blocks) : null); setRevision(rev); setTab('visit'); setReview(Boolean(text)); setNotice(''); window.scrollTo({ top: 0 }) }
+  function replace(v: Visit, text = '', rev = 0, blocks?: SOAPOutput | null) { editVersion.current++; setStep(text ? "soap" : "general"); setHasDraft(true); setVisit(v); setOutput(text ? restoreSoap(v, text, blocks) : null); setRevision(rev); setTab('visit'); setReview(Boolean(text)); setNotice(''); window.scrollTo({ top: 0 }) }
   async function canLeaveVisit() {
     if (audioBusy) { setNotice('Encerre e salve o áudio antes de iniciar outra visita.'); return false }
     try {
@@ -134,8 +223,8 @@ export default function App() {
     } catch { setNotice('Não foi possível conferir os áudios desta visita. Tente novamente antes de iniciar outra.'); return false }
   }
   async function newVisit(example = false) {
-    if (!await canLeaveVisit()) return
-    if ((visit.patient_code || soap) && !confirm('Iniciar outro registro? Salve a visita atual no histórico para mantê-la.')) return
+    if (hasDraft && !await canLeaveVisit()) return
+    if (hasDraft && !confirm('Iniciar outro registro? Salve a visita atual no histórico para mantê-la.')) return
     replace(example ? exampleVisit() : emptyVisit())
   }
   async function resolve(row: LocalVisit, keepLocal: boolean) {
@@ -143,65 +232,90 @@ export default function App() {
     try { await db.visits.put(keepLocal ? { ...row, revision: row.conflict.revision, conflict: undefined, localVersion: row.localVersion + 1, pending: true } : { ...row.conflict, pending: false, localVersion: row.localVersion + 1 }); await refresh(); if (keepLocal) void sync() }
     catch { setNotice('Não foi possível resolver o conflito. Tente novamente.') }
   }
-  function openTab(next: 'visit' | 'history') {
+  function openTab(next: 'home' | 'visit' | 'history') {
     if (audioBusy) { setNotice('Encerre e salve o áudio antes de trocar de tela.'); return }
     setTab(next)
     window.scrollTo({ top: 0 })
   }
 
   const pending = rows.filter(r => r.pending).length
+  const queued = rows.filter(row => row.pending && !row.conflict).length
   const today = new Date().toLocaleDateString('pt-BR')
   const todayRows = rows.filter(r => new Date(r.visit.visited_at).toLocaleDateString('pt-BR') === today)
   return <div className="app-shell">
-    <header className="topbar">
-      <a href="/" className="brand" onClick={e => { e.preventDefault(); openTab('visit') }}>
-        <img className="brand-icon" src="/icon.svg" alt="" width="44" height="44"/>
-        <span>Visitário<small>Registro de visitas domiciliares</small></span>
-      </a>
-      <span className={`connection ${online ? '' : 'offline'}`}>{online ? <Wifi size={16}/> : <WifiOff size={16}/>}<span>{online ? 'Com conexão' : 'Modo offline'}</span></span>
-    </header>
     <div className="workspace">
-      <VisitSidebar tab={tab} todayCount={todayRows.length} showSections={ready && tab === 'visit' && !review}
-        offlineReady={offlineReady || Boolean(navigator.serviceWorker?.controller)}
-        storageReady={ready} storageError={Boolean(storageError)} onSelect={openTab}/>
-    <main><div className="page-heading"><div><h1>{tab === 'history' ? 'Histórico de visitas' : review ? 'Revisão da evolução SOAP' : 'Registro da visita'}</h1><p>{tab === 'history' ? (syncConfigured ? 'Registros salvos neste dispositivo e visitas de hoje vindas do servidor.' : 'Registros salvos neste dispositivo.') : review ? 'Confira a evolução antes de salvar ou copiar para o prontuário.' : 'Preencha os dados da visita para gerar a evolução SOAP.'}</p></div><span className="date-label">{new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short' }).format(new Date())}</span></div>
-      <div className="status-strip"><span><span className="status-dot"/>{!syncConfigured ? 'Modo local · registros neste dispositivo' : pending ? `${pending} visita(s) aguardando sincronização` : 'Registros locais em dia'}</span><button type="button" onClick={() => void sync(true)} disabled={syncing}><RefreshCw size={14} className={syncing ? 'spin' : ''}/>{syncing ? 'Sincronizando' : 'Sincronizar'}</button></div>
-      {needRefresh && <div className="notice">Nova versão disponível. Salve a visita antes de atualizar. <button onClick={() => void updateServiceWorker(true)}>Atualizar aplicativo</button></div>}
-      {storageError && <div role="alert" className="error notice">{storageError}</div>}
-      {notice && <div role="status" className="notice">{notice}<button aria-label="Fechar aviso" onClick={() => setNotice('')}>×</button></div>}
-      {!ready ? <div className="panel">Abrindo armazenamento local…</div> : tab === 'history' ? <>
-        <div className="history-heading"><h2>Hoje <span className="muted">/ {todayRows.length} visitas</span></h2><button className="secondary" onClick={() => newVisit()}><Plus size={16}/>Nova visita</button></div>
-        {!rows.length && <div className="panel empty"><ClipboardList size={34}/><h2>Nenhuma visita salva</h2><p>As visitas salvas aparecerão neste histórico.</p><button className="primary" onClick={() => newVisit()}>Registrar primeira visita</button></div>}
-        {rows.map(row => <article className="panel history-card" key={row.visit.id}><div className="history-meta"><span className="patient-avatar">{row.visit.patient_code.slice(0, 2)}</span><div><h2>{row.visit.patient_code} <span className="muted">· {row.visit.age} anos</span></h2><p>{new Date(row.visit.visited_at).toLocaleString('pt-BR')} · {row.visit.conditions.join(', ')}</p></div><span className={`save-state ${row.pending ? 'waiting' : ''}`}>{row.conflict ? 'Conflito' : row.pending ? 'No dispositivo' : 'Sincronizada'}</span></div><p className="history-preview">{row.soap_text.slice(0, 180)}…</p><button className="text-button" onClick={async () => { if (visit.id !== row.visit.id && !await canLeaveVisit()) return; if ((visit.patient_code || soap) && visit.id !== row.visit.id && !confirm('Abrir esta visita substituirá o rascunho atual. Continuar?')) return; replace(row.visit, row.soap_text, row.revision, row.soap_blocks) }}>Abrir evolução <ArrowRight size={16}/></button>{row.conflict && <div className="conflict"><strong>Existe outra edição no servidor.</strong><pre>{row.conflict.soap_text}</pre><p>Seu texto local foi preservado. Escolha qual versão manter.</p><button className="secondary" onClick={() => void resolve(row, false)}>Usar versão do servidor</button><button className="secondary" onClick={() => void resolve(row, true)}>Manter minha versão e reenviar</button></div>}</article>)}
-      </> : <>
-        <div className="form-topline"><div className="breadcrumb" aria-label="Etapas da visita"><span className={!review ? 'current' : ''} aria-current={!review ? 'step' : undefined}>Registro</span><ArrowRight size={14} aria-hidden="true"/><span className={review ? 'current' : ''} aria-current={review ? 'step' : undefined}>Revisão SOAP</span></div><span className="draft-state">{draftSaved && <Check size={14} aria-hidden="true"/>}{draftSaved ? 'Rascunho salvo' : 'Salvando rascunho…'}</span></div>
-        <VisitAudio key={visit.id} visitId={visit.id} onBusy={setAudioBusy}/>
-        <form ref={form} onSubmit={e => { e.preventDefault(); generate() }}>
-          <div hidden={review}>
-            <section className="example-banner">
-              <img src="/brand/visitario/visita-app.webp" width="120" height="80" alt=""/>
-              <div><h2>Caso clínico fictício</h2><p>Experimente o fluxo com um formulário preenchido.</p></div>
-              <button type="button" className="secondary" onClick={() => newVisit(true)}>Preencher exemplo <ArrowRight size={16} aria-hidden="true"/></button>
-            </section>
-            <VisitForm key={visit.id} value={visit} onChange={change}/>
-            <div className="form-bottom"><span><ShieldCheck size={16}/>Seus dados ficam salvos neste dispositivo.</span><button type="submit" className="primary">Gerar evolução SOAP <ArrowRight size={19}/></button></div>
-          </div>
-          {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao registro</button>{result && <SoapResultCard key={visit.id} visit={visit} result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onVitalsChange={applyVitals} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
-        </form>
-      </>}
-      <footer className="main-footer">
-        Feito para apoiar o registro clínico. Toda evolução precisa de revisão médica.<br/>
-        Ambiente de validação · use casos fictícios ou anonimizados.
-        <ReleaseNotes
+      <VisitSidebar onAdvisor={() => advisor.current?.showModal()} tab={tab} todayCount={todayRows.length} showSections={ready && tab === 'visit' && !review}
+        step={step} onSelect={openTab}/>
+    <main>
+      <WorkspaceTools advisor={advisor} releaseNotes={<ReleaseNotes
           updateAvailable={needRefresh}
           getRegistration={() => swRegistration.current ?? navigator.serviceWorker?.getRegistration()}
           onUpdate={() => void updateServiceWorker(true)}
-        />
-      </footer>
+        />} dark={dark} toggleTheme={toggleTheme} online={online} localOnly={!syncConfigured}
+        pending={pending} conflicts={rows.filter(row => row.conflict).length} ready={ready} storageError={storageError}
+        hasDraft={hasDraft} canExit={!audioBusy && (!hasDraft || draftSaved)} onExit={onExit}
+        onHistory={() => openTab('history')} onHome={() => openTab('home')}
+        stage={tab === 'visit' ? review ? 'Revisão' : step === 'general' ? 'Dados gerais' : 'SOAP' : undefined}
+        offlineReady={offlineReady || Boolean(navigator.serviceWorker?.controller)}
+        location={tab === 'home' ? 'Página inicial' : tab === 'history' ? 'Histórico' : 'Atendimento'}/>
+      {!online && <p className="offline-line">Modo offline · registros neste dispositivo</p>}
+      <div className="page-heading"><div><h1>{tab === 'home' ? 'Minhas visitas' : tab === 'history' ? 'Histórico de visitas' : review ? 'Revisão da evolução SOAP' : step === 'soap' ? 'Preenchimento SOAP' : 'Dados gerais da visita'}</h1><p>{tab === 'home' ? 'Inicie uma visita domiciliar ou consulte os registros anteriores.' : tab === 'history' ? (syncConfigured ? 'Registros salvos neste dispositivo e visitas de hoje vindas do servidor.' : 'Registros salvos neste dispositivo.') : review ? 'Confira a evolução antes de salvar ou copiar para o prontuário.' : step === 'soap' ? 'Registre os achados e a conduta antes de gerar a evolução.' : 'Identifique o paciente, a equipe e a rede de apoio.'}</p></div></div>
+      {needRefresh && <div className="notice">Nova versão disponível. Salve a visita antes de atualizar. <button onClick={() => void updateServiceWorker(true)}>Atualizar aplicativo</button></div>}
+      {storageError && <div role="alert" className="error notice">{storageError}</div>}
+      {notice && <div role="status" className="notice">{notice}<button aria-label="Fechar aviso" onClick={() => setNotice('')}>×</button></div>}
+      {!ready ? <div className="panel">Abrindo armazenamento local…</div> : tab === 'home' ? <>
+        <div className="home-layout"><section className="panel visit-start">
+          <div>
+            <h2>{hasDraft ? 'Visita em andamento' : 'Nova visita domiciliar'}</h2>
+            <p>{hasDraft
+              ? [visit.patient_code, new Date(visit.visited_at).toLocaleDateString('pt-BR'), review ? 'Revisão da evolução' : 'Registro em preenchimento'].filter(Boolean).join(' · ')
+              : 'Abra um registro para começar o atendimento.'}</p>
+            <div className="start-actions">
+              {hasDraft && <button type="button" className="primary" onClick={() => openTab('visit')}>Continuar visita <ArrowRight size={17}/></button>}
+              <button type="button" className={hasDraft ? 'secondary' : 'primary'} onClick={() => void newVisit()}><Plus size={17}/>Nova visita</button>
+            </div>
+          </div>
+          <img src="/brand/visitario/visita-app.webp" alt="" width="120" height="80"/>
+        </section>
+        <section className="panel home-history"><h2>Visitas de hoje</h2><strong>{todayRows.length}</strong>
+          <p>{todayRows.length === 1 ? 'visita salva neste dispositivo' : 'visitas salvas neste dispositivo'}</p>
+          <button type="button" className="text-button" onClick={() => openTab('history')}>Consultar histórico <ArrowRight size={16}/></button>
+        </section></div>
+        <section className="example-banner">
+          <div><h2>Caso clínico fictício</h2><p>Experimente o fluxo com um formulário preenchido.</p></div>
+          <button type="button" className="secondary" onClick={() => void newVisit(true)}>Preencher exemplo <ArrowRight size={16}/></button>
+        </section>
+      </> : tab === 'history' ? <>
+        {syncConfigured && queued > 0 && <div className="sync-queue">
+          <p role="status"><strong>{queued === 1 ? '1 visita aguarda envio.' : `${queued} visitas aguardam envio.`}</strong>{' '}
+            {!online ? 'O envio é automático quando a conexão voltar.' : syncing ? 'Enviando ao servidor…' : syncFailed ? 'A última tentativa falhou. Os registros continuam neste dispositivo.' : 'O envio é automático.'}
+          </p>
+          {online && syncFailed && <button className="text-button" disabled={syncing} onClick={() => void sync()}><GlassIcon name="sincronizacao" size={22}/>Tentar novamente</button>}
+        </div>}
+        <VisitHistory rows={rows} today={today} onNew={() => newVisit()} onResolve={resolve} onOpen={async row => {
+          if (hasDraft && visit.id !== row.visit.id && !await canLeaveVisit()) return
+          if (hasDraft && visit.id !== row.visit.id && !confirm('Abrir esta visita substituirá o rascunho atual. Continuar?')) return
+          replace(row.visit, row.soap_text, row.revision, row.soap_blocks)
+        }}/>
+      </> : <>
+        {!review && <>
+          <form id="visit-fields" ref={form} onSubmit={e => { e.preventDefault(); advanceVisit() }}>
+            {step === 'soap' && <button type="button" className="text-button back" onClick={() => { setStep('general'); setNotice(''); window.scrollTo({ top: 0 }) }}><ArrowLeft size={17}/>Voltar aos dados gerais</button>}
+            <VisitForm step={step} key={visit.id} value={visit} onChange={change}/>
+          </form>
+        {step === 'general' && !review && <VisitAudio key={visit.id} visitId={visit.id} onBusy={setAudioBusy}
+          professional={profile ? profile.registration ? `${profile.name} / ${profile.registration}` : '' : 'Médico de demonstração'}/>}
+          <div className="form-bottom">
+            <span className="draft-state">{!storageError && draftSaved && <Check size={14} aria-hidden="true"/>}
+              {storageError ? 'Confira o aviso de armazenamento.' : draftSaved ? 'Rascunho salvo neste dispositivo' : 'Salvando rascunho…'}
+            </span>
+            <button type="submit" form="visit-fields" className="primary" disabled={audioBusy}>{step === 'general' ? 'Continuar para SOAP' : 'Gerar evolução SOAP'} <ArrowRight size={19}/></button>
+          </div>
+        </>}
+          {review && <><button type="button" className="text-button back" onClick={() => { editVersion.current++; setReview(false) }}><ArrowLeft size={17}/>Voltar ao preenchimento SOAP</button>{result && <SoapResultCard key={visit.id} visit={visit} result={result} busy={aiBusy} serverAvailable={syncConfigured} onChange={next => { editVersion.current++; setOutput(next) }} onVitalsChange={applyVitals} onAI={() => void ai()} onSave={() => void save()}/>}<button type="button" className="secondary" onClick={() => newVisit()}><Plus size={17}/>Iniciar nova visita</button></>}
+      </>}
+
     </main></div>
-    <nav className="mobile-nav" aria-label="Navegação principal">
-      <button className={tab === 'visit' ? 'active' : ''} aria-current={tab === 'visit' ? 'page' : undefined} onClick={() => openTab('visit')}><Plus size={21}/>Visita</button>
-      <button className={tab === 'history' ? 'active' : ''} aria-current={tab === 'history' ? 'page' : undefined} onClick={() => openTab('history')}><ClipboardList size={21}/>Histórico {pending > 0 && `(${pending})`}</button>
-    </nav>
+    <MobileNavigation step={step} tab={tab} pending={pending} showSections={ready && tab === 'visit' && !review} onSelect={openTab}/>
   </div>
 }

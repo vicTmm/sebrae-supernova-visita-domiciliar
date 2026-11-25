@@ -382,3 +382,12 @@ def test_legacy_sex_remains_unknown_without_assigning_a_value(payload, legacy):
     from pydantic import ValidationError
     with pytest.raises(ValidationError):
         VDInput.model_validate(payload | {'sex': 'inventado'})
+
+
+def test_feedback_receipt_and_retry(client):
+    data = {"id": str(uuid4()), "message": "Melhorar a navegação."}
+    for _ in range(2):
+        result = client.post("/feedback", json=data)
+        assert result.status_code == 201 and result.json() == {"id": data["id"]}
+    assert client.post("/feedback", json={**data, "message": "Outra mensagem"}).status_code == 409
+    assert client.post("/feedback", json={**data, "message": " "}).status_code == 422

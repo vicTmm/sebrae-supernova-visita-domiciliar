@@ -17,10 +17,10 @@ export default defineConfig(({ mode }) => ({
     workbox: {
       globPatterns: ['**/*.{js,css,html,svg,png,webp,woff2}'],
       globIgnores: ['brand/visitario/*.png'],
-      navigateFallbackDenylist: [/^\/visits/, /^\/health/],
+      navigateFallbackDenylist: [/^\/visits/, /^\/health/, /^\/feedback/],
       cleanupOutdatedCaches: true,
     },
   })],
-  server: { port: mode === 'cloudflare' ? 8787 : 5173, strictPort: mode === 'cloudflare', proxy: mode === 'cloudflare' ? undefined : { '/visits': 'http://127.0.0.1:8000', '/health': 'http://127.0.0.1:8000' } },
-  preview: { proxy: mode === 'cloudflare' ? undefined : { '/visits': 'http://127.0.0.1:8000', '/health': 'http://127.0.0.1:8000' } },
+  server: { port: mode === 'cloudflare' ? 8787 : 5173, strictPort: mode === 'cloudflare', proxy: mode === 'cloudflare' ? undefined : { '/visits': 'http://127.0.0.1:8000', '/feedback': 'http://127.0.0.1:8000', '/health': 'http://127.0.0.1:8000' } },
+  preview: { proxy: mode === 'cloudflare' ? undefined : { '/visits': 'http://127.0.0.1:8000', '/feedback': 'http://127.0.0.1:8000', '/health': 'http://127.0.0.1:8000' } },
 }))

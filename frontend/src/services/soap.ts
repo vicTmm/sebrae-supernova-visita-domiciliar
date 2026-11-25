@@ -9,13 +9,11 @@ const clean = (s: string) => s.replace(/[*_`#~]/g, '').replace(/\s+/g, ' ').trim
 const planTopics = (s: string) => s.split(/\r?\n/).map(line => clean(line.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'))
   .replace(/^(?:(?:P|Plano)\s*:\s*|[-–—•]+\s+|\d+[.)]\s+)+/i, ''))
   .filter(Boolean).map(topic => /[.!?]$/.test(topic) ? topic : topic + '.')
-export function clinicalRuleError(v: Visit): string | null {
+export function generalVisitError(v: Visit): string | null {
   if (v.sex === 'Masculino') {
     const available = conditionsForSex(v.sex)
     if (v.conditions.some(condition => !available.includes(condition))) return 'Confira o sexo e as condições obstétricas selecionadas.'
   }
-  const labError = v.lab_results && validateLabResults(v.lab_results)
-  if (labError) return labError
   const h = v.household
   if ((h?.cohabitants.trim() || h?.residents?.length) && h.living_arrangement !== 'with_others') return 'Informe que mora com outras pessoas para descrever os moradores.'
   if (h && [h.caregiver_name, h.caregiver_relationship, h.caregiver_notes].some(s => s.trim()) && h.caregiver_status !== 'yes') return 'Informe a presença de cuidador para descrever os cuidados.'
@@ -34,6 +32,13 @@ export function clinicalRuleError(v: Visit): string | null {
   if (c.is_solo && (c.has_acs || c.has_student || c.has_nurse)) return 'Apenas Médico não pode ser combinado com acompanhantes.'
   if ((c.acs_name?.trim() && !c.has_acs) || (c.student_name?.trim() && !c.has_student) || (c.nurse_name?.trim() && !c.has_nurse)) return 'Selecione o acompanhante correspondente ao nome informado.'
   if (v.other_condition?.trim() && !v.conditions.includes('Outra')) return 'Selecione Outra para descrever a condição acompanhada.'
+  return null
+}
+export function clinicalRuleError(v: Visit): string | null {
+  const generalError = generalVisitError(v)
+  if (generalError) return generalError
+  const labError = v.lab_results && validateLabResults(v.lab_results)
+  if (labError) return labError
   if (v.womens_health && v.sex !== 'Feminino') return 'Saúde da Mulher exige sexo Feminino selecionado.'
   if (v.womens_health) for (const exam of Object.values(v.womens_health)) {
     if (exam.year !== null && (!Number.isInteger(exam.year) || exam.year < 1900 || exam.year > new Date().getFullYear() || exam.status === 'Nunca realizou')) return 'Confira o ano do último exame e o histórico de realização.'

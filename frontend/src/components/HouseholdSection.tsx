@@ -1,5 +1,6 @@
+import GlassIcon from './GlassIcon'
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Plus, Trash2, UsersRound } from 'lucide-react'
+import { ChevronDown, ChevronUp, Plus, Trash2 } from 'lucide-react'
 import type { Household, ResidentGroup, ResidentPerson } from '../types/visit'
 import { emptyHousehold, residentDescription, residentRelationships } from '../types/visit'
 
@@ -27,8 +28,8 @@ export default function HouseholdSection({ value, onChange }: { value?: Househol
     if (hasIdentity(group) && !confirm('Remover este grupo também excluirá os nomes e telefones cadastrados nele. Continuar?')) return
     set('residents', groups.filter(g => g.id !== group.id)); setExpanded(expanded.filter(id => id !== group.id))
   }
-  return <section className="panel visit-section household-section" aria-labelledby="household-title">
-    <div className="section-title"><UsersRound aria-hidden="true"/><div><h2 id="household-title">Moradia e rede de apoio</h2><p>Registre os moradores por vínculo. Identifique pessoas apenas quando necessário.</p></div></div>
+  return <section id="visit-household" tabIndex={-1} className="panel visit-section household-section" aria-labelledby="household-title">
+    <div className="section-title"><GlassIcon name="rede-apoio" size={30}/><div><h2 id="household-title">Moradia e rede de apoio</h2><p>Registre os moradores por vínculo. Identifique pessoas apenas quando necessário.</p></div></div>
     <label>Com quem o paciente mora?<select value={v.living_arrangement ?? ''} onChange={e => {
       if ((groups.some(hasIdentity) || v.cohabitants.trim()) && !confirm('Alterar a situação de moradia limpará os moradores e o relato complementar. Continuar?')) return
       onChange({ ...v, living_arrangement: e.target.value as Household['living_arrangement'] || null, residents: [], cohabitants: '' })

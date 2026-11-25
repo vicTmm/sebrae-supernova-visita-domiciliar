@@ -230,3 +230,9 @@ O SOAP usa apenas os vínculos e quantidades dos grupos, como “Reside com 2 fi
 **Limitação de segurança dos contatos:** estes campos administrativos seguem a persistência atual das visitas no IndexedDB e no JSON SQLite, inclusive a sincronização com a API configurada. Eles não recebem a criptografia por senha usada exclusivamente nos áudios. A API ainda não tem isolamento por profissional ou equipe; portanto, use contatos fictícios nesta fase. Sua inclusão no modelo não autoriza uso com dados reais nem representa implementação de acesso institucional. A finalidade e a necessidade de cada dado devem ser definidas pela instituição antes da coleta real.
 
 Referências de contexto: [cadastro de cidadãos no e-SUS APS](https://sisaps.saude.gov.br/sistemas/esusaps/docs/manual/PEC/PEC_03_cidadao/) e [princípio da necessidade segundo a ANPD](https://www.gov.br/anpd/pt-br/documentos-e-publicacoes/glossario-anpd).
+
+### Recebimento de feedback por e-mail
+
+No backend FastAPI de produção, defina `APP_ENV=production`, `SMTP_HOST`, `SMTP_PORT` (587 por padrão, com STARTTLS), `FEEDBACK_FROM` (remetente autorizado pelo provedor) e as credenciais `SMTP_USERNAME` e `SMTP_PASSWORD` do serviço. `FEEDBACK_TO` define o destinatário e começa em `kginatsu@gmail.com`. Para alterar o endereço, atualize a variável no backend e reinicie a API. O Worker deve encaminhar `/feedback` à API por `API_ORIGIN`.
+
+A confirmação no app indica que o relato foi registrado no banco. Em produção, a mesma transação o coloca na fila SQLite `feedback_delivery`. Mantenha o banco em volume persistente. O processo da API encaminha sugestões e problemas por SMTP e repete tentativas após falhas, inclusive depois de reiniciar. A fila guarda apenas entregas pendentes. Se a API for interrompida entre o aceite SMTP e a baixa no banco, pode haver reentrega com o mesmo Message-ID. Em desenvolvimento, o relato é registrado sem gerar entrega de e-mail.

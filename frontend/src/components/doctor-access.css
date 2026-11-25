@@ -1,0 +1,34 @@
+main.doctor-access { width: 100%; max-width: none; margin: 0; padding: 0 clamp(20px,5vw,90px); background: #fff; min-height: 100svh; display: flex; flex-direction: column; }
+.access-header,.access-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.access-header { min-height: 84px; border-bottom: 1px solid var(--vl-border); }
+.access-header .brand { display: flex; align-items: center; gap: 8px; }
+.access-header > span,.access-footer { color: var(--vl-muted); font-size: 13px; }
+.access-layout { flex: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px,7vw,100px); width: 100%; max-width: 1240px; margin: auto; padding: 32px 0; }
+.access-art { background: #e6efdf; border-radius: 16px; min-height: clamp(430px,65vh,670px); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.access-art > div { padding: clamp(28px,4vw,64px) clamp(28px,4vw,64px) 0; }
+.access-art p { color: var(--vl-brand); font-weight: 600; margin: 0 0 14px; }
+.access-art h2 { font-size: clamp(38px,4.6vw,72px); line-height: 1.04; max-width: 9em; color: #193f33; margin: 0; }
+.access-art img { width: 100%; height: auto; object-fit: contain; }
+.access-content { max-width: 410px; width: 100%; justify-self: center; }
+.access-content h1 { font-size: clamp(32px,3.5vw,50px); line-height: 1.08; margin: 0 0 16px; }
+.access-content > p { margin: 0; line-height: 1.6; }
+.access-profile { margin: 30px 0 18px; display: flex; align-items: center; gap: 16px; padding: 17px; border: 1px solid var(--vl-border); border-radius: 10px; }
+.access-profile svg { color: var(--vl-brand); flex-shrink: 0; }
+.access-profile small { display: block; color: var(--vl-muted); margin-top: 2px; }
+button.access-enter { width: 100%; display: flex; justify-content: space-between; padding-inline: 20px; }
+.access-progress,.access-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+.access-progress { margin-bottom: 28px; gap: 9px; color: var(--vl-muted); font-size: 13px; }
+.access-progress progress { width: 100%; height: 5px; accent-color: var(--vl-brand); }
+.access-nav { margin-top: 8px; }
+.access-footer { padding: 18px 0; border-top: 1px solid var(--vl-border); }
+@media(max-width: 700px) {
+  .access-header { min-height: 64px; }
+  .access-layout { grid-template-columns: 1fr; align-content: center; gap: 28px; padding: 22px 0 32px; }
+  .access-art { min-height: 0; align-items: center; flex-direction: row; }
+  .access-art > div { padding: 20px 0 20px 20px; }
+  .access-art p { font-size: 12px; margin-bottom: 6px; }
+  .access-art h2 { font-size: clamp(23px,5vw,32px); }
+  .access-art img { width: 42%; }
+  .access-content { max-width: none; }
+  .access-footer { align-items: flex-start; flex-direction: column; gap: 3px; }
+}

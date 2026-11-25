@@ -19,6 +19,13 @@ def ensure_schema(connection):
         connection.execute(text('ALTER TABLE visits ADD COLUMN soap_blocks JSON'))
 
 
+    columns = {c['name'] for c in inspect(connection).get_columns('feedback')}
+    if 'category' not in columns:
+        connection.execute(text("ALTER TABLE feedback ADD COLUMN category VARCHAR(10) NOT NULL DEFAULT 'idea'"))
+    if 'reply_to' not in columns:
+        connection.execute(text("ALTER TABLE feedback ADD COLUMN reply_to VARCHAR(254)"))
+
+
 async def get_session():
     async with SessionLocal() as session:
         yield session
