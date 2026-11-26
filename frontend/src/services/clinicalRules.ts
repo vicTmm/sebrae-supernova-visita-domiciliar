@@ -12,7 +12,7 @@ export function cognitiveInterpretation(m: MiniMental): string {
 export function evaluateClinical(visit: Visit): ClinicalAlert[] {
   const v = visit.vitals, alerts: ClinicalAlert[] = []
   const add = (code: string, fields: ClinicalAlert['fields'], observation: string, suggestion: string) => alerts.push({ code, fields, observation, suggestion })
-  const adult = visit.age >= 18 && !visit.conditions.includes('Gestante') && !visit.conditions.includes('Puérpera')
+  const adult = visit.age != null && visit.age >= 18 && !visit.conditions.includes('Gestante') && !visit.conditions.includes('Puérpera')
   if (!adult) {
     if (Object.values(v).some(value => value !== null)) add('specific_profile', Object.keys(v) as (keyof Vitals)[], 'Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas', 'Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica')
   } else {

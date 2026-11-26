@@ -164,7 +164,7 @@ def test_vitacare_team_timeline_medications_and_neuro(clinical_payload, client, 
     assert text.startswith("S: Realizada visita domiciliar acompanhado(a) da ACS Maria e do estudante João.")
     s, o, a, plan_header, *topics = text.splitlines()
     assert plan_header == "P:" and all(topic.startswith("- ") for topic in topics)
-    assert "houve relato de internação hospitalar" in s
+    assert "Houve relato de internação hospitalar" in s
     assert "está em uso contínuo de Losartana 50 mg e metformina" in s
     assert "utilizou Ceftriaxona durante internação por pneumonia" in s
     assert "Ceftriaxona" not in a + " ".join(topics)
@@ -186,7 +186,7 @@ def test_vitacare_team_timeline_medications_and_neuro(clinical_payload, client, 
 def test_team_opening(payload, companions, expected):
     text = deterministic_soap(VDInput(**(payload | {"companions": companions}))).full_text_fallback
     assert text.startswith(f"S: {expected}")
-    assert "não foram relatadas intercorrências" in text
+    assert "Não foram relatadas intercorrências" in text
     assert "Rankin" not in text and "LOTE" not in text
 
 
@@ -214,7 +214,7 @@ def test_new_clinical_validation(client, payload, change):
 
 def test_plain_text_and_unknown_timeline(payload):
     text = deterministic_soap(VDInput(**(payload | {"complaints": [], "subjective_notes": "**Relato**\n# sem formatação"}))).full_text_fallback
-    assert "Não foi informado como transcorreu o período" in text
+    assert "Desde a última visita" not in text
     assert "Sem intercorrências" not in text
     assert "**" not in text and "#" not in text
     assert all(line.startswith("- ") for line in text.split("\nP:\n")[1].splitlines())
@@ -361,7 +361,8 @@ def test_womens_health_and_geriatric_screening_roundtrip(client, payload, monkey
     response = client.post('/visits/generate-soap', json=data)
     assert response.status_code == 200
     blocks = response.json()
-    assert 'Solicitar mamografia' in blocks['plan_text']
+    assert 'mamografia em atraso' in blocks['subjective_text']
+    assert 'Solicitar mamografia' not in blocks['plan_text']
     assert not blocks['subjective_text'].startswith('S:')
     assert not blocks['objective_text'].startswith('O:')
     assert not blocks['plan_text'].startswith('P:')

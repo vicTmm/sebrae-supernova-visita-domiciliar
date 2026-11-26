@@ -25,6 +25,15 @@ export function changeVisitSex(visit: Visit, sex: Visit['sex']): Visit {
 }
 export const complaints = ['Sem intercorrências', 'Dor', 'Dispneia', 'Febre', 'Tontura', 'Queda', 'Ida à UPA/Emergência', 'Internação hospitalar'] as const
 export const actions = ['Manutenção de receita', 'Ajuste medicamentoso', 'Solicitação de exames', 'Encaminhamento especialista', 'Agendamento de retorno VD', 'Orientações gerais'] as const
+// O valor interno antigo permanece para não invalidar visitas já salvas; na tela e no SOAP ele aparece como retorno indicado.
+export const actionLabels: Record<(typeof actions)[number], string> = {
+  'Manutenção de receita': 'Manutenção de receita',
+  'Ajuste medicamentoso': 'Ajuste medicamentoso',
+  'Solicitação de exames': 'Solicitação de exames',
+  'Encaminhamento especialista': 'Encaminhamento especialista',
+  'Agendamento de retorno VD': 'Retorno indicado em VD',
+  'Orientações gerais': 'Orientações gerais',
+}
 export const examLabels = { cardiovascular: 'Aparelho cardiovascular (ACV)', respiratory: 'Aparelho respiratório (AR)', abdomen: 'Abdome', general: 'Estado geral / hidratação' }
 export type ExamFinding = { status: 'Não avaliado' | 'Sem alterações' | 'Alterado'; notes: string }
 export interface Vitals { systolic: number | null; diastolic: number | null; heart_rate: number | null; respiratory_rate: number | null; oxygen_saturation: number | null; temperature: number | null; glucose: number | null }
@@ -100,12 +109,12 @@ export const emptyHousehold = (): Household => ({ living_arrangement: null, coha
 export interface Visit {
   household?: Household | null
   lab_results?: LabResults | null
-  id: string; visited_at: string; patient_code: string; age: number; sex: 'Feminino' | 'Masculino' | null; womens_health?: WomensHealth | null;
-  conditions: (typeof conditions)[number][]; other_condition?: string; complaints: (typeof complaints)[number][];
+  id: string; visited_at: string; patient_code: string; age: number | null; sex: 'Feminino' | 'Masculino' | null; womens_health?: WomensHealth | null;
+  visit_reason: string; conditions: (typeof conditions)[number][]; other_condition?: string; complaints: (typeof complaints)[number][];
   adherence: 'Regular' | 'Irregular' | 'Não faz uso' | 'Não informado'; subjective_notes: string; intercurrence_details: Partial<Record<(typeof complaints)[number], string>>; bp_target?: { systolic: number | null; diastolic: number | null } | null; vitals_context: string;
   companions: Companions; medications_in_use: string; recent_medications: string | null; neuro_exam: NeuroExam | null;
   vitals: Vitals; exam: Record<keyof typeof examLabels, ExamFinding>; assessment: string;
-  actions: (typeof actions)[number][]; plan_notes: string;
+  actions: (typeof actions)[number][]; plan_notes: string; follow_up_owner: string;
 }
 export interface SOAPOutput {
   subjective_text: string; objective_text: string; vitals_formatted: Record<string, string>;
@@ -121,15 +130,15 @@ export function upgradeVisit(v: Visit & { medications?: string }): Visit {
   const selected = v.complaints.filter(c => c !== 'Sem intercorrências')
   const legacyDetails = raw === undefined && selected.length ? v.subjective_notes : typeof raw === 'string' ? raw : ''
   const details = typeof raw === 'object' && raw !== null ? raw as Visit['intercurrence_details'] : selected.length && legacyDetails ? { [selected[0]]: legacyDetails } : {}
-  return { ...rest, household: v.household ?? null, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, ivcf20: v.neuro_exam.ivcf20 ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null }
+  return { ...rest, household: v.household ?? null, age: typeof v.age === 'number' && Number.isFinite(v.age) ? v.age : null, sex: v.sex === 'Feminino' || v.sex === 'Masculino' ? v.sex : null, visit_reason: v.visit_reason ?? '', other_condition: v.other_condition ?? '', womens_health: v.womens_health ?? null, intercurrence_details: details, bp_target: v.bp_target ?? null, subjective_notes: raw === undefined && legacyDetails ? '' : v.subjective_notes, vitals_context: v.vitals_context ?? '', companions: { ...emptyCompanions(), ...v.companions }, medications_in_use: v.medications_in_use ?? medications ?? '', recent_medications: v.recent_medications ?? null, neuro_exam: v.neuro_exam ? { mini_mental: v.neuro_exam.mini_mental ?? null, ivcf20: v.neuro_exam.ivcf20 ?? null, geriatric_screening: v.neuro_exam.geriatric_screening ?? null, rankin: v.neuro_exam.rankin ?? null, directed_flags: v.neuro_exam.directed_flags ?? [], neuro_notes: v.neuro_exam.neuro_notes ?? null } : null, follow_up_owner: v.follow_up_owner ?? '' }
 }
 export function emptyVisit(): Visit {
-  return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: 0, sex: null, womens_health: null, conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '' }
+  return { id: crypto.randomUUID(), visited_at: new Date().toISOString(), patient_code: '', age: null, sex: null, womens_health: null, visit_reason: '', conditions: [], other_condition: '', complaints: [], adherence: 'Não informado', subjective_notes: '', intercurrence_details: {}, bp_target: null, vitals_context: '', companions: emptyCompanions(), medications_in_use: '', recent_medications: null, neuro_exam: null, vitals: { systolic: null, diastolic: null, heart_rate: null, respiratory_rate: null, oxygen_saturation: null, temperature: null, glucose: null }, exam: { cardiovascular: { status: 'Não avaliado', notes: '' }, respiratory: { status: 'Não avaliado', notes: '' }, abdomen: { status: 'Não avaliado', notes: '' }, general: { status: 'Não avaliado', notes: '' } }, assessment: '', actions: [], plan_notes: '', follow_up_owner: '' }
 }
 export function exampleVisit(): Visit {
   const v = emptyVisit()
   return {
-    ...v, patient_code: 'EX-001', age: 78, sex: 'Feminino', conditions: ['Acamado', 'Hipertenso', 'Diabético'],
+    ...v, patient_code: 'EX-001', age: 78, sex: 'Feminino', visit_reason: 'Reavaliação após alta por pneumonia', conditions: ['Acamado', 'Hipertenso', 'Diabético'],
     companions: { has_acs: true, acs_name: 'Maria', has_student: true, student_name: 'João', has_nurse: false, is_solo: false },
     complaints: ['Internação hospitalar'], adherence: 'Regular',
     intercurrence_details: { 'Internação hospitalar': 'Internada por pneumonia por cinco dias, com alta há uma semana. Cuidadora refere melhora desde a alta.' },
@@ -141,5 +150,6 @@ export function exampleVisit(): Visit {
     exam: { cardiovascular: { status: 'Sem alterações', notes: '' }, respiratory: { status: 'Sem alterações', notes: '' }, abdomen: { status: 'Sem alterações', notes: '' }, general: { status: 'Alterado', notes: 'Restrita ao leito; hidratada ao exame.' } },
     assessment: '', actions: ['Manutenção de receita', 'Orientações gerais', 'Agendamento de retorno VD'],
     plan_notes: 'Reforçadas orientações à cuidadora sobre mudança de decúbito e cuidados com a pele. Retorno VD em 30 dias.',
+    follow_up_owner: 'ACS Maria, para acompanhar as orientações em casa.',
   }
 }

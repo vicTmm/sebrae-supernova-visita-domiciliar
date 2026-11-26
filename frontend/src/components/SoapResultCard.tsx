@@ -35,7 +35,6 @@ export default function SoapResultCard({ visit, result: rawResult, onChange, onV
   const result = normalizeSoapBlocks(rawResult)
   function edit(key: 'subjective_text' | 'objective_text' | 'plan_text' | 'assessment_text', text: string) { onChange(withSoapEdits(result, { [key]: key === 'assessment_text' ? text || null : text })) }
   const measured = Object.entries(result.vitals_formatted)
-  const assessmentWasFilled = useRef(result.assessment_text !== null)
   const editVitalsButton = useRef<HTMLButtonElement>(null)
   const vitalsEditor = useRef<HTMLFieldSetElement>(null)
   const [draftVitals, setDraftVitals] = useState<Vitals | null>(null)
@@ -107,7 +106,7 @@ export default function SoapResultCard({ visit, result: rawResult, onChange, onV
       {result.vitals_context && <div className="vitals-context"><strong>Contexto das medidas</strong><p>{result.vitals_context}</p></div>}
       <label htmlFor="soap-objective">Exame físico, avaliação neurológica e observações</label><textarea id="soap-objective" className="block-text" maxLength={10000} value={result.objective_text} onChange={e => edit('objective_text', e.target.value)}/><CopyButton text={result.objective_text} label="Copiar exame físico" disabled={editingVitals}/>
     </section>
-    {(assessmentWasFilled.current || result.assessment_text !== null) && <section className="panel soap-block"><div className="block-heading"><span className="soap-letter">A</span><div><h2>Avaliação diagnóstica</h2></div></div><label className="sr-only" htmlFor="soap-assessment">Avaliação diagnóstica</label><textarea id="soap-assessment" className="block-text" maxLength={6000} value={result.assessment_text ?? ''} onChange={e => edit('assessment_text', e.target.value)}/><CopyButton text={result.assessment_text ?? ''} label="Copiar avaliação"/></section>}
+    <section className="panel soap-block"><div className="block-heading"><span className="soap-letter">A</span><div><h2>Avaliação diagnóstica</h2></div></div><label className="sr-only" htmlFor="soap-assessment">Avaliação diagnóstica</label><textarea id="soap-assessment" className="block-text" maxLength={6000} placeholder="Se houver impressão diagnóstica, registre aqui" value={result.assessment_text ?? ''} onChange={e => edit('assessment_text', e.target.value)}/><CopyButton text={result.assessment_text ?? ''} label="Copiar avaliação"/></section>
     <section className="panel soap-block"><div className="block-heading"><span className="soap-letter">P</span><div><h2>Plano de condutas</h2></div></div><label className="sr-only" htmlFor="soap-plan">Plano de condutas</label><textarea id="soap-plan" className="block-text" maxLength={6000} value={result.plan_text} onChange={e => edit('plan_text', e.target.value)}/><CopyButton text={result.plan_text} label="Copiar plano" disabled={editingVitals}/></section>
     <div className="review-footer"><button type="button" className="primary" onClick={onSave} disabled={editingVitals}><Save size={17}/>Salvar visita no histórico</button>{serverAvailable && <button type="button" className="text-button" onClick={onAI} disabled={busy || editingVitals}><Sparkles size={17}/>{busy ? 'Preparando nova versão…' : 'Gerar nova versão'}</button>}<CopyButton text={result.full_text_fallback} label="Copiar evolução completa" subtle disabled={editingVitals}/></div>
   </div>

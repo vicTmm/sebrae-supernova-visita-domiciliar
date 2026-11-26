@@ -44,7 +44,7 @@ def evaluate_clinical(visit: VDInput) -> list[ClinicalAlert]:
     def add(code, fields, observation, suggestion):
         alerts.append(ClinicalAlert(code, fields, observation, suggestion))
 
-    adult = visit.age >= 18 and 'Gestante' not in visit.conditions and 'Puérpera' not in visit.conditions
+    adult = visit.age is not None and visit.age >= 18 and 'Gestante' not in visit.conditions and 'Puérpera' not in visit.conditions
     if not adult:
         if any(value is not None for value in v.model_dump().values()):
             add('specific_profile', list(type(v).model_fields), 'Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas', 'Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica')

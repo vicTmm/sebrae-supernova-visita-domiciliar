@@ -11,7 +11,7 @@ from app.services.soap_generator import deterministic_soap, full_text
 @pytest.fixture
 def visit_data():
     return {"id": str(uuid4()), "visited_at": "2026-11-17T10:00:00-03:00", "patient_code": "EX",
-        "age": 78, "sex": "Feminino", "conditions": ["Hipertenso"],
+        "age": 78, "sex": "Feminino", "visit_reason": "Avaliação após alta da UPA", "conditions": ["Hipertenso"],
         "companions": {"has_acs": True, "acs_name": "Maria", "has_student": True, "student_name": "João"},
         "complaints": ["Ida à UPA/Emergência", "Dispneia"],
         "intercurrence_details": "Atendida na UPA por dispneia há dois dias; recebeu medicação e teve alta.",
@@ -24,13 +24,16 @@ def visit_data():
         "exam": {"general": {"status": "Sem alterações"}, "cardiovascular": {"status": "Sem alterações"},
                  "respiratory": {"status": "Alterado", "notes": "Estertores em base direita."}},
         "neuro_exam": {"mini_mental": {"score": 27, "education_years": 4}, "rankin": 4},
-        "actions": ["Manutenção de receita", "Agendamento de retorno VD"], "plan_notes": "Retorno VD em 30 dias."}
+        "actions": ["Manutenção de receita", "Agendamento de retorno VD"], "plan_notes": "Retorno VD em 30 dias.",
+        "follow_up_owner": "ACS Maria"}
 
 
 def test_narrative_and_separate_vitals(visit_data):
     result = deterministic_soap(VDInput(**visit_data))
     assert result.vitals_formatted == {"PAS": "150", "PAD": "90", "SatO2": "95%", "FC": "65", "FR": "17", "Tax": "36 °C", "HGT": "123"}
     assert "ACS Maria e do estudante João" in result.subjective_text
+    assert "Motivo do atendimento: Avaliação após alta da UPA" in result.subjective_text
+    assert "Desde a última visita" not in result.subjective_text
     assert visit_data["intercurrence_details"] in result.subjective_text
     assert "utilizou Antibiótico" in result.subjective_text and "em uso contínuo de Losartana" in result.subjective_text
     assert "Adesão medicamentosa:" not in result.subjective_text
@@ -39,8 +42,9 @@ def test_narrative_and_separate_vitals(visit_data):
     assert "95%" not in result.objective_text
     assert "Estertores em base direita" in result.objective_text
     assert "Mini-Mental (MEEM) 27/30 (escolaridade: 4 anos completos)" in result.objective_text
-    assert result.plan_text.splitlines()[:3] == [
-        "- Mantenho a receita em uso.", "- Programo retorno em visita domiciliar.", "- Retorno VD em 30 dias."
+    assert result.plan_text.splitlines()[:4] == [
+        "- Mantenho a receita em uso.", "- Indico retorno em visita domiciliar.", "- Retorno VD em 30 dias.",
+        "- Responsável pelo seguimento: ACS Maria."
     ]
     assert "Antibiótico" not in result.plan_text
     assert "normal" not in result.full_text_fallback.lower()

@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto'
 import { afterEach, expect, it } from 'vitest'
 import { exampleVisit, emptyVisit, upgradeVisit } from '../types/visit'
-import { localSoapOutput, restoreSoap, updateSoapVitals, withSoapEdits } from './soap'
+import { clinicalRuleError, localSoapOutput, restoreSoap, updateSoapVitals, withSoapEdits } from './soap'
 import { validateVitals } from '../types/vitals'
 import { db, saveLocal, applySync } from './offlineDb'
 
@@ -18,6 +18,31 @@ it('separa medidas, exame físico, história e plano e omite A vazio', () => {
   expect(output.plan_text).toContain('Retorno VD em 30 dias')
   expect(output.assessment_text).toBeNull()
   expect(output.full_text_fallback).not.toContain('\nA:')
+})
+
+it('destaca motivo, cuidado e responsável sem presumir visita anterior', () => {
+  const visit = exampleVisit()
+  visit.household = { living_arrangement: 'with_others', cohabitants: 'filha', residents: [], caregiver_status: 'yes', caregiver_name: 'Maria', caregiver_relationship: 'filha', caregiver_notes: 'Administra medicações pela manhã.' }
+  const output = localSoapOutput(visit)
+  expect(output.subjective_text).toContain('Motivo do atendimento: Reavaliação após alta por pneumonia')
+  expect(output.subjective_text).not.toContain('Desde a última visita')
+  expect(output.subjective_text.indexOf('Cuidador de referência')).toBeLessThan(output.subjective_text.indexOf('Reside com'))
+  expect(output.subjective_text).toContain('Administra medicações pela manhã')
+  expect(output.plan_text).toContain('- Indico retorno em visita domiciliar.')
+  expect(output.plan_text).toContain('- Responsável pelo seguimento: ACS Maria, para acompanhar as orientações em casa.')
+})
+
+it('aceita idade zero ou ausente como informação explícita, sem aplicar referências adultas', () => {
+  for (const age of [0, null]) {
+    const visit = emptyVisit()
+    visit.patient_code = 'TESTE'
+    visit.age = age
+    visit.conditions = ['Outra']
+    visit.vitals.systolic = 80
+    visit.vitals.diastolic = 50
+    expect(clinicalRuleError(visit)).toBeNull()
+    expect(localSoapOutput(visit).objective_text).toContain('Perfil pediátrico/obstétrico')
+  }
 })
 
 it('o texto completo reflete as edições de cada campo sem perder medidas', () => {

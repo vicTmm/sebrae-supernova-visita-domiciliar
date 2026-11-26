@@ -20,22 +20,20 @@ def visit(**changes):
 def test_screening_status_is_documented_without_invented_orders(key, label, status):
     output = deterministic_soap(visit(womens_health={key: {'status': status}}))
     assert label in output.subjective_text
-    assert ('Solicitar' in output.plan_text) == (status == 'Atrasado / Solicitar')
+    assert 'Solicitar' not in output.plan_text
+    assert 'Conduta não registrada' in output.plan_text
     assert 'resultado normal' not in output.full_text_fallback
-    if status == 'Atrasado / Solicitar':
-        assert 'Conduta não registrada' not in output.plan_text
     for block in [output.subjective_text, output.objective_text, output.plan_text]:
         assert not re.match(r'^[SOAP]\s*:', block)
 
 
-def test_both_orders_year_and_notes_are_preserved_once():
+def test_years_and_notes_are_preserved_without_invented_orders():
     v = visit(womens_health={'cervical': {'status': 'Atrasado / Solicitar', 'year': 2020, 'notes': 'Último resultado não disponível.'},
         'mammography': {'status': 'Atrasado / Solicitar', 'year': 2022}})
     output = deterministic_soap(v)
     assert '2020' in output.subjective_text and '2022' in output.subjective_text
     assert 'Último resultado não disponível' in output.subjective_text
-    assert output.plan_text.count('Solicitar exame citopatológico') == 1
-    assert output.plan_text.count('Solicitar mamografia') == 1
+    assert 'Solicitar' not in output.plan_text
     again = make_output(v, output.subjective_text, output.objective_text, output.plan_text, 'ai')
     assert again.plan_text == output.plan_text
 
@@ -97,14 +95,14 @@ async def test_ai_receives_screening_context_and_cannot_omit_history(monkeypatch
         async def __aexit__(self, *args): return False
         async def parse(self, **kwargs):
             captured.update(json.loads(kwargs['input']))
-            return SimpleNamespace(output_parsed=SOAPNarrative(subjective_text='S: ' + (fallback.subjective_text.replace('Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita.', '') if omit else fallback.subjective_text),
+            return SimpleNamespace(output_parsed=SOAPNarrative(subjective_text='S: ' + (fallback.subjective_text.replace('Relata rastreio por mamografia em atraso.', '') if omit else fallback.subjective_text),
                 objective_text='O: ' + fallback.objective_text, plan_text='- Conduta não registrada.', assessment_text=None))
     monkeypatch.setattr('app.services.soap_generator.AsyncOpenAI', Client)
     output = await generate_soap(v)
     assert output.source == ('deterministic' if omit else 'ai')
     assert captured['sex'] == 'Feminino' and captured['womens_health']['mammography']['status'] == 'Atrasado / Solicitar'
-    assert captured['preventive_history_required'] and captured['preventive_plan_required']
-    assert output.plan_text.count('Solicitar mamografia') == 1
+    assert captured['preventive_history_required']
+    assert 'Solicitar' not in output.plan_text
     assert 'perda de interesse' in output.subjective_text
     assert not output.subjective_text.startswith('S:')
 

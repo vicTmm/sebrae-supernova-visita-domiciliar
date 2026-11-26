@@ -58,8 +58,8 @@ export interface Ivcf20 {
 }
 
 const instrumental = new Set<Question>(['shopping', 'finances', 'housework'])
-export function ivcfAgeBand(age: number): IvcfAgeBand | null {
-  if (!Number.isInteger(age) || age < 60 || age > 130) return null
+export function ivcfAgeBand(age: number | null): IvcfAgeBand | null {
+  if (age === null || !Number.isInteger(age) || age < 60 || age > 130) return null
   return age < 75 ? '60_74' : age < 85 ? '75_84' : '85_plus'
 }
 

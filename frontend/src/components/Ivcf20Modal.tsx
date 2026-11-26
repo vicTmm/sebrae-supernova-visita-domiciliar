@@ -3,7 +3,7 @@ import AssessmentDialog from './AssessmentDialog'
 import { completeIvcfAnswers, ivcfAgeBand, ivcfAgeLabels, ivcfAgePoints, ivcfComorbidities, ivcfGroups, ivcfScore, ivcfStratum, type Ivcf20, type IvcfAnswers, type IvcfComorbidity } from '../types/ivcf20'
 
 export default function Ivcf20Modal({ age, value, onSave, onClose }: {
-  age: number
+  age: number | null
   value: Ivcf20 | null
   onSave: (value: Ivcf20) => void
   onClose: () => void

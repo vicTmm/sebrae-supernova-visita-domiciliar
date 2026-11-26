@@ -26,10 +26,13 @@ dialog.settings-dialog { width: min(740px,calc(100vw - 24px)); padding: 0; }
 .profile-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 18px; }
 .profile-fields label { margin: 0; }
 .profile-fields input { display: block; width: 100%; margin: 4px 0 0; }
-.profile-local { display: block; color: var(--vl-muted); margin-bottom: 12px; }
 .exit-confirmation p { margin: 8px 0 18px; }
 .exit-confirmation .confirm-signout { padding: 8px 16px; background: var(--vl-danger); color: var(--vl-surface); font-weight: 650; border-radius: 8px; }
 @media(max-width: 600px) {
   .profile-fields { grid-template-columns: 1fr; }
   .access-settings { margin: 16px auto; }
 }
+button.profile-portrait { padding: 0; border: 0; }
+dialog.profile-photo-editor { width: min(360px, calc(100vw - 24px)); max-height: 90dvh; overflow-y: auto; }
+.profile-photo-editor canvas { display: block; width: 144px; height: 144px; border-radius: 50%; margin: 16px auto; background: var(--vl-brand-subtle); }
+.profile-photo-editor input[type="range"] { padding: 0; min-height: 28px; accent-color: var(--vl-brand); }

@@ -13,6 +13,7 @@ import VisitHistory from './components/VisitHistory'
 import VisitSidebar from './components/VisitSidebar'
 import ReleaseNotes from './components/ReleaseNotes'
 import SoapResultCard from './components/SoapResultCard'
+import { formatRegistration, readRegistration } from './types/medicalRegistration'
 import { validateVitals } from './types/vitals'
 import { emptyVisit, exampleVisit, type Draft, type LocalVisit, type Visit, type Vitals, type SOAPOutput } from './types/visit'
 import { db, saveLocal } from './services/offlineDb'
@@ -63,6 +64,8 @@ export default function App() {
 function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dark: boolean; toggleTheme: () => void }) {
   const advisor = useRef<HTMLDialogElement>(null)
   const { profile } = useProfile()
+  const crm = readRegistration(profile?.registration)
+  const registration = formatRegistration(crm.number, crm.state)
   const [step, setStep] = useState<"general" | "soap">("general")
   const [audioBusy, setAudioBusy] = useState(false)
   const [visit, setVisit] = useState<Visit>(emptyVisit)
@@ -147,8 +150,8 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
   function change(v: Visit) { editVersion.current++; setVisit(v); setOutput(null); setReview(false) }
   function validate() {
     if (!form.current?.reportValidity()) return false
-    if (!visit.patient_code.trim() || !Number.isInteger(visit.age) || visit.age < 0 || visit.age > 130) { setNotice('Informe código e idade válida.'); return false }
-    if (!visit.conditions.length) { setNotice('Selecione ao menos uma condição acompanhada.'); return false }
+    if (!visit.patient_code.trim() || visit.age == null || !Number.isInteger(visit.age) || visit.age < 0 || visit.age > 130) { setNotice('Informe código e idade válida.'); return false }
+    if (!visit.conditions.length && !visit.visit_reason.trim()) { setNotice('Informe o motivo do atendimento ou selecione ao menos uma condição acompanhada.'); return false }
     const ruleError = step === "general" ? generalVisitError(visit) : clinicalRuleError(visit)
     if (ruleError) { setNotice(ruleError); window.scrollTo({ top: 0, behavior: 'smooth' }); return false }
     if (step === "general") return true
@@ -164,7 +167,7 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
       setStep('soap'); setNotice(''); window.scrollTo({ top: 0 }); return
     }
     const hasClinicalEntry = visit.complaints.length || visit.actions.length || visit.adherence !== 'Não informado'
-      || [visit.subjective_notes, visit.assessment, visit.plan_notes, visit.medications_in_use, visit.recent_medications, visit.vitals_context].some(text => text?.trim())
+      || [visit.visit_reason, visit.follow_up_owner, visit.subjective_notes, visit.assessment, visit.plan_notes, visit.medications_in_use, visit.recent_medications, visit.vitals_context].some(text => text?.trim())
       || Object.values(visit.vitals).some(value => value != null)
       || Object.values(visit.exam).some(finding => finding.status !== 'Não avaliado' || finding.notes.trim())
       || visit.bp_target || visit.lab_results || visit.neuro_exam
@@ -304,7 +307,7 @@ function VisitWorkspace({ onExit, dark, toggleTheme }: { onExit: () => void; dar
             <VisitForm step={step} key={visit.id} value={visit} onChange={change}/>
           </form>
         {step === 'general' && !review && <VisitAudio key={visit.id} visitId={visit.id} onBusy={setAudioBusy}
-          professional={profile ? profile.registration ? `${profile.name} / ${profile.registration}` : '' : 'Médico de demonstração'}/>}
+          professional={profile ? registration ? `${profile.name} / ${registration}` : '' : 'Médico de demonstração'}/>}
           <div className="form-bottom">
             <span className="draft-state">{!storageError && draftSaved && <Check size={14} aria-hidden="true"/>}
               {storageError ? 'Confira o aviso de armazenamento.' : draftSaved ? 'Rascunho salvo neste dispositivo' : 'Salvando rascunho…'}

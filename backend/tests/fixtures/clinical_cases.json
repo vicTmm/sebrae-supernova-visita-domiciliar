@@ -59,17 +59,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -133,11 +135,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "PAS": "139",
@@ -146,7 +150,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 139 mmHg, PAD 89 mmHg. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 139 mmHg, PAD 89 mmHg. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -210,7 +214,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -224,7 +230,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.",
       "vitals_formatted": {
         "PAS": "140",
@@ -233,7 +239,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 140 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "source": "deterministic"
     }
   },
@@ -297,7 +303,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -311,7 +319,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.",
       "vitals_formatted": {
         "PAS": "149",
@@ -320,7 +328,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 149 mmHg, PAD 94 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 149 mmHg, PAD 94 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: limítrofe/elevada no acompanhamento de HAS; conferir meta individual.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "source": "deterministic"
     }
   },
@@ -384,7 +392,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -398,7 +408,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS.",
       "vitals_formatted": {
         "PAS": "150",
@@ -407,7 +417,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -471,7 +481,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -485,7 +497,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: elevação significativa no acompanhamento de HAS.",
       "vitals_formatted": {
         "PAS": "140",
@@ -494,7 +506,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 95 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: elevação significativa no acompanhamento de HAS.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 140 mmHg, PAD 95 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: elevação significativa no acompanhamento de HAS.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -558,7 +570,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -572,7 +586,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.",
       "vitals_formatted": {
         "PAS": "180",
@@ -581,7 +595,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 180 mmHg, PAD 120 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 180 mmHg, PAD 120 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
       "source": "deterministic"
     }
   },
@@ -645,11 +659,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "PAS": "139",
@@ -658,7 +674,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 139 mmHg, PAD 89 mmHg. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 139 mmHg, PAD 89 mmHg. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -722,7 +738,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -736,7 +754,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
       "vitals_formatted": {
         "PAS": "140",
@@ -745,7 +763,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 140 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "source": "deterministic"
     }
   },
@@ -809,7 +827,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -823,7 +843,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
       "vitals_formatted": {
         "PAS": "149",
@@ -832,7 +852,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 149 mmHg, PAD 94 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 149 mmHg, PAD 94 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 149/94 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "source": "deterministic"
     }
   },
@@ -896,7 +916,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -910,7 +932,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
       "vitals_formatted": {
         "PAS": "150",
@@ -919,7 +941,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "source": "deterministic"
     }
   },
@@ -983,7 +1005,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -997,7 +1021,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: PA acima da referência de rastreio, investigar/monitorar.",
       "vitals_formatted": {
         "PAS": "140",
@@ -1006,7 +1030,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 140 mmHg, PAD 95 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 140 mmHg, PAD 95 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 140/95 mmHg: PA acima da referência de rastreio, investigar/monitorar.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Repetir a aferição e revisar a meta individual; considerar monitorização pressórica.",
       "source": "deterministic"
     }
   },
@@ -1070,7 +1094,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1084,7 +1110,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.",
       "vitals_formatted": {
         "PAS": "180",
@@ -1093,7 +1119,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 180 mmHg, PAD 120 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 180 mmHg, PAD 120 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 180/120 mmHg: elevação acentuada.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar imediatamente a PA, sintomas e sinais de lesão aguda de órgão-alvo; definir necessidade de atendimento urgente.",
       "source": "deterministic"
     }
   },
@@ -1157,11 +1183,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "SatO2": "95%",
@@ -1170,7 +1198,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -1234,7 +1262,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1255,7 +1285,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.",
       "vitals_formatted": {
         "SatO2": "94,9%",
@@ -1264,7 +1294,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
       "source": "deterministic"
     }
   },
@@ -1328,7 +1358,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1341,7 +1373,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.",
       "vitals_formatted": {
         "SatO2": "92%",
@@ -1350,7 +1382,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -1414,7 +1446,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1427,7 +1461,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia.",
       "vitals_formatted": {
         "SatO2": "91,9%",
@@ -1436,7 +1470,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -1500,7 +1534,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1513,7 +1549,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia.",
       "vitals_formatted": {
         "SatO2": "88%",
@@ -1522,7 +1558,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -1586,7 +1622,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1599,7 +1637,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.",
       "vitals_formatted": {
         "SatO2": "97%",
@@ -1608,7 +1646,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -1672,11 +1710,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "SatO2": "95%",
@@ -1685,7 +1725,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -1749,7 +1789,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1770,7 +1812,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.",
       "vitals_formatted": {
         "SatO2": "94,9%",
@@ -1779,7 +1821,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 94.9%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
       "source": "deterministic"
     }
   },
@@ -1843,7 +1885,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1856,7 +1900,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.",
       "vitals_formatted": {
         "SatO2": "92%",
@@ -1865,7 +1909,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 92%: saturação reduzida, possível hipoxemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -1929,7 +1973,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -1950,7 +1996,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia. HGT 181 mg/dL: hiperglicemia no acompanhamento de diabetes.",
       "vitals_formatted": {
         "SatO2": "91,9%",
@@ -1959,7 +2005,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia. HGT 181 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia. HGT 181 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -2023,7 +2069,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2044,7 +2092,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia. HGT 200 mg/dL: hiperglicemia no acompanhamento de diabetes.",
       "vitals_formatted": {
         "SatO2": "88%",
@@ -2053,7 +2101,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia. HGT 200 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia. HGT 200 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -2117,7 +2165,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2130,7 +2180,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: hiperglicemia no acompanhamento de diabetes.",
       "vitals_formatted": {
         "SatO2": "97%",
@@ -2139,7 +2189,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: hiperglicemia no acompanhamento de diabetes.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -2203,11 +2253,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "SatO2": "95%",
@@ -2216,7 +2268,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 95%, HGT 70 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -2280,7 +2332,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2293,7 +2347,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 69 mg/dL: hipoglicemia.",
       "vitals_formatted": {
         "SatO2": "94,9%",
@@ -2302,7 +2356,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 69 mg/dL: hipoglicemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 94,9%, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 69 mg/dL: hipoglicemia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.",
       "source": "deterministic"
     }
   },
@@ -2366,11 +2420,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "SatO2": "92%",
@@ -2379,7 +2435,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 92%, HGT 180 mg/dL. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -2443,7 +2499,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2456,7 +2514,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.",
       "vitals_formatted": {
         "SatO2": "91,9%",
@@ -2465,7 +2523,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 91,9%, HGT 181 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 91.9%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -2529,7 +2587,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2542,7 +2602,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.",
       "vitals_formatted": {
         "SatO2": "88%",
@@ -2551,7 +2611,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 88%, HGT 200 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: SatO2 88%: saturação reduzida, possível hipoxemia no contexto de pneumopatia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -2615,7 +2675,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2628,7 +2690,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.",
       "vitals_formatted": {
         "SatO2": "97%",
@@ -2637,7 +2699,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: SatO2 97%, HGT 201 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: HGT 201 mg/dL: glicemia elevada sem diagnóstico prévio de diabetes informado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar glicemia, horário da alimentação, sintomas e adesão; considerar investigação ou revisão terapêutica após avaliação médica.",
       "source": "deterministic"
     }
   },
@@ -2713,7 +2775,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2724,13 +2788,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -2806,7 +2870,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -2817,13 +2883,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 19/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 19/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 19/30 (escolaridade: analfabeto / 0 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -2899,17 +2965,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 20/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 20/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 20/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -2985,17 +3053,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: analfabeto / 0 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 20 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -3071,7 +3141,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -3082,13 +3154,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -3164,7 +3236,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -3175,13 +3249,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -3257,17 +3331,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -3343,17 +3419,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 1–4 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 25 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -3429,7 +3507,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -3440,13 +3520,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -3522,7 +3602,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -3533,13 +3615,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 25/30 (escolaridade: 5–8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -3615,17 +3697,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 26/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 26/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 26/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -3701,17 +3785,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: 5–8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 26 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -3787,7 +3873,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -3798,13 +3886,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 0/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -3880,7 +3968,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -3891,13 +3981,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 27/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 27/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 27/30 (escolaridade: mais de 8 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -3973,17 +4063,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 28/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 28/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 28/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -4059,17 +4151,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 30/30 (escolaridade: mais de 8 anos); não abaixo do corte de rastreio; não exclui alteração cognitiva (corte 28 para a escolaridade informada).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -4145,17 +4239,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 24/30; Escolaridade não informada; interpretação por corte não disponível.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30; Escolaridade não informada; interpretação por corte não disponível.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30; Escolaridade não informada; interpretação por corte não disponível.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -4219,7 +4315,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -4273,7 +4371,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS. SatO2 94%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia. FC 101 bpm: taquicardia. FR 21 irpm: taquipneia. Tax 37.8 °C: febre.",
       "vitals_formatted": {
         "PAS": "150",
@@ -4287,7 +4385,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.\n- Sugestão para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.\n- Sugestão para revisão médica: Reavaliar FR, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.\n- Sugestão para revisão médica: Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg, SatO2 94%, FC 101 bpm, FR 21 irpm, Tax 37,8 °C, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS. SatO2 94%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia. FC 101 bpm: taquicardia. FR 21 irpm: taquipneia. Tax 37.8 °C: febre.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.\n- Sugestão para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.\n- Sugestão para revisão médica: Reavaliar FR, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.\n- Sugestão para revisão médica: Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg, SatO2 94%, FC 101 bpm, FR 21 irpm, Tax 37,8 °C, HGT 69 mg/dL. Exame físico não registrado. Parâmetros para revisão clínica: PA 150/90 mmHg: elevação significativa no acompanhamento de HAS. SatO2 94%: saturação reduzida, possível hipoxemia. HGT 69 mg/dL: hipoglicemia. FC 101 bpm: taquicardia. FR 21 irpm: taquipneia. Tax 37.8 °C: febre.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar adesão anti-hipertensiva e considerar ajuste posológico ou curva pressórica após avaliação médica.\n- Sugestão para revisão médica: Confirmar a oximetria e avaliar sintomas respiratórios e necessidade de atendimento imediato; individualizar suporte conforme avaliação médica.\n- Sugestão para revisão médica: Avaliar e manejar prontamente a hipoglicemia conforme protocolo, reavaliar glicemia e revisar fatores precipitantes.\n- Sugestão para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.\n- Sugestão para revisão médica: Reavaliar FR, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.\n- Sugestão para revisão médica: Investigar foco e sintomas associados à febre e definir conduta conforme avaliação clínica.",
       "source": "deterministic"
     }
   },
@@ -4351,7 +4449,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -4364,7 +4464,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: FC 49 bpm: bradicardia.",
       "vitals_formatted": {
         "FC": "49"
@@ -4372,7 +4472,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: FC 49 bpm. Exame físico não registrado. Parâmetros para revisão clínica: FC 49 bpm: bradicardia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: FC 49 bpm. Exame físico não registrado. Parâmetros para revisão clínica: FC 49 bpm: bradicardia.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar FC, sintomas associados e possíveis causas; definir conduta conforme avaliação clínica.",
       "source": "deterministic"
     }
   },
@@ -4436,11 +4536,13 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {
         "FC": "50",
@@ -4450,7 +4552,7 @@
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: FC 50 bpm, FR 20 irpm, Tax 37,7 °C. Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: FC 50 bpm, FR 20 irpm, Tax 37,7 °C. Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -4517,7 +4619,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -4531,7 +4635,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: PA 135/85 mmHg: atinge ou supera a meta individual registrada de <130/80 mmHg.",
       "vitals_formatted": {
         "PAS": "135",
@@ -4540,7 +4644,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Revisar a PA em relação à meta individual definida pelo médico, tolerabilidade e contexto clínico.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 135 mmHg, PAD 85 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 135/85 mmHg: atinge ou supera a meta individual registrada de <130/80 mmHg.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar a PA em relação à meta individual definida pelo médico, tolerabilidade e contexto clínico.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 135 mmHg, PAD 85 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: PA 135/85 mmHg: atinge ou supera a meta individual registrada de <130/80 mmHg.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Revisar a PA em relação à meta individual definida pelo médico, tolerabilidade e contexto clínico.",
       "source": "deterministic"
     }
   },
@@ -4604,7 +4708,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -4623,7 +4729,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.",
       "vitals_formatted": {
         "PAS": "150",
@@ -4632,7 +4738,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
       "source": "deterministic"
     }
   },
@@ -4696,7 +4802,9 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -4715,7 +4823,7 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.",
       "vitals_formatted": {
         "PAS": "150",
@@ -4724,7 +4832,7 @@
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Sinais vitais: PAS 150 mmHg, PAD 90 mmHg. Exame físico não registrado. Parâmetros para revisão clínica: Perfil pediátrico/obstétrico: referências adultas gerais não aplicadas.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Avaliar os sinais vitais conforme protocolo específico para idade ou condição obstétrica.",
       "source": "deterministic"
     }
   },
@@ -4813,7 +4921,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -4824,13 +4934,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Desde a última visita domiciliar, houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada), Rankin modificado 4.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Desde a última visita domiciliar, houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada), Rankin modificado 4.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Houve relato de dor e tontura. Quanto a dor: Lombalgia há dois dias. Quanto a tontura: Ao levantar. No período recente, utilizou Ceftriaxona durante internação. Atualmente, está em uso contínuo de Losartana.\nO: Exame neurológico: Mini-Mental (MEEM) 24/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada), Rankin modificado 4.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.",
       "source": "deterministic"
     }
   },
@@ -4905,17 +5015,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata exame citopatológico do colo do útero (Papanicolau) em dia (último exame em 2020). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata exame citopatológico do colo do útero (Papanicolau) em dia (último exame em 2020). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata exame citopatológico do colo do útero (Papanicolau) em dia (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata exame citopatológico do colo do útero (Papanicolau) em dia (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -4990,17 +5102,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso (último exame em 2020). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
-      "plan_text": "- Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio.",
+      "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5075,17 +5189,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado exame citopatológico do colo do útero (Papanicolau). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Refere nunca ter realizado exame citopatológico do colo do útero (Papanicolau). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado exame citopatológico do colo do útero (Papanicolau). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Refere nunca ter realizado exame citopatológico do colo do útero (Papanicolau). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5160,17 +5276,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por exame citopatológico do colo do útero (Papanicolau) foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. O rastreio por exame citopatológico do colo do útero (Papanicolau) foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por exame citopatológico do colo do útero (Papanicolau) foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. O rastreio por exame citopatológico do colo do útero (Papanicolau) foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5245,17 +5363,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata mamografia em dia (último exame em 2020). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata mamografia em dia (último exame em 2020). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata mamografia em dia (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata mamografia em dia (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5330,17 +5450,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata rastreio por mamografia em atraso (último exame em 2020). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
-      "plan_text": "- Solicitar mamografia para atualização do rastreio.",
+      "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Solicitar mamografia para atualização do rastreio.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata rastreio por mamografia em atraso (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5415,17 +5537,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado mamografia. Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Refere nunca ter realizado mamografia. Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Refere nunca ter realizado mamografia. Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Refere nunca ter realizado mamografia. Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5500,17 +5624,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por mamografia foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. O rastreio por mamografia foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. O rastreio por mamografia foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. O rastreio por mamografia foi registrado como não aplicável (último exame em 2020). Histórico informado pela paciente.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5585,17 +5711,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso. Relata rastreio por mamografia em atraso.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
-      "plan_text": "- Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio.\n- Solicitar mamografia para atualização do rastreio.",
+      "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso, com solicitação indicada nesta visita. Relata rastreio por mamografia em atraso, com solicitação indicada nesta visita.\nO: Exame físico não registrado.\nP:\n- Solicitar exame citopatológico do colo do útero (Papanicolau) para atualização do rastreio.\n- Solicitar mamografia para atualização do rastreio.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Relata rastreio por exame citopatológico do colo do útero (Papanicolau) em atraso. Relata rastreio por mamografia em atraso.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5670,17 +5798,19 @@
       "neuro_exam": null,
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5759,17 +5889,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. No rastreio geriátrico, foram assinalados humor deprimido / desânimo frequente, perda de interesse nas atividades, queixa de esquecimento progressivo, dependência para atividades básicas (avds) e risco de queda / mobilidade reduzida. Relato da cuidadora.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. No rastreio geriátrico, foram assinalados humor deprimido / desânimo frequente, perda de interesse nas atividades, queixa de esquecimento progressivo, dependência para atividades básicas (avds) e risco de queda / mobilidade reduzida. Relato da cuidadora.",
       "objective_text": "Exame físico não registrado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar. No rastreio geriátrico, foram assinalados humor deprimido / desânimo frequente, perda de interesse nas atividades, queixa de esquecimento progressivo, dependência para atividades básicas (avds) e risco de queda / mobilidade reduzida. Relato da cuidadora.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. No rastreio geriátrico, foram assinalados humor deprimido / desânimo frequente, perda de interesse nas atividades, queixa de esquecimento progressivo, dependência para atividades básicas (avds) e risco de queda / mobilidade reduzida. Relato da cuidadora.\nO: Exame físico não registrado.\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5863,17 +5995,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "IVCF-20: 0/40 — Idoso Robusto (baixo risco).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: IVCF-20: 0/40 — Idoso Robusto (baixo risco).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: IVCF-20: 0/40 — Idoso Robusto (baixo risco).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -5967,17 +6101,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "IVCF-20: 6/40 — Idoso Robusto (baixo risco).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: IVCF-20: 6/40 — Idoso Robusto (baixo risco).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: IVCF-20: 6/40 — Idoso Robusto (baixo risco).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -6071,17 +6207,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "IVCF-20: 7/40 — Idoso em Risco de Fragilização (risco moderado).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: IVCF-20: 7/40 — Idoso em Risco de Fragilização (risco moderado).\nP:\n- Conduta não registrada.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: IVCF-20: 7/40 — Idoso em Risco de Fragilização (risco moderado).\nP:\n- Conduta não registrada.",
       "source": "deterministic"
     }
   },
@@ -6177,17 +6315,19 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "IVCF-20: 14/40 — Idoso em Risco de Fragilização (risco moderado); critério de polifarmácia assinalado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: IVCF-20: 14/40 — Idoso em Risco de Fragilização (risco moderado); critério de polifarmácia assinalado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: IVCF-20: 14/40 — Idoso em Risco de Fragilização (risco moderado); critério de polifarmácia assinalado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "source": "deterministic"
     }
   },
@@ -6341,7 +6481,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -6352,13 +6494,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 15/40 — Idoso Frágil (alto risco).",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 15/40 — Idoso Frágil (alto risco).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 15/40 — Idoso Frágil (alto risco).\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "source": "deterministic"
     }
   },
@@ -6514,7 +6656,9 @@
       },
       "assessment": "",
       "actions": [],
-      "plan_notes": ""
+      "plan_notes": "",
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -6525,13 +6669,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 40/40 — Idoso Frágil (alto risco); critério de polifarmácia assinalado.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 40/40 — Idoso Frágil (alto risco); critério de polifarmácia assinalado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame neurológico: Mini-Mental (MEEM) 23/30 (escolaridade: 1–4 anos); abaixo do corte de rastreio; possível alteração cognitiva, sem diagnóstico (corte 25 para a escolaridade informada). IVCF-20: 40/40 — Idoso Frágil (alto risco); critério de polifarmácia assinalado.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Considerar avaliação cognitiva ampliada, comparar com desempenho prévio e investigar causas reversíveis; rastreio isolado não estabelece declínio ou demência.\n- Sugestão para revisão médica: Considerar revisão medicamentosa e acompanhamento multiprofissional conforme avaliação clínica.",
       "source": "deterministic"
     }
   },
@@ -6624,7 +6768,9 @@
         "psa": 4.25,
         "eas_urina": "  ",
         "outros_exames": "Ferritina 90 ng/mL"
-      }
+      },
+      "visit_reason": "",
+      "follow_up_owner": ""
     },
     "analysis": [
       {
@@ -6677,13 +6823,13 @@
       }
     ],
     "soap": {
-      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.",
+      "subjective_text": "Realizada visita domiciliar. Acompanhantes da equipe não informados.",
       "objective_text": "Exame físico não registrado. Exames laboratoriais externos (10/11/2026): Cr 1,4 mg/dL | Ur 48 mg/dL | Na 140 mEq/L | K 4,3 mEq/L | CT 205 mg/dL | LDL 142 mg/dL | HDL 38 mg/dL | TG 125 mg/dL | Glicemia de jejum 115 mg/dL | HbA1c 7% | TSH 0,3 mUI/L | T4L 1,3 ng/dL | Hb 11,9 g/dL | Ht 36% | Leucócitos 5100 /mm³ | Plaquetas 180000 /mm³ | Hemograma: Conforme laudo | TGO/AST 27 U/L | TGP/ALT 31 U/L | GGT 40 U/L | FA 85 U/L | Bilirrubinas: BT 1,0 mg/dL | Proteínas totais e frações: Albumina 3,9 g/dL | PSA 4,25 ng/mL | Outros exames: Ferritina 90 ng/mL. Parâmetros para revisão clínica: LDL 142 mg/dL: atinge ou supera 100 mg/dL na triagem do diabetes. HbA1c 7%: atinge ou supera 7% na triagem do diabetes. Cr 1,4 mg/dL: acima de 1,3 mg/dL na triagem. TSH 0,3 mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L. PSA 4,25 ng/mL: acima de 4 ng/mL na triagem. Hb 11,9 g/dL: abaixo de 12 g/dL na triagem.",
       "vitals_formatted": {},
       "plan_text": "- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina.\n- Sugestão para revisão médica: Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica.\n- Sugestão para revisão médica: Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico.\n- Sugestão para revisão médica: Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico.\n- Sugestão para revisão médica: Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional.\n- Sugestão para revisão médica: Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa.",
       "assessment_text": null,
       "vitals_context": "",
-      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados. Não foi informado como transcorreu o período desde a última visita domiciliar.\nO: Exame físico não registrado. Exames laboratoriais externos (10/11/2026): Cr 1,4 mg/dL | Ur 48 mg/dL | Na 140 mEq/L | K 4,3 mEq/L | CT 205 mg/dL | LDL 142 mg/dL | HDL 38 mg/dL | TG 125 mg/dL | Glicemia de jejum 115 mg/dL | HbA1c 7% | TSH 0,3 mUI/L | T4L 1,3 ng/dL | Hb 11,9 g/dL | Ht 36% | Leucócitos 5100 /mm³ | Plaquetas 180000 /mm³ | Hemograma: Conforme laudo | TGO/AST 27 U/L | TGP/ALT 31 U/L | GGT 40 U/L | FA 85 U/L | Bilirrubinas: BT 1,0 mg/dL | Proteínas totais e frações: Albumina 3,9 g/dL | PSA 4,25 ng/mL | Outros exames: Ferritina 90 ng/mL. Parâmetros para revisão clínica: LDL 142 mg/dL: atinge ou supera 100 mg/dL na triagem do diabetes. HbA1c 7%: atinge ou supera 7% na triagem do diabetes. Cr 1,4 mg/dL: acima de 1,3 mg/dL na triagem. TSH 0,3 mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L. PSA 4,25 ng/mL: acima de 4 ng/mL na triagem. Hb 11,9 g/dL: abaixo de 12 g/dL na triagem.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina.\n- Sugestão para revisão médica: Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica.\n- Sugestão para revisão médica: Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico.\n- Sugestão para revisão médica: Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico.\n- Sugestão para revisão médica: Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional.\n- Sugestão para revisão médica: Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa.",
+      "full_text_fallback": "S: Realizada visita domiciliar. Acompanhantes da equipe não informados.\nO: Exame físico não registrado. Exames laboratoriais externos (10/11/2026): Cr 1,4 mg/dL | Ur 48 mg/dL | Na 140 mEq/L | K 4,3 mEq/L | CT 205 mg/dL | LDL 142 mg/dL | HDL 38 mg/dL | TG 125 mg/dL | Glicemia de jejum 115 mg/dL | HbA1c 7% | TSH 0,3 mUI/L | T4L 1,3 ng/dL | Hb 11,9 g/dL | Ht 36% | Leucócitos 5100 /mm³ | Plaquetas 180000 /mm³ | Hemograma: Conforme laudo | TGO/AST 27 U/L | TGP/ALT 31 U/L | GGT 40 U/L | FA 85 U/L | Bilirrubinas: BT 1,0 mg/dL | Proteínas totais e frações: Albumina 3,9 g/dL | PSA 4,25 ng/mL | Outros exames: Ferritina 90 ng/mL. Parâmetros para revisão clínica: LDL 142 mg/dL: atinge ou supera 100 mg/dL na triagem do diabetes. HbA1c 7%: atinge ou supera 7% na triagem do diabetes. Cr 1,4 mg/dL: acima de 1,3 mg/dL na triagem. TSH 0,3 mUI/L: fora da faixa de triagem de 0,4 a 4,5 mUI/L. PSA 4,25 ng/mL: acima de 4 ng/mL na triagem. Hb 11,9 g/dL: abaixo de 12 g/dL na triagem.\nP:\n- Conduta não registrada.\n- Sugestão para revisão médica: Reavaliar o perfil lipídico, a meta individual e o risco cardiovascular, reforçar medidas alimentares e considerar indicação ou ajuste de estatina.\n- Sugestão para revisão médica: Revisar a meta individual de HbA1c, adesão, hipoglicemias e necessidade de ajuste após avaliação clínica.\n- Sugestão para revisão médica: Comparar a creatinina com resultados anteriores, revisar a TFGe e avaliar a necessidade de confirmação no contexto clínico.\n- Sugestão para revisão médica: Conferir o intervalo de referência do laboratório e interpretar o TSH junto ao T4 livre e ao quadro clínico.\n- Sugestão para revisão médica: Contextualizar o PSA conforme idade, histórico e fatores transitórios e considerar repetir o exame antes de investigação adicional.\n- Sugestão para revisão médica: Revisar o hemograma e a referência aplicável, comparar resultados anteriores e avaliar a causa da hemoglobina baixa.",
       "source": "deterministic"
     }
   }

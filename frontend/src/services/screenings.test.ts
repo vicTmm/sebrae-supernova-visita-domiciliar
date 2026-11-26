@@ -18,7 +18,7 @@ it('mantém títulos fora dos blocos e limpa prefixos vindos de edições ou res
   expect(normalizeSoapBlocks(original)).toBe(original)
 })
 
-it('solicita só os exames marcados como atrasados e preserva ano e observações no relato', () => {
+it('registra o rastreio informado sem inventar pedido no plano', () => {
   const visit = exampleVisit(), health = emptyWomensHealth()
   health.cervical = { status: 'Em dia', year: 2024, notes: 'Resultado informado pela paciente.' }
   health.mammography = { status: 'Atrasado / Solicitar', year: 2022, notes: '' }
@@ -26,8 +26,8 @@ it('solicita só os exames marcados como atrasados e preserva ano e observaçõe
   const soap = localSoapOutput(visit)
   expect(soap.subjective_text).toContain('2024')
   expect(soap.subjective_text).toContain('Resultado informado pela paciente')
-  expect(soap.plan_text).toContain('Solicitar mamografia')
-  expect(soap.plan_text).not.toContain('Solicitar exame citopatológico')
+  expect(soap.subjective_text).toContain('mamografia em atraso')
+  expect(soap.plan_text).not.toContain('Solicitar')
   visit.sex = 'Masculino'
   expect(clinicalRuleError(visit)).toContain('Feminino')
 })

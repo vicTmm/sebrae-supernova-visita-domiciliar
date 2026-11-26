@@ -24,6 +24,7 @@ def test_caregiver_may_live_elsewhere_and_roundtrip():
     assert 'Relata morar sozinho(a)' in text
     assert 'Cuidador de referência: M. (vínculo: filha)' in text
     assert 'Sobre os cuidados: Visita diariamente' in text
+    assert text.index('Cuidador de referência') < text.index('Relata morar sozinho(a)')
 
 
 def test_cohabitants_and_explicit_absence():

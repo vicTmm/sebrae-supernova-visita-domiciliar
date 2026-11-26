@@ -55,7 +55,7 @@ describe('offline-first', () => {
     await db.delete()
     const old = new Dexie(db.name)
     old.version(1).stores({ visits: 'visit.id, visit.visited_at', drafts: 'key' })
-    const { companions, medications_in_use, recent_medications, neuro_exam, ...fields } = exampleVisit()
+    const { companions, medications_in_use, recent_medications, neuro_exam, age, visit_reason, follow_up_owner, ...fields } = exampleVisit()
     const visit = { ...fields, medications: 'Losartana legada' }
     const remote = { visit, soap_text: 'Texto remoto revisado', revision: 2 }
     await old.table('visits').put({ visit, soap_text: 'Texto local revisado', revision: 1, localVersion: 3, pending: true, conflict: remote })
@@ -64,6 +64,9 @@ describe('offline-first', () => {
     await db.open()
     const migrated = (await db.visits.get(visit.id))!
     expect(migrated.visit.medications_in_use).toBe('Losartana legada')
+    expect(migrated.visit.age).toBeNull()
+    expect(migrated.visit.visit_reason).toBe('')
+    expect(migrated.visit.follow_up_owner).toBe('')
     expect(migrated.visit.companions.is_solo).toBe(false)
     expect(migrated.visit.neuro_exam).toBeNull()
     expect(migrated.pending).toBe(true)

@@ -223,8 +223,8 @@ IvcfComorbidity = Literal["chronic_diseases", "polypharmacy", "hospitalization"]
 IvcfAnswer = Annotated[bool, Field(strict=True)]
 
 
-def ivcf_age_band(age: int) -> IvcfAgeBand | None:
-    if age < 60:
+def ivcf_age_band(age: int | None) -> IvcfAgeBand | None:
+    if age is None or age < 60:
         return None
     return "60_74" if age < 75 else "75_84" if age < 85 else "85_plus"
 
@@ -398,10 +398,11 @@ class VDInput(StrictModel):
     id: UUID
     visited_at: datetime
     patient_code: str = Field(min_length=1, max_length=30)
-    age: int = Field(ge=0, le=130)
+    age: int | None = Field(default=None, ge=0, le=130)
     sex: Literal['Feminino', 'Masculino'] | None = None
     womens_health: WomensHealth | None = None
-    conditions: list[Condition] = Field(min_length=1, max_length=len(Condition))
+    visit_reason: str = Field(default="", max_length=300)
+    conditions: list[Condition] = Field(default_factory=list, max_length=len(Condition))
     other_condition: str = Field(default="", max_length=500)
     companions: Companions = Field(default_factory=Companions)
     complaints: list[Complaint] = Field(default_factory=list, max_length=8)
@@ -419,6 +420,7 @@ class VDInput(StrictModel):
     assessment: str = Field(default="", max_length=2000)
     actions: list[Action] = Field(default_factory=list, max_length=6)
     plan_notes: str = Field(default="", max_length=2000)
+    follow_up_owner: str = Field(default="", max_length=200)
 
     @model_validator(mode="before")
     @classmethod
@@ -451,6 +453,8 @@ class VDInput(StrictModel):
 
     @model_validator(mode="after")
     def consistency(self):
+        if not self.conditions and not self.visit_reason.strip():
+            raise ValueError("Informe o motivo do atendimento ou selecione ao menos uma condição acompanhada.")
         if self.neuro_exam and self.neuro_exam.ivcf20 and self.neuro_exam.ivcf20.age_band != ivcf_age_band(self.age):
             raise ValueError("Confira se a faixa etária do IVCF-20 corresponde à idade da visita.")
         if self.womens_health is not None and self.sex != "Feminino":

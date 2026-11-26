@@ -64,7 +64,7 @@ export default function LabResultsSection({ value, alerts, onChange }: {
       <span>{total ? `${total} ${total === 1 ? 'resultado' : 'resultados'}` : 'Opcional'}</span>
     </summary>
     <div className="lab-results-body">
-      <p>Preencha apenas os resultados disponíveis, sem separador de milhar. Confira as unidades e o intervalo de referência no laudo.</p>
+      <p>Sem separador de milhar. Confira a unidade no laudo.</p>
       <label className="lab-date">Data do exame
         <input type="date" value={results.exam_date ?? ''} onChange={event => setResult('exam_date', event.target.value || null)}/>
       </label>

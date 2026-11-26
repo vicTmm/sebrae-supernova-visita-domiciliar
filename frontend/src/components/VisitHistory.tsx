@@ -45,7 +45,7 @@ export default function VisitHistory({ rows, today, onNew, onOpen, onResolve }: 
             return <article key={visit.id} className="history-entry">
               <div className="history-entry-heading">
                 <time dateTime={visit.visited_at}>{time.format(new Date(visit.visited_at))}</time>
-                <h3>{visit.patient_code} <span className="muted">· {visit.age} anos</span></h3>
+                <h3>{visit.patient_code} {visit.age != null && <span className="muted">· {visit.age} anos</span>}</h3>
                 <span className={row.pending || row.conflict ? 'save-state waiting' : 'save-state'}>{state}</span>
               </div>
               {visit.conditions.length > 0 && <p>{visit.conditions.join(', ')}</p>}

@@ -1,5 +1,5 @@
 import { residentDescription, residentRelationships } from '../types/visit'
-import { preventiveHistory, preventivePlan } from './screenings'
+import { preventiveHistory } from './screenings'
 import { evaluateClinical, cognitiveInterpretation, type ClinicalAlert } from './clinicalRules'
 import { neuroFlags, geriatricFlags, cognitiveDomains, miniMentalDomains, miniMentalTotal, conditionsForSex, type Visit, type Vitals, type SOAPOutput } from '../types/visit'
 import { completeIvcfAnswers, ivcfAgeBand, ivcfComorbidities, ivcfFollowUp, ivcfScore, ivcfStratum } from '../types/ivcf20'
@@ -207,19 +207,24 @@ export function updateSoapVitals(visit: Visit, result: SOAPOutput, vitals: Vital
 export function householdFacts(v: Visit): string[] {
   const h = v.household
   if (!h) return []
-  return [h.living_arrangement === 'alone' ? 'Relata morar sozinho(a)' : h.living_arrangement === 'with_others' ? ((h.residents?.length || h.cohabitants.trim()) ? `Reside com ${[h.residents?.map(residentDescription).join(', '), h.cohabitants.trim()].filter(Boolean).join('; relato complementar: ')}` : 'Relata morar com outras pessoas') : '',
-    h.caregiver_status === 'no' ? 'Relata não possuir cuidador de referência' : h.caregiver_status === 'yes' ? `Cuidador de referência${h.caregiver_name.trim() ? `: ${h.caregiver_name.trim()}` : ' informado'}${h.caregiver_relationship.trim() ? ` (vínculo: ${h.caregiver_relationship.trim()})` : ''}` : '',
-    h.caregiver_status === 'yes' && h.caregiver_notes.trim() ? `Sobre os cuidados: ${h.caregiver_notes.trim()}` : ''].filter(Boolean)
+  const care: string[] = []
+  if (h.caregiver_status === 'no') care.push('Relata não possuir cuidador de referência')
+  else if (h.caregiver_status === 'yes') {
+    care.push(`Cuidador de referência${h.caregiver_name.trim() ? `: ${h.caregiver_name.trim()}` : ' informado'}${h.caregiver_relationship.trim() ? ` (vínculo: ${h.caregiver_relationship.trim()})` : ''}`)
+    if (h.caregiver_notes.trim()) care.push(`Sobre os cuidados: ${h.caregiver_notes.trim()}`)
+  }
+  const residence = h.living_arrangement === 'alone' ? 'Relata morar sozinho(a)' : h.living_arrangement === 'with_others' ? ((h.residents?.length || h.cohabitants.trim()) ? `Reside com ${[h.residents?.map(residentDescription).join(', '), h.cohabitants.trim()].filter(Boolean).join('; relato complementar: ')}` : 'Relata morar com outras pessoas') : ''
+  return [...care, residence].filter(Boolean)
 }
 export function localSoapOutput(v: Visit): SOAPOutput {
   const error = clinicalRuleError(v)
   if (error) throw new Error(error)
   const complaintLabels = { Dor: 'dor', Dispneia: 'dispneia', Febre: 'febre', Tontura: 'tontura', Queda: 'queda', 'Ida à UPA/Emergência': 'ida à UPA/emergência', 'Internação hospitalar': 'internação hospitalar', 'Sem intercorrências': '' }
-  const timeline = v.complaints.includes('Sem intercorrências') ? 'Desde a última visita domiciliar, não foram relatadas intercorrências' : v.complaints.length ? `Desde a última visita domiciliar, houve relato de ${joined(v.complaints.map(c => complaintLabels[c]))}` : 'Não foi informado como transcorreu o período desde a última visita domiciliar'
+  const timeline = v.complaints.includes('Sem intercorrências') ? 'Não foram relatadas intercorrências' : v.complaints.length ? `Houve relato de ${joined(v.complaints.map(c => complaintLabels[c]))}` : ''
   const adherence = { Regular: 'Refere uso regular das medicações', Irregular: 'Refere uso irregular das medicações', 'Não faz uso': 'Refere não fazer uso de medicações', 'Não informado': '' }
   const screening = v.neuro_exam?.geriatric_screening
   const screeningFacts = screening ? [screening.flags.length ? `No rastreio geriátrico, foram assinalados ${joined(screening.flags.map(f => f.toLowerCase()))}` : '', screening.notes] : []
-  const s = paragraph([subjectiveOpening(v), ...householdFacts(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence], ...preventiveHistory(v), ...screeningFacts])
+  const s = paragraph([subjectiveOpening(v), v.visit_reason?.trim() ? `Motivo do atendimento: ${v.visit_reason.trim()}` : '', ...householdFacts(v), v.other_condition?.trim() ? `Em acompanhamento por ${v.other_condition.trim()}` : '', timeline, ...Object.entries(v.intercurrence_details).filter(([, value]) => value?.trim()).map(([key, value]) => `Quanto a ${key.toLowerCase()}: ${value}`), v.subjective_notes, v.recent_medications?.trim() ? `No período recente, utilizou ${v.recent_medications.trim()}` : '', v.medications_in_use.trim() ? `Atualmente, está em uso contínuo de ${v.medications_in_use.trim()}` : '', adherence[v.adherence], ...preventiveHistory(v), ...screeningFacts])
   const physical: string[] = []
   for (const [key, label] of [['general', 'Estado geral e hidratação'], ['cardiovascular', 'Ausculta cardíaca'], ['respiratory', 'Ausculta pulmonar']] as const) {
     const f = v.exam[key]
@@ -232,7 +237,7 @@ export function localSoapOutput(v: Visit): SOAPOutput {
   if (ivcf) physical.push(`IVCF-20: ${ivcf.score}/40 — ${ivcfStratum(ivcf.score)}${ivcf.comorbidities.includes('polypharmacy') ? '; critério de polifarmácia assinalado' : ''}`)
   if (v.exam.abdomen.status === 'Alterado') physical.push(`Exame abdominal: ${v.exam.abdomen.notes}`)
   else if (v.exam.abdomen.status === 'Sem alterações') physical.push('Exame abdominal sem alterações ao exame')
-  const actionText = { 'Manutenção de receita': 'Mantenho a receita em uso', 'Ajuste medicamentoso': 'Ajusto a medicação', 'Solicitação de exames': 'Solicito exames', 'Encaminhamento especialista': 'Encaminho para avaliação especializada', 'Agendamento de retorno VD': 'Programo retorno em visita domiciliar', 'Orientações gerais': 'Forneço orientações gerais' }
+  const actionText = { 'Manutenção de receita': 'Mantenho a receita em uso', 'Ajuste medicamentoso': 'Ajusto a medicação', 'Solicitação de exames': 'Solicito exames', 'Encaminhamento especialista': 'Encaminho para avaliação especializada', 'Agendamento de retorno VD': 'Indico retorno em visita domiciliar', 'Orientações gerais': 'Forneço orientações gerais' }
   const alerts = evaluateClinical(v)
   const suggestions = [...new Set(alerts.map(a => a.suggestion))]
   if (ivcf && (ivcf.score >= 15 || ivcf.comorbidities.includes('polypharmacy'))) suggestions.push(ivcfFollowUp)
@@ -242,8 +247,7 @@ export function localSoapOutput(v: Visit): SOAPOutput {
     labs ? paragraph([labs]) : '',
     observationText(alerts),
   ].filter(Boolean).join(' ')
-  const topics = planTopics([...v.actions.map(action => actionText[action]), v.plan_notes].join('\n'))
-  for (const action of preventivePlan(v)) if (!topics.some(topic => topic.includes(action))) topics.push(...planTopics(action))
+  const topics = planTopics([...v.actions.map(action => actionText[action]), v.plan_notes, v.follow_up_owner?.trim() ? `Responsável pelo seguimento: ${v.follow_up_owner.trim()}` : ''].join('\n'))
   if (!topics.length) topics.push('Conduta não registrada.')
   for (const suggestion of suggestions) {
     const topic = suggestionTopic(suggestion)

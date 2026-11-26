@@ -7,7 +7,7 @@ import { ivcfAgeBand, ivcfStratum } from '../types/ivcf20'
 import { emptyNeuro, neuroFlags, type NeuroExam, type NeuroFlag } from '../types/visit'
 
 const rankinLabels = ['Assintomático', 'Sem incapacidade significativa', 'Incapacidade leve', 'Incapacidade moderada', 'Incapacidade moderadamente grave', 'Acamado / Incontinente']
-export default function NeuroTestsSection({ age, value, onChange }: { age: number; value: NeuroExam | null; onChange: (n: NeuroExam | null) => void }) {
+export default function NeuroTestsSection({ age, value, onChange }: { age: number | null; value: NeuroExam | null; onChange: (n: NeuroExam | null) => void }) {
   const n = value ?? emptyNeuro()
   const [test, setTest] = useState<'meem' | 'ivcf20' | null>(null)
   const m = n.mini_mental ?? null

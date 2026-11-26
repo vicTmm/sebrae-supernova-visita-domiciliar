@@ -83,10 +83,18 @@ def test_individual_target_and_suggestions_distinct_from_actions():
     assert v.actions == []
 
 
-@pytest.mark.parametrize('changes', [{'age': 10}, {'conditions': ['Gestante']}, {'conditions': ['Puérpera']}])
+@pytest.mark.parametrize('changes', [{'age': None}, {'age': 0}, {'age': 10}, {'conditions': ['Gestante']}, {'conditions': ['Puérpera']}])
 def test_specific_profiles_not_classified_with_adult_thresholds(changes):
     v = VDInput.model_validate(visit(vitals={'systolic': 150, 'diastolic': 90}).model_dump() | changes)
     assert [a['code'] for a in clinical_analysis(v)] == ['specific_profile']
+
+
+def test_visit_reason_can_replace_condition_without_losing_clinical_context():
+    v = visit(conditions=[], visit_reason='Reavaliar após alta hospitalar')
+    assert v.conditions == []
+    assert 'Motivo do atendimento: Reavaliar após alta hospitalar' in deterministic_soap(v).subjective_text
+    with pytest.raises(ValidationError):
+        visit(conditions=[], visit_reason='   ')
 
 
 def test_offline_backend_parity_contract():
